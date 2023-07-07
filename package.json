@@ -1,52 +1,66 @@
 {
-	"name": "nerdistry_gatsbyjs",
-	"version": "1.0.0",
-	"private": true,
-	"description": "nerdistry_gatsbyjs",
-	"author": "Darek Mazur",
-	"keywords": [
-		"gatsby"
-	],
-	"scripts": {
-		"develop": "gatsby develop",
-		"start": "gatsby develop",
-		"build": "gatsby build",
-		"serve": "gatsby serve",
-		"clean": "gatsby clean",
-		"lint": "eslint . --fix --max-warnings=0",
-		"format": "prettier . --write",
-		"prepare": "husky install"
-	},
-	"dependencies": {
-		"babel-plugin-styled-components": "^2.1.4",
-		"dotenv": "^16.3.1",
-		"gatsby": "^5.11.0",
-		"gatsby-plugin-google-gtag": "^5.11.0",
-		"gatsby-plugin-image": "^3.11.0",
-		"gatsby-plugin-manifest": "^5.11.0",
-		"gatsby-plugin-sharp": "^5.11.0",
-		"gatsby-plugin-sitemap": "^6.11.0",
-		"gatsby-plugin-styled-components": "^6.11.0",
-		"gatsby-source-filesystem": "^5.11.0",
-		"gatsby-transformer-sharp": "^5.11.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"styled-components": "^6.0.2"
-	},
-	"devDependencies": {
-		"eslint": "^7.32.0",
-		"eslint-config-airbnb": "^19.0.4",
-		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-import": "^2.27.5",
-		"eslint-plugin-jsx-a11y": "^6.7.1",
-		"eslint-plugin-react": "^7.32.2",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"husky": "^8.0.3",
-		"lint-staged": "^13.2.3",
-		"prettier": "3.0.0"
-	},
-	"lint-staged": {
-		"*.js": "npm run lint",
-		"*.{js,css,md,html,json}": "npm run format"
-	}
+  "name": "nerdistry_gatsbyjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "nerdistry_gatsbyjs",
+  "author": "Darek Mazur",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint . --fix --max-warnings=0",
+    "format": "prettier . --write",
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
+    "dotenv": "^16.3.1",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-google-gtag": "^5.11.0",
+    "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-manifest": "^5.11.0",
+    "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-plugin-styled-components": "^6.11.0",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-sharp": "^5.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.2",
+    "@storybook/testing-library": "^0.0.14-next.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.7",
+    "@babel/preset-react": "^7.22.5",
+    "@storybook/addon-essentials": "^7.0.26",
+    "@storybook/addon-interactions": "^7.0.26",
+    "@storybook/addon-links": "^7.0.26",
+    "@storybook/blocks": "^7.0.26",
+    "@storybook/react": "^7.0.26",
+    "@storybook/react-webpack5": "^7.0.26",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "3.0.0",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.0.26"
+  },
+  "lint-staged": {
+    "*.js": "npm run lint",
+    "*.{js,css,md,html,json}": "npm run format"
+  }
 }
