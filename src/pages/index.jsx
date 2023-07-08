@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Header from '../components/organisms/Header/Header';
 import Footer from '../components/organisms/Footer/Footer';
-import Wrapper from '../components/organisms/Wrapper/Wrapper';
+import Wrapper from '../components/molecules/Wrapper/Wrapper';
 
 const test = 'Lorem Ipsum';
 
