@@ -1,6 +1,7 @@
 import * as React from 'react';
 import MenuList from '../MenuLIst/MenuList';
 import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
+import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
 
 function Header() {
 	return (
@@ -27,7 +28,7 @@ function Header() {
 						},
 					]}
 				/>
-				<span>Switcher</span>
+				<StyleSwitcher />
 				<MenuIcon />
 			</div>
 			<div>
