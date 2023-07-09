@@ -3,12 +3,13 @@ import MenuList from '../MenuLIst/MenuList';
 import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
 import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
+import Logo from '../../atoms/Logo/Logo';
 
 function Header() {
 	return (
 		<header>
 			<div>
-				<span>Logo</span>
+				<Logo />
 				<MenuList
 					menuList={[
 						{
