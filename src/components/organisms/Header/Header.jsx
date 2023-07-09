@@ -5,31 +5,31 @@ import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
 
+const menuItems = [
+	{
+		title: 'Lorem',
+		subtitle: 'Lorem Ipsum Dolor Sit Amet',
+	},
+	{
+		title: 'Ipsum',
+		subtitle: 'Lorem Ipsum Dolor Sit Amet',
+	},
+	{
+		title: 'Dolor',
+		subtitle: 'Lorem Ipsum Dolor Sit Amet',
+	},
+	{
+		title: 'Sit Amet',
+		subtitle: 'Lorem Ipsum Dolor Sit Amet',
+	},
+];
+
 function Header() {
 	return (
 		<header>
 			<div>
 				<Logo />
-				<MenuList
-					menuList={[
-						{
-							title: 'Lorem',
-							subtitle: 'Lorem Ipsum Dolor Sit Amet',
-						},
-						{
-							title: 'Ipsum',
-							subtitle: 'Lorem Ipsum Dolor Sit Amet',
-						},
-						{
-							title: 'Dolor',
-							subtitle: 'Lorem Ipsum Dolor Sit Amet',
-						},
-						{
-							title: 'Sit Amet',
-							subtitle: 'Lorem Ipsum Dolor Sit Amet',
-						},
-					]}
-				/>
+				<MenuList menuList={menuItems} />
 				<StyleSwitcher />
 				<MenuIcon />
 			</div>
