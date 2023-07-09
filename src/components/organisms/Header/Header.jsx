@@ -1,31 +1,33 @@
 import * as React from 'react';
+import MenuList from '../MenuLIst/MenuList';
 
 function Header() {
 	return (
 		<header>
 			<div>
 				<span>Logo</span>
-				<nav>
-					<ul>
-						<li>
-							<p>Lorem</p>
-							<p>Lorem Ipsum Dolor Sit Amet</p>
-						</li>
-						<li>
-							<p>Ipsum</p>
-							<p>Lorem Ipsum Dolor Sit Amet</p>
-						</li>
-						<li>
-							<p>Dolor</p>
-							<p>Lorem Ipsum Dolor Sit Amet</p>
-						</li>
-						<li>
-							<p>Sit Amet</p>
-							<p>Lorem Ipsum Dolor Sit Amet</p>
-						</li>
-					</ul>
-				</nav>
+				<MenuList
+					menuList={[
+						{
+							title: 'Lorem',
+							subtitle: 'Lorem Ipsum Dolor Sit Amet',
+						},
+						{
+							title: 'Ipsum',
+							subtitle: 'Lorem Ipsum Dolor Sit Amet',
+						},
+						{
+							title: 'Dolor',
+							subtitle: 'Lorem Ipsum Dolor Sit Amet',
+						},
+						{
+							title: 'Sit Amet',
+							subtitle: 'Lorem Ipsum Dolor Sit Amet',
+						},
+					]}
+				/>
 				<span>Switcher</span>
+				<span>Hamburger</span>
 			</div>
 			<div>
 				<h2>Nerdistry.</h2>
