@@ -1,5 +1,6 @@
 import * as React from 'react';
 import MenuList from '../MenuLIst/MenuList';
+import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
 
 function Header() {
 	return (
@@ -27,7 +28,7 @@ function Header() {
 					]}
 				/>
 				<span>Switcher</span>
-				<span>Hamburger</span>
+				<MenuIcon />
 			</div>
 			<div>
 				<h2>Nerdistry.</h2>
