@@ -28,27 +28,25 @@ const menuItems = [
 	},
 ];
 
-function Header() {
-	return (
-		<header>
-			<div>
-				<Logo />
-				<MenuList menuList={menuItems} />
-				<StyleSwitcher />
-				<MenuIcon />
-			</div>
-			<div>
-				<h2>Nerdistry.</h2>
-				<p>
-					Z notatnika młodego deva, czyli od juniora do zera. Czy tam na
-					odwrót... ;)
-				</p>
-			</div>
-			<div>
-				<HeaderMouseIcon />
-			</div>
-		</header>
-	);
-}
+const Header = () => (
+	<header>
+		<div>
+			<Logo />
+			<MenuList menuList={menuItems} />
+			<StyleSwitcher />
+			<MenuIcon />
+		</div>
+		<div>
+			<h2>Nerdistry.</h2>
+			<p>
+				Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót...
+				;)
+			</p>
+		</div>
+		<div>
+			<HeaderMouseIcon />
+		</div>
+	</header>
+);
 
 export default Header;
