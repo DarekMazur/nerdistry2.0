@@ -28,7 +28,8 @@ const menuItems = [
 	},
 ];
 
-const Header = () => (
+// eslint-disable-next-line no-unused-vars,react/prop-types
+const Header = ({ version }) => (
 	<header>
 		<div>
 			<Logo />
