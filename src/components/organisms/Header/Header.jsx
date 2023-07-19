@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import MenuList from '../MenuLIst/MenuList';
+import MenuList from '../MenuList/MenuList';
 import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
 import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';

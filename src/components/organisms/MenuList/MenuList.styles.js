@@ -23,32 +23,6 @@ export const StyledMenuList = styled.nav`
 		align-items: center;
 		font-family: ${({ theme }) => theme.fonts.menuFont};
 
-		li {
-			a {
-				color: ${({ theme }) => theme.colors.white};
-
-				p,
-				h4 {
-					padding: 0;
-					margin: 0;
-					text-align: left;
-				}
-
-				p {
-					font-size: ${({ theme }) => theme.fontSize.mobile.s};
-
-					&:last-of-type {
-						font-family: ${({ theme }) => theme.fonts.mainFont};
-					}
-				}
-
-				h4 {
-					font-size: ${({ theme }) => theme.fontSize.mobile.lm};
-				}
-			}
-		}
-	}
-
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		display: block;
 		opacity: 1;
