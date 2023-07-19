@@ -9,6 +9,10 @@ export const StyledPageHeader = styled.h2`
 	text-transform: uppercase;
 	margin-top: 12rem;
 
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+		font-size: ${({ theme }) => theme.fontSize.tablet.xxl};
+	}
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		font-size: ${({ theme }) => theme.fontSize.desktop.xxl};
 	}

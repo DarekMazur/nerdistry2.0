@@ -24,7 +24,7 @@ export const theme = {
 			s: '1.4rem',
 		},
 		tablet: {
-			xxl: '12rem',
+			xxl: '8rem',
 			xl: '6rem',
 			l: '3rem',
 			lm: '2rem',

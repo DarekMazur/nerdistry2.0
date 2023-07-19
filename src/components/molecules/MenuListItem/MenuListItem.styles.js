@@ -1,32 +1,55 @@
 import styled from 'styled-components';
 
 export const StyledMenuListItem = styled.li`
-  a {
-    color: ${({ theme }) => theme.colors.white};
-    transition: color 0.3s ease-in-out;
-    
-    &:hover {
-      color: ${({ theme }) => theme.colors.darkBlue};
-    }  
+	a {
+		color: ${({ theme }) => theme.colors.white};
+		transition: color 0.3s ease-in-out;
 
-    p,
-    h4 {
-      padding: 0;
-      margin: 0;
-      text-align: left;
-    }
+		&:hover {
+			color: ${({ theme }) => theme.colors.darkBlue};
+		}
 
-    p {
-      font-size: ${({ theme }) => theme.fontSize.mobile.s};
+		p,
+		h4 {
+			padding: 0;
+			margin: 0;
+			text-align: left;
+		}
 
-      &:last-of-type {
-        font-family: ${({ theme }) => theme.fonts.mainFont};
-      }
-    }
+		p {
+			font-size: ${({ theme }) => theme.fontSize.mobile.s};
 
-    h4 {
-      font-size: ${({ theme }) => theme.fontSize.mobile.lm};
-    }
-  }
-}
+			&:last-of-type {
+				font-family: ${({ theme }) => theme.fonts.mainFont};
+			}
+		}
+
+		h4 {
+			font-size: ${({ theme }) => theme.fontSize.mobile.lm};
+		}
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+		a {
+			p {
+				font-size: ${({ theme }) => theme.fontSize.tablet.s};
+			}
+
+			h4 {
+				font-size: ${({ theme }) => theme.fontSize.tablet.lm};
+			}
+		}
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+		a {
+			p {
+				font-size: ${({ theme }) => theme.fontSize.desktop.s};
+			}
+
+			h4 {
+				font-size: ${({ theme }) => theme.fontSize.desktop.lm};
+			}
+		}
+	}
 `;
