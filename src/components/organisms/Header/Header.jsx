@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import MenuList from '../MenuLIst/MenuList';
 import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
 import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
@@ -33,7 +34,6 @@ const menuItems = [
 	},
 ];
 
-// eslint-disable-next-line react/prop-types
 const Header = ({ version }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -68,3 +68,11 @@ const Header = ({ version }) => {
 };
 
 export default Header;
+
+Header.defaultProps = {
+	version: false,
+};
+
+Header.propTypes = {
+	version: PropTypes.bool,
+};

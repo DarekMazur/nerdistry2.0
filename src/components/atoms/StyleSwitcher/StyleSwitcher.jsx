@@ -1,9 +1,9 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import SunIcon from '../../../assets/icons/sun-regular.svg';
 import MoonIcon from '../../../assets/icons/moon-solid.svg';
 import { StyledStyleSwitcher } from './StyleSwitcher.styles';
 
-// eslint-disable-next-line react/prop-types
 const StylesSwitcher = ({ isDark }) => (
 	<StyledStyleSwitcher isDark={isDark}>
 		<SunIcon />
@@ -12,3 +12,7 @@ const StylesSwitcher = ({ isDark }) => (
 );
 
 export default StylesSwitcher;
+
+StylesSwitcher.propTypes = {
+	isDark: PropTypes.bool.isRequired,
+};
