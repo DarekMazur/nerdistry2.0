@@ -24,6 +24,12 @@ export const StyledMenuList = styled.nav`
 		font-family: ${({ theme }) => theme.fonts.menuFont};
 	}
 
+	svg {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		width: auto;
 		height: 20rem;
@@ -38,6 +44,10 @@ export const StyledMenuList = styled.nav`
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
+		}
+
+		svg {
+			display: none;
 		}
 	}
 `;

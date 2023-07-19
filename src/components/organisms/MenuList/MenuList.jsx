@@ -2,10 +2,15 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { StyledMenuList } from './MenuList.styles';
 import MenuListItem from '../../molecules/MenuListItem/MenuListItem';
+import CloseIcon from '../../../assets/icons/xmark-solid.svg';
+import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 
 // eslint-disable-next-line react/prop-types
-const MenuList = ({ menuList, isOpen }) => (
+const MenuList = ({ menuList, isOpen, handleClick }) => (
 	<StyledMenuList isOpen={isOpen}>
+		<StyledIcon>
+			<CloseIcon onClick={handleClick} />
+		</StyledIcon>
 		<ul>
 			{menuList.map((listItem, index) => (
 				<MenuListItem listItem={listItem} index={index} />
@@ -19,4 +24,5 @@ export default MenuList;
 MenuList.propTypes = {
 	menuList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string]))
 		.isRequired,
+	handleClick: PropTypes.func.isRequired,
 };

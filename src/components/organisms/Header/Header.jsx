@@ -43,7 +43,11 @@ const Header = ({ version, handleVersionChange }) => {
 				<StyledHeaderWrapper position>
 					<div>
 						<Logo />
-						<MenuList menuList={menuItems} isOpen={isOpen} />
+						<MenuList
+							menuList={menuItems}
+							isOpen={isOpen}
+							handleClick={handleMenuClick}
+						/>
 						<HeaderIconsWrapper
 							isDark={version}
 							handleClick={handleMenuClick}
