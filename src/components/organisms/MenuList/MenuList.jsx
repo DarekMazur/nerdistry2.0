@@ -5,7 +5,6 @@ import MenuListItem from '../../molecules/MenuListItem/MenuListItem';
 import CloseIcon from '../../../assets/icons/xmark-solid.svg';
 import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 
-// eslint-disable-next-line react/prop-types
 const MenuList = ({ menuList, isOpen, handleClick }) => (
 	<StyledMenuList isOpen={isOpen}>
 		<StyledIcon>
@@ -25,4 +24,5 @@ MenuList.propTypes = {
 	menuList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string]))
 		.isRequired,
 	handleClick: PropTypes.func.isRequired,
+	isOpen: PropTypes.bool.isRequired,
 };
