@@ -4,7 +4,7 @@ export const StyledIcon = styled.div`
 	justify-content: ${({ justify }) => `${justify} !important`};
 
 	svg {
-		height: 40px;
+		height: 4rem;
 
 		path {
 			stroke: ${({ theme, isDark }) =>

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const StyledStyleSwitcher = styled.div`
-  height: 35px;
-  width: 100px;
-  border-radius: 17.5px;
+  height: 3.5rem;
+  width: 10rem;
+  border-radius: 1.75rem;
   background-color: ${({ theme, isDark }) =>
 		isDark ? theme.colors.white : theme.colors.black};
   position: relative;
   
     svg {
-      height: 30px;
+      height: 3rem;
       position: absolute;
-      top: 2.5px;
+      top: 0.25rem;
 
     path {
       stroke: ${({ theme, isDark }) =>
@@ -23,7 +23,7 @@ export const StyledStyleSwitcher = styled.div`
     
       &:nth-of-type(1) {
         opacity: ${({ isDark }) => (isDark ? `0` : `1`)};
-        left: 2.5px;
+        left: 0.25rem;
       }
     
       &:nth-of-type(2) {
