@@ -12,6 +12,8 @@ const test = 'Lorem Ipsum';
 const IndexPage = () => {
 	const [DarkMode, setDarkMode] = useState(false);
 
+	const handleVersionChange = () => setDarkMode((prevState) => !prevState);
+
 	if (localStorage.getItem('version')) {
 		setDarkMode(localStorage.getItem('version'));
 	}
@@ -19,7 +21,7 @@ const IndexPage = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-			<Header version={DarkMode} />
+			<Header version={DarkMode} handleVersionChange={handleVersionChange} />
 			<main>
 				<Wrapper title="Header 1">
 					<div>

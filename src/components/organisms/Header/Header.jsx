@@ -32,7 +32,7 @@ const menuItems = [
 	},
 ];
 
-const Header = ({ version }) => {
+const Header = ({ version, handleVersionChange }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
@@ -47,6 +47,7 @@ const Header = ({ version }) => {
 						<HeaderIconsWrapper
 							isDark={version}
 							handleClick={handleMenuClick}
+							handleVersionChange={handleVersionChange}
 						/>
 					</div>
 				</StyledHeaderWrapper>
@@ -73,4 +74,5 @@ Header.defaultProps = {
 
 Header.propTypes = {
 	version: PropTypes.bool,
+	handleVersionChange: PropTypes.func.isRequired,
 };
