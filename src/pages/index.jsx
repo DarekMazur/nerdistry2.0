@@ -1,14 +1,27 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import Header from '../components/organisms/Header/Header';
 import Footer from '../components/organisms/Footer/Footer';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
+import { theme } from '../utils/theme';
+import { GlobalStyle } from '../styles/globalStyle';
 
 const test = 'Lorem Ipsum';
 
-function IndexPage() {
+const IndexPage = () => {
+	const [DarkMode, setDarkMode] = useState(false);
+
+	const handleVersionChange = () => setDarkMode((prevState) => !prevState);
+
+	if (localStorage.getItem('version')) {
+		setDarkMode(localStorage.getItem('version'));
+	}
+
 	return (
-		<>
-			<Header />
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Header version={DarkMode} handleVersionChange={handleVersionChange} />
 			<main>
 				<Wrapper title="Header 1">
 					<div>
@@ -128,9 +141,9 @@ function IndexPage() {
 				</Wrapper>
 			</main>
 			<Footer />
-		</>
+		</ThemeProvider>
 	);
-}
+};
 
 export default IndexPage;
 

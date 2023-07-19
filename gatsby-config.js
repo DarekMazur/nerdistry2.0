@@ -48,5 +48,26 @@ module.exports = {
 				},
 			},
 		},
+		{
+			resolve: `gatsby-plugin-google-fonts`,
+			options: {
+				fonts: [
+					`Montserrat: 400,400i,700`,
+					`Montserrat Alternates: 400;700`,
+					`Montserrat Subrayada`,
+					`Notable`,
+					`Share Tech Mono`,
+				],
+				display: 'swap',
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-react-svg',
+			options: {
+				rule: {
+					include: /icons/,
+				},
+			},
+		},
 	],
 };

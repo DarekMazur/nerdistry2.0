@@ -20,22 +20,29 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@storybook/testing-library": "^0.0.14-next.2",
     "babel-plugin-styled-components": "^2.1.4",
     "dotenv": "^16.3.1",
     "gatsby": "^5.11.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
+    "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
     "gatsby-plugin-styled-components": "^6.11.0",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.2",
-    "prop-types": "^15.8.1"
+    "styled-components": "^6.0.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.7",
