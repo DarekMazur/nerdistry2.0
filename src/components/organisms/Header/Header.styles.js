@@ -9,4 +9,12 @@ export const StyledHeader = styled.header`
 	& > div {
 		background-color: ${({ theme }) => `${theme.colors.black}d9`};
 	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+		height: 100vh;
+
+		& > div {
+			height: 100vh;
+		}
+	}
 `;
