@@ -22,15 +22,20 @@ export const StyledMenuList = styled.nav`
 		justify-content: space-evenly;
 		align-items: center;
 		font-family: ${({ theme }) => theme.fonts.menuFont};
+	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+		width: auto;
+		height: 20rem;
+		overflow: auto;
 		display: block;
 		opacity: 1;
-		width: auto;
-		height: auto;
+		position: static;
+		background-color: transparent;
+		z-index: 1;
 
 		ul {
-			display: flex;
+			flex-direction: row;
 			justify-content: center;
 			align-items: center;
 		}

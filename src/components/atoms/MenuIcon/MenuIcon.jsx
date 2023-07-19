@@ -1,8 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import MenuIconVector from '../../../assets/icons/bars-solid.svg';
+import { StyledMenuIcon } from './MenuIcon.styles';
 
-const MenuIcon = ({ handleClick }) => <MenuIconVector onClick={handleClick} />;
+const MenuIcon = ({ handleClick }) => (
+	<StyledMenuIcon>
+		<MenuIconVector onClick={handleClick} />
+	</StyledMenuIcon>
+);
 
 export default MenuIcon;
 

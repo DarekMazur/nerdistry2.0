@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledMenuListItem = styled.li`
 	a {
 		color: ${({ theme }) => theme.colors.white};
+		text-decoration: none;
 		transition: color 0.3s ease-in-out;
 
 		&:hover {
@@ -42,9 +43,31 @@ export const StyledMenuListItem = styled.li`
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+		width: 20rem;
+		height: 100%;
+		padding: 0 1rem;
+		margin: 0 1rem;
+		transition: background-color 0.3s ease-in-out;
+
+		&:hover {
+			background-color: ${({ theme }) => `${theme.colors.black}99`};
+		}
+
 		a {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			text-align: left;
+			width: 100%;
+			height: 100%;
+
 			p {
-				font-size: ${({ theme }) => theme.fontSize.desktop.s};
+				font-size: 1.2rem;
+
+				&:last-of-type {
+					font-size: 0.8rem;
+				}
 			}
 
 			h4 {
