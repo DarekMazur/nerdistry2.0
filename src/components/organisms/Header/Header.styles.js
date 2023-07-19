@@ -11,10 +11,10 @@ export const StyledHeader = styled.header`
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
-		height: 100vh;
+		min-height: 100vh;
 
 		& > div {
-			height: 100vh;
+			min-height: 100vh;
 		}
 	}
 `;

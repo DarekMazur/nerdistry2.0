@@ -21,7 +21,7 @@ export const StyledMouseIcon = styled.button`
 		cursor: pointer;
 	}
 
-	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		display: flex;
 		justify-content: center;
 		padding-bottom: 2rem;

@@ -4,9 +4,10 @@ import { StyledMouseIcon } from './HeaderMouseIcon.styles';
 
 const HeaderMouseIcon = () => {
 	const handleClick = () => {
-		const pageHeight = window.innerHeight;
+		const headerElement = document.querySelector('header');
+		const headerHeight = headerElement.offsetHeight;
 
-		return window.scrollBy(0, pageHeight);
+		return window.scrollTo(0, headerHeight);
 	};
 	return (
 		<StyledMouseIcon>
