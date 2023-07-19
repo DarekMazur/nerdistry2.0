@@ -1,9 +1,14 @@
 import * as React from 'react';
+import { useState } from 'react';
 import MenuList from '../MenuLIst/MenuList';
 import MenuIcon from '../../atoms/MenuIcon/MenuIcon';
 import StyleSwitcher from '../../atoms/StyleSwitcher/StyleSwitcher';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
+import { StyledHeader } from './Header.styles';
+import { StyledPageHeader } from '../../atoms/PageHeader/PageHeader.styles';
+import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper.styles';
+import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 
 const menuItems = [
 	{
@@ -28,26 +33,38 @@ const menuItems = [
 	},
 ];
 
-// eslint-disable-next-line no-unused-vars,react/prop-types
-const Header = ({ version }) => (
-	<header>
-		<div>
-			<Logo />
-			<MenuList menuList={menuItems} />
-			<StyleSwitcher />
-			<MenuIcon />
-		</div>
-		<div>
-			<h2>Nerdistry.</h2>
-			<p>
-				Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót...
-				;)
-			</p>
-		</div>
-		<div>
-			<HeaderMouseIcon />
-		</div>
-	</header>
-);
+// eslint-disable-next-line react/prop-types
+const Header = ({ version }) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
+
+	return (
+		<StyledHeader>
+			<div>
+				<StyledHeaderWrapper position>
+					<div>
+						<Logo />
+						<MenuList menuList={menuItems} isOpen={isOpen} />
+						<StyleSwitcher isDark={version} />
+					</div>
+					<StyledIcon isDark={version} justify="flex-end">
+						<MenuIcon handleClick={handleMenuClick} />
+					</StyledIcon>
+				</StyledHeaderWrapper>
+				<StyledHeaderWrapper>
+					<StyledPageHeader>Nerdistry.</StyledPageHeader>
+					<p>
+						Z notatnika młodego deva, czyli od juniora do zera. Czy tam na
+						odwrót... ;)
+					</p>
+				</StyledHeaderWrapper>
+				<div>
+					<HeaderMouseIcon />
+				</div>
+			</div>
+		</StyledHeader>
+	);
+};
 
 export default Header;

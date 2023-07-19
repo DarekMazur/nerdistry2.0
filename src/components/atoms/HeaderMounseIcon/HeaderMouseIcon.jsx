@@ -1,8 +1,9 @@
 import * as React from 'react';
 import MouseIcon from '../../../assets/icons/mouseIcon.svg';
+import { StyledMouseIcon } from './HeaderMouseIcon.styles';
 
 function HeaderMouseIcon() {
-	return <img src={MouseIcon} alt="" />;
+	return <StyledMouseIcon src={MouseIcon} alt="" />;
 }
 
 export default HeaderMouseIcon;

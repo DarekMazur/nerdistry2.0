@@ -5,6 +5,7 @@ export const theme = {
 		lightBlue: '#338287',
 		darkBlue: '#32C0C9',
 	},
+
 	fonts: {
 		mainFont: '"Montserrat", sans-serif',
 		headerFont: '"Montserrat Alternates", sans-serif',
@@ -12,13 +13,32 @@ export const theme = {
 		menuFont: '"Montserrat Subrayada", sans-serif',
 		codeFont: '"Share Tech Mono", monospace',
 	},
+
 	fontSize: {
-		xxl: '12rem',
-		xl: '6rem',
-		l: '3rem',
-		lm: '2rem',
-		m: '1.6rem',
-		s: '1.4rem',
+		desktop: {
+			xxl: '12rem',
+			xl: '6rem',
+			l: '3rem',
+			lm: '2rem',
+			m: '1.6rem',
+			s: '1.4rem',
+		},
+		tablet: {
+			xxl: '12rem',
+			xl: '6rem',
+			l: '3rem',
+			lm: '2rem',
+			m: '1.6rem',
+			s: '1.4rem',
+		},
+		mobile: {
+			xxl: '3.5rem',
+			xl: '3.2rem',
+			l: '3rem',
+			lm: '2.1rem',
+			m: '1.6rem',
+			s: '1.4rem',
+		},
 	},
 
 	breakPoints: {
