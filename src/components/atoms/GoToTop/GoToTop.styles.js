@@ -21,6 +21,10 @@ export const StyledGoToTop = styled.div`
 		transform: scale(1.3);
 	}
 
+	& + div {
+		cursor: pointer;
+	}
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		right: 3rem;
 	}
