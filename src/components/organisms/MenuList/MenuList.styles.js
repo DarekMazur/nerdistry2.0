@@ -26,7 +26,7 @@ export const StyledMenuList = styled.nav`
 
 	svg {
 		position: absolute;
-		top: 1rem;
+		top: calc(-100vh + 2.5rem);
 		right: 1rem;
 	}
 
