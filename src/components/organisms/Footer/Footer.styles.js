@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
+	position: relative;
 	background-color: ${({ theme }) => theme.colors.black};
 	color: ${({ theme }) => theme.colors.white};
 	display: flex;

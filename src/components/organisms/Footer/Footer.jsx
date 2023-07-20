@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
@@ -6,8 +7,9 @@ import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 import { StyledFooter } from './Footer.styles';
 import Logo from '../../atoms/Logo/Logo';
 import { getCurrentYear } from '../../../helpers/getCurrentYear';
+import GoToTop from '../../atoms/GoToTop/GoToTop';
 
-const Footer = () => {
+const Footer = ({ isDark }) => {
 	const menu = [
 		{
 			name: 'Lorem',
@@ -48,6 +50,7 @@ const Footer = () => {
 			icon: <TwitterIcon />,
 		},
 	];
+
 	return (
 		<StyledFooter>
 			<Logo isFooter />
@@ -70,8 +73,17 @@ const Footer = () => {
 					</li>
 				))}
 			</ul>
+			<GoToTop isDark={isDark} />
 		</StyledFooter>
 	);
 };
 
 export default Footer;
+
+Footer.defaultProps = {
+	isDark: false,
+};
+
+Footer.propTypes = {
+	isDark: PropTypes.bool,
+};
