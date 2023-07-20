@@ -140,7 +140,7 @@ const IndexPage = () => {
 					</p>
 				</Wrapper>
 			</main>
-			<Footer />
+			<Footer isDark={DarkMode} />
 		</ThemeProvider>
 	);
 };
