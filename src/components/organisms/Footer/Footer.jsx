@@ -8,67 +8,40 @@ import { StyledFooter } from './Footer.styles';
 import Logo from '../../atoms/Logo/Logo';
 import { getCurrentYear } from '../../../utils/helpers/getCurrentYear';
 import GoToTop from '../../atoms/GoToTop/GoToTop';
+import { footerMenu, socialMedia } from '../../../utils/mock';
 
 const Footer = ({ isDark }) => {
-	const menu = [
-		{
-			name: 'Lorem',
-			url: '#',
-		},
-		{
-			name: 'Ipsum',
-			url: '#',
-		},
-		{
-			name: 'Dolor',
-			url: '#',
-		},
-		{
-			name: 'Sit',
-			url: '#',
-		},
-		{
-			name: 'Amet',
-			url: '#',
-		},
-	];
-
-	const socialMedia = [
-		{
-			name: 'Linkedin',
-			url: '#',
-			icon: <LinkedinIcon />,
-		},
-		{
-			name: 'Github',
-			url: '#',
-			icon: <GithubIcon />,
-		},
-		{
-			name: 'Twitter',
-			url: '#',
-			icon: <TwitterIcon />,
-		},
-	];
+	const getSocialIconSvg = (socialPlatform) => {
+		switch (socialPlatform) {
+			case 'LinkedinIcon':
+				return <LinkedinIcon />;
+			case 'GithubIcon':
+				return <GithubIcon />;
+			case 'TwitterIcon':
+				return <TwitterIcon />;
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<StyledFooter>
 			<Logo isFooter />
 			<nav>
 				<ul>
-					{menu.map((el) => (
+					{footerMenu.map((menuItem) => (
 						<li>
-							<a href={el.url}>{el.name}</a>
+							<a href={menuItem.url}>{menuItem.name}</a>
 						</li>
 					))}
 				</ul>
 			</nav>
 			<p>Gacek &copy; {getCurrentYear()}</p>
 			<ul>
-				{socialMedia.map((el) => (
+				{socialMedia.map((socialMenuItem) => (
 					<li>
-						<a href={el.url} target="_blank" rel="noreferrer">
-							<StyledIcon>{el.icon}</StyledIcon>
+						<a href={socialMenuItem.url} target="_blank" rel="noreferrer">
+							<StyledIcon>{getSocialIconSvg(socialMenuItem.icon)}</StyledIcon>
 						</a>
 					</li>
 				))}

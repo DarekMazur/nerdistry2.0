@@ -7,29 +7,7 @@ import { StyledHeader } from './Header.styles';
 import { StyledPageHeader } from '../../atoms/PageHeader/PageHeader.styles';
 import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper.styles';
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
-
-const menuItems = [
-	{
-		title: 'Lorem',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Ipsum',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Dolor',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Sit Amet',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-];
+import { mainMenu } from '../../../utils/mock';
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +20,7 @@ const Header = () => {
 					<div>
 						<Logo />
 						<MenuList
-							menuList={menuItems}
+							menuList={mainMenu}
 							isOpen={isOpen}
 							handleClick={handleMenuClick}
 						/>
