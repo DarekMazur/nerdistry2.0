@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
@@ -32,9 +31,8 @@ const menuItems = [
 	},
 ];
 
-const Header = ({ version, handleVersionChange }) => {
+const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
 
 	return (
@@ -48,11 +46,7 @@ const Header = ({ version, handleVersionChange }) => {
 							isOpen={isOpen}
 							handleClick={handleMenuClick}
 						/>
-						<HeaderIconsWrapper
-							isDark={version}
-							handleClick={handleMenuClick}
-							handleVersionChange={handleVersionChange}
-						/>
+						<HeaderIconsWrapper handleClick={handleMenuClick} />
 					</div>
 				</StyledHeaderWrapper>
 				<StyledHeaderWrapper>
@@ -71,12 +65,3 @@ const Header = ({ version, handleVersionChange }) => {
 };
 
 export default Header;
-
-Header.defaultProps = {
-	version: false,
-};
-
-Header.propTypes = {
-	version: PropTypes.bool,
-	handleVersionChange: PropTypes.func.isRequired,
-};

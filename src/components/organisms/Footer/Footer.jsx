@@ -6,7 +6,7 @@ import GithubIcon from '../../../assets/icons/github.svg';
 import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 import { StyledFooter } from './Footer.styles';
 import Logo from '../../atoms/Logo/Logo';
-import { getCurrentYear } from '../../../helpers/getCurrentYear';
+import { getCurrentYear } from '../../../utils/helpers/getCurrentYear';
 import GoToTop from '../../atoms/GoToTop/GoToTop';
 
 const Footer = ({ isDark }) => {

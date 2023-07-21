@@ -20,12 +20,14 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: ${({ theme }) => theme.fonts.mainFont};
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme, isDark }) =>
+			isDark ? theme.colors.white : theme.colors.black};
     font-size: ${({ theme }) => theme.fontSize.m};
     line-height: 2;
     width: 100vw;
     overflow-x: hidden;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme, isDark }) =>
+			isDark ? theme.colors.darkGrey : theme.colors.white};
     padding: 0;
     margin: 0;
   }

@@ -1,12 +1,14 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ToTopIcon from '../../../assets/icons/chevron-up-solid.svg';
 import { StyledIcon } from '../Icon/Icon.styles';
 import useScrollPosition from '../../../hooks/useScrollPosition';
 import { StyledGoToTop } from './GoToTop.styles';
 
-const GoToTop = ({ isDark }) => {
+const GoToTop = () => {
+	const isDark = useSelector((state) => state.isDark);
+
 	const [isHidden, setIsHidden] = useState(true);
 	const handleClick = () => window.scrollTo(0, 0);
 
@@ -27,11 +29,3 @@ const GoToTop = ({ isDark }) => {
 	);
 };
 export default GoToTop;
-
-GoToTop.defaultProps = {
-	isDark: false,
-};
-
-GoToTop.propTypes = {
-	isDark: PropTypes.bool,
-};
