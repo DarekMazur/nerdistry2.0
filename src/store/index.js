@@ -6,7 +6,18 @@ export const switchColorVersion = (payload) => ({
 });
 
 const initialState = {
-	isDark: false,
+	isDark: localStorage.getItem('isDark')
+		? localStorage.getItem('isDark')
+		: false,
+};
+
+const saveToLocalStorage = (state) => {
+	try {
+		const serialisedVersionState = JSON.stringify(state.isDark);
+		localStorage.setItem('isDark', serialisedVersionState);
+	} catch (e) {
+		console.warn(e);
+	}
 };
 
 const versionReducer = (state = initialState, action) => {
@@ -22,3 +33,5 @@ const versionReducer = (state = initialState, action) => {
 };
 
 export const store = createStore(versionReducer);
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
