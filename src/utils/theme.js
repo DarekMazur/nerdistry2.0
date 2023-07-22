@@ -15,6 +15,12 @@ export const theme = {
 		codeFont: '"Share Tech Mono", monospace',
 	},
 
+	weights: {
+		regular: '400',
+		semiBold: '700',
+		bold: '900',
+	},
+
 	fontSize: {
 		desktop: {
 			xxl: '12rem',
@@ -37,8 +43,8 @@ export const theme = {
 			xl: '3.2rem',
 			l: '3rem',
 			lm: '2.1rem',
-			m: '1.6rem',
-			s: '1.4rem',
+			m: '1.4rem',
+			s: '1rem',
 		},
 	},
 
