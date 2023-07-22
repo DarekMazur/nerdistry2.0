@@ -2,27 +2,20 @@ import * as React from 'react';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
+import FeaturedPosts from '../components/molecules/FeaturedPosts/FeaturedPosts';
+import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
+import { posts } from '../utils/mock';
 
 const test = 'Lorem Ipsum';
 
 const IndexPage = () => (
 	<AppProviders>
 		<Layout>
-			<Wrapper title="Header 1">
-				<div>
-					<div>
-						<span>date, Category</span>
-					</div>
-					<h3>Lorem Ipsum</h3>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Nisl sit sed aliquam amet
-						eleifend pulvinar. Adipiscing elementum id sit et vulputate
-						elementum phasellus. Quam malesuada cras sed eu nunc. Et vitae
-						fermentum iaculis nec aliquam.
-					</p>
-					<p>Timer</p>
-				</div>
-			</Wrapper>
+			{getFeaturedPosts(posts).length ? (
+				<Wrapper title="Header 1" isWide>
+					<FeaturedPosts posts={getFeaturedPosts(posts)} />
+				</Wrapper>
+			) : null}
 			<Wrapper title="Header 2">
 				<div>
 					<h3>Lorem Ipsum</h3>
