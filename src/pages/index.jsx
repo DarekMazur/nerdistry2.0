@@ -5,6 +5,7 @@ import AppProviders from '../providers/AppProviders';
 import FeaturedPosts from '../components/molecules/FeaturedPosts/FeaturedPosts';
 import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
 import { posts } from '../utils/mock';
+import RecentProjects from '../components/molecules/RecentProjects/RecentProjects';
 
 const test = 'Lorem Ipsum';
 
@@ -17,30 +18,7 @@ const IndexPage = () => (
 				</Wrapper>
 			) : null}
 			<Wrapper title="Header 2">
-				<div>
-					<h3>Lorem Ipsum</h3>
-					<div>image</div>
-					<div>
-						<span>icon</span>
-						<span>icon</span>
-					</div>
-				</div>
-				<div>
-					<h3>Lorem Ipsum</h3>
-					<div>image</div>
-					<div>
-						<span>icon</span>
-						<span>icon</span>
-					</div>
-				</div>
-				<div>
-					<h3>Lorem Ipsum</h3>
-					<div>image</div>
-					<div>
-						<span>icon</span>
-						<span>icon</span>
-					</div>
-				</div>
+				<RecentProjects />
 			</Wrapper>
 			<Wrapper title="Header 3">
 				<div>
