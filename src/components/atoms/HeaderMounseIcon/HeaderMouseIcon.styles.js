@@ -19,6 +19,27 @@ export const StyledMouseIcon = styled.button`
 
 	svg {
 		cursor: pointer;
+
+		path {
+			stroke: ${({ theme }) => theme.colors.white};
+			fill: transparent;
+			transition: all 0.3s ease-in-out;
+
+			&:last-of-type {
+				fill: ${({ theme }) => theme.colors.white};
+			}
+		}
+
+		&:hover {
+			path {
+				fill: ${({ theme }) => theme.colors.white};
+
+				&:last-of-type {
+					stroke: ${({ theme }) => theme.colors.black};
+					fill: ${({ theme }) => theme.colors.black};
+				}
+			}
+		}
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {

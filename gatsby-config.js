@@ -53,7 +53,7 @@ module.exports = {
 			options: {
 				fonts: [
 					`Montserrat: 400,400i,700`,
-					`Montserrat Alternates: 400;700`,
+					`Montserrat Alternates: 400,700`,
 					`Montserrat Subrayada`,
 					`Notable`,
 					`Share Tech Mono`,
