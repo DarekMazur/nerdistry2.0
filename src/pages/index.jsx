@@ -13,11 +13,11 @@ const IndexPage = () => (
 	<AppProviders>
 		<Layout>
 			{getFeaturedPosts(posts).length ? (
-				<Wrapper title="Header 1" isWide>
+				<Wrapper title="Nice to read" isWide>
 					<FeaturedPosts posts={getFeaturedPosts(posts)} />
 				</Wrapper>
 			) : null}
-			<Wrapper title="Header 2">
+			<Wrapper title="Recent projects">
 				<RecentProjects />
 			</Wrapper>
 			<Wrapper title="Header 3">
