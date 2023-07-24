@@ -1,14 +1,16 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
 
 const SinglePostExcerpt = ({ post }) => {
+	const isDark = useSelector((state) => state.isDark);
 	const publishedDate = new Date(post.attributes.publishedAt);
 
 	return (
-		<StyledSinglePostExcerpt>
+		<StyledSinglePostExcerpt isDark={isDark}>
 			<img
 				src={post.attributes.CoverImage.data.attributes.formats.medium.url}
 				alt={post.attributes.Title}
@@ -20,7 +22,7 @@ const SinglePostExcerpt = ({ post }) => {
 			<p>
 				{post.attributes.Description
 					? post.attributes.Description
-					: getTextExcerpt(post.attributes.Content, 300)}
+					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
 			</p>
 		</StyledSinglePostExcerpt>
 	);
