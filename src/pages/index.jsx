@@ -22,7 +22,7 @@ const IndexPage = () => (
 				<RecentProjects />
 			</Wrapper>
 			<Wrapper title="Latest on blog">
-				<MainBlog />
+				<MainBlog posts={posts} />
 			</Wrapper>
 			<Wrapper title="Header 4">
 				<p>avatar</p>
