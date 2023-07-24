@@ -10,11 +10,13 @@ const SinglePostExcerpt = ({ post }) => {
 	const publishedDate = new Date(post.attributes.publishedAt);
 
 	return (
-		<StyledSinglePostExcerpt isDark={isDark}>
-			<img
-				src={post.attributes.CoverImage.data.attributes.formats.medium.url}
-				alt={post.attributes.Title}
-			/>
+		<StyledSinglePostExcerpt isDark={isDark} to="/">
+			<div>
+				<img
+					src={post.attributes.CoverImage.data.attributes.formats.medium.url}
+					alt={post.attributes.Title}
+				/>
+			</div>
 			<p>
 				<span>posted on</span> {getDateFormat(publishedDate)}
 			</p>
@@ -24,6 +26,8 @@ const SinglePostExcerpt = ({ post }) => {
 					? post.attributes.Description
 					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
 			</p>
+			{/* eslint-disable-next-line react/button-has-type */}
+			<button>Read more</button>
 		</StyledSinglePostExcerpt>
 	);
 };
