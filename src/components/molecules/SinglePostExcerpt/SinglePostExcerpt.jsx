@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 
 const SinglePostExcerpt = ({ post }) => (
 	<div>
@@ -13,7 +14,11 @@ const SinglePostExcerpt = ({ post }) => (
 			<span>posted on</span> data
 		</p>
 		<h4>{post.attributes.Title}</h4>
-		<p>{post.attributes.Description}</p>
+		<p>
+			{post.attributes.Description
+				? post.attributes.Description
+				: getTextExcerpt(post.attributes.Content, 300)}
+		</p>
 	</div>
 );
 
@@ -25,6 +30,7 @@ SinglePostExcerpt.propTypes = {
 		attributes: PropTypes.shape({
 			Title: PropTypes.string,
 			Description: PropTypes.string,
+			Content: PropTypes.string,
 			CoverImage: PropTypes.shape({
 				data: {
 					attributes: {
