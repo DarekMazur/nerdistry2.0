@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
+import PostExcCover from '../../atoms/PostExcCover/PostExcCover';
 
 const SinglePostExcerpt = ({ post }) => {
 	const isDark = useSelector((state) => state.isDark);
@@ -11,12 +12,10 @@ const SinglePostExcerpt = ({ post }) => {
 
 	return (
 		<StyledSinglePostExcerpt isDark={isDark} to="/">
-			<div>
-				<img
-					src={post.attributes.CoverImage.data.attributes.formats.medium.url}
-					alt={post.attributes.Title}
-				/>
-			</div>
+			<PostExcCover
+				imageURL={post.attributes.CoverImage.data.attributes.formats.medium.url}
+				alt={post.attributes.Title}
+			/>
 			<p>
 				<span>posted on</span> {getDateFormat(publishedDate)}
 			</p>
