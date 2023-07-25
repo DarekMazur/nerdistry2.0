@@ -17,6 +17,18 @@ export const StyledProjectIconsWrapper = styled.div`
 				isDark ? theme.colors.white : theme.colors.black};
 		}
 
+		&:hover {
+			path {
+				stroke: ${({ theme, isDark }) =>
+					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				fill: ${({ theme, isDark }) =>
+					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				transition:
+					fill 0.3s ease-in-out,
+					stroke 0.3s ease-in-out;
+			}
+		}
+
 		@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 			svg {
 				height: 8rem;
