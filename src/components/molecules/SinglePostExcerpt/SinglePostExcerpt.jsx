@@ -1,17 +1,27 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
 import PostExcCover from '../../atoms/PostExcCover/PostExcCover';
+import More from '../../atoms/More/More';
 
 const SinglePostExcerpt = ({ post }) => {
 	const isDark = useSelector((state) => state.isDark);
+	const [isHover, setIsHover] = useState(false);
 	const publishedDate = new Date(post.attributes.publishedAt);
 
+	const handleHover = () => setIsHover((prevState) => !prevState);
+
 	return (
-		<StyledSinglePostExcerpt isDark={isDark} to="/">
+		<StyledSinglePostExcerpt
+			isDark={isDark}
+			to="/"
+			onMouseEnter={handleHover}
+			onMouseLeave={handleHover}
+		>
 			<PostExcCover
 				imageURL={post.attributes.CoverImage.data.attributes.formats.medium.url}
 				alt={post.attributes.Title}
@@ -26,7 +36,7 @@ const SinglePostExcerpt = ({ post }) => {
 					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
 			</p>
 			{/* eslint-disable-next-line react/button-has-type */}
-			<button>Read more</button>
+			<More title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);
 };

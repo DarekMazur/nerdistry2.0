@@ -41,17 +41,6 @@ export const StyledSinglePostExcerpt = styled(Link)`
 		}
 	}
 
-	button {
-		position: absolute;
-		bottom: 2rem;
-		left: 50%;
-		opacity: 0;
-		transform: translate(-50%, 6rem);
-		transition:
-			transform 0.3s ease-in-out,
-			opacity 0.3s ease-in-out;
-	}
-
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.gray};
 
@@ -62,11 +51,6 @@ export const StyledSinglePostExcerpt = styled(Link)`
 
 		img {
 			transform: scale(1.2);
-		}
-
-		button {
-			opacity: 1;
-			transform: translate(-50%, 0);
 		}
 	}
 `;
