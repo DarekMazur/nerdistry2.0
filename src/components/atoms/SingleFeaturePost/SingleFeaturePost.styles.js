@@ -7,6 +7,7 @@ export const StyledSingleFeaturePost = styled.div`
 		cover ? `url(${cover}) center/cover no-repeat` : `unset`};
 	color: ${({ theme }) => theme.colors.white};
 	position: relative;
+	overflow: hidden;
 
 	& > div {
 		background-color: ${({ theme }) => `${theme.colors.black}cc`};
@@ -18,6 +19,17 @@ export const StyledSingleFeaturePost = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
+		position: relative;
+
+		&:hover {
+			p {
+				transform: translateY(2rem);
+
+				&:last-of-type {
+					transform: translateY(3rem);
+				}
+			}
+		}
 
 		h3 {
 			font-size: ${({ theme }) => theme.fontSize.mobile.xxl};
@@ -29,6 +41,13 @@ export const StyledSingleFeaturePost = styled.div`
 		p {
 			margin: 2rem 0;
 			line-height: 1.5;
+			transition: transform 0.3s ease-in-out;
+		}
+
+		svg {
+			path {
+				fill: ${({ theme }) => theme.colors.white};
+			}
 		}
 	}
 
