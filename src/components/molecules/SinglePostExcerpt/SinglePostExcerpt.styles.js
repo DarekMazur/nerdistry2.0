@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 export const StyledSinglePostExcerpt = styled(Link)`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	padding: 1rem 0 8rem;
+	padding: 3rem 0 8rem;
 	text-decoration: none;
 	background-color: transparent;
 	color: ${({ theme, isDark }) =>
@@ -52,6 +52,34 @@ export const StyledSinglePostExcerpt = styled(Link)`
 
 		img {
 			transform: scale(1.2);
+		}
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+		border: 0.1rem solid black;
+
+		&:nth-of-type(n) {
+			border-width: 0.1rem 0.1rem 0.1rem 0;
+		}
+
+		&:nth-of-type(2n) {
+			border-width: 0.1rem 0 0.1rem 0.1rem;
+		}
+
+		&:nth-of-type(1) {
+			border-width: 0 0.1rem 0.1rem 0;
+		}
+
+		&:nth-of-type(2) {
+			border-width: 0 0 0.1rem 0.1rem;
+		}
+
+		&:nth-last-of-type(1) {
+			border-width: 0.1rem 0 0 0.1rem;
+		}
+
+		&:nth-last-of-type(2) {
+			border-width: 0.1rem 0.1rem 0 0;
 		}
 	}
 `;
