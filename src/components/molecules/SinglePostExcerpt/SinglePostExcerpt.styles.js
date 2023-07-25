@@ -42,7 +42,8 @@ export const StyledSinglePostExcerpt = styled(Link)`
 	}
 
 	&:hover {
-		background-color: ${({ theme }) => theme.colors.gray};
+		background-color: ${({ theme, isDark }) =>
+			isDark ? theme.colors.black : theme.colors.gray};
 
 		h4,
 		p:last-of-type {

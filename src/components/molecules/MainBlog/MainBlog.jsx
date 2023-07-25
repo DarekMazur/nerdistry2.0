@@ -2,13 +2,14 @@ import * as React from 'react';
 import PropTypes, { arrayOf, oneOfType } from 'prop-types';
 import SinglePostExcerpt from '../SinglePostExcerpt/SinglePostExcerpt';
 import { StyledMainBlog } from './MainBlog.styles';
+import More from '../../atoms/More/More';
 
 const MainBlog = ({ posts }) => (
 	<StyledMainBlog>
 		{posts.map((post) => (
 			<SinglePostExcerpt key={post.id} post={post} />
 		))}
-		<p>Read more</p>
+		<More title="Check all" justify="flex-end" margin="2rem 0 0" />
 	</StyledMainBlog>
 );
 

@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const StyledMore = styled.div`
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: ${({ justify }) => justify};
+	margin: ${({ margin }) => margin};
+	padding: ${({ padding }) => padding};
+	cursor: pointer;
 
 	position: ${({ isAbsolute }) => (isAbsolute ? 'absolute' : 'inherit')};
 	bottom: ${({ isAbsolute }) => (isAbsolute ? '2rem' : 'unset')};
