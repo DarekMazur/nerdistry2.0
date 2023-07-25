@@ -10,7 +10,9 @@ const SingleProject = ({ isMain = false, project, cover }) => {
 	return (
 		<StyledSingleProject isMain={isMain} isDark={isDark}>
 			<h3>{project.name}</h3>
-			<img src={cover} alt={project.name} />
+			<div>
+				<img src={cover} alt={project.name} />
+			</div>
 			<ProjectIconsWrapper />
 		</StyledSingleProject>
 	);

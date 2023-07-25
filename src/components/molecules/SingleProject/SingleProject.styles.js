@@ -21,7 +21,25 @@ export const StyledSingleProject = styled.div`
 		width: 100%;
 		height: 25.5rem;
 		object-fit: cover;
-		margin-bottom: 1rem;
+		transition: transform 0.2s ease-in-out;
+	}
+
+	div {
+		&:first-of-type {
+			height: 25.5rem;
+			margin-bottom: 1rem;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out;
+
+			&:hover {
+				transform-origin: center;
+				transform: scale(0.9);
+
+				img {
+					transform: scale(1.2);
+				}
+			}
+		}
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
