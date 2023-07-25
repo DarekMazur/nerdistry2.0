@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import SingleProject from '../SingleProject/SingleProject';
 import DefaultCover from '../../../assets/images/defaultProjectCover.jpg';
 import { StyledRecentProjects } from './RecentProjects.styles';
+import More from '../../atoms/More/More';
 
 const RecentProjects = () => {
 	const [projects, setProjects] = useState('');
@@ -42,24 +43,28 @@ const RecentProjects = () => {
 	}, []);
 
 	return (
-		// eslint-disable-next-line react/jsx-no-useless-fragment
-		<StyledRecentProjects>
-			{projects ? (
-				projects
-					.slice(0, 3)
-					.map((project, index) => (
-						<SingleProject
-							isMain
-							project={project}
-							cover={images.length ? images[index].urls.regular : DefaultCover}
-						/>
-					))
-			) : (
-				<div>
-					<h3>No recent projects...</h3>
-				</div>
-			)}
-		</StyledRecentProjects>
+		<>
+			<StyledRecentProjects>
+				{projects ? (
+					projects
+						.slice(0, 3)
+						.map((project, index) => (
+							<SingleProject
+								isMain
+								project={project}
+								cover={
+									images.length ? images[index].urls.regular : DefaultCover
+								}
+							/>
+						))
+				) : (
+					<div>
+						<h3>No recent projects...</h3>
+					</div>
+				)}
+			</StyledRecentProjects>
+			<More title="Check all" justify="flex-end" />
+		</>
 	);
 };
 
