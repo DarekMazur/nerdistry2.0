@@ -6,6 +6,7 @@ import FeaturedPosts from '../components/molecules/FeaturedPosts/FeaturedPosts';
 import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
 import { posts } from '../utils/mock';
 import RecentProjects from '../components/molecules/RecentProjects/RecentProjects';
+import MainBlog from '../components/molecules/MainBlog/MainBlog';
 
 const test = 'Lorem Ipsum';
 
@@ -20,64 +21,8 @@ const IndexPage = () => (
 			<Wrapper title="Recent projects">
 				<RecentProjects />
 			</Wrapper>
-			<Wrapper title="Header 3">
-				<div>
-					<div>
-						<span>image</span>
-					</div>
-					<p>
-						<span>posted on</span> data
-					</p>
-					<h4>Lorem Ipsum</h4>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Eleifend commodo etiam
-						ultrices augue nunc mauris pretium. Adipiscing volutpat placerat
-						vitae eu gravida ac. Eu blandit euismod mollis faucibus.
-					</p>
-				</div>
-				<div>
-					<div>
-						<span>image</span>
-					</div>
-					<p>
-						<span>posted on</span> data
-					</p>
-					<h4>Lorem Ipsum</h4>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Eleifend commodo etiam
-						ultrices augue nunc mauris pretium. Adipiscing volutpat placerat
-						vitae eu gravida ac. Eu blandit euismod mollis faucibus.
-					</p>
-				</div>
-				<div>
-					<div>
-						<span>image</span>
-					</div>
-					<p>
-						<span>posted on</span> data
-					</p>
-					<h4>Lorem Ipsum</h4>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Eleifend commodo etiam
-						ultrices augue nunc mauris pretium. Adipiscing volutpat placerat
-						vitae eu gravida ac. Eu blandit euismod mollis faucibus.
-					</p>
-				</div>
-				<div>
-					<div>
-						<span>image</span>
-					</div>
-					<p>
-						<span>posted on</span> data
-					</p>
-					<h4>Lorem Ipsum</h4>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Eleifend commodo etiam
-						ultrices augue nunc mauris pretium. Adipiscing volutpat placerat
-						vitae eu gravida ac. Eu blandit euismod mollis faucibus.
-					</p>
-				</div>
-				<p>Read more</p>
+			<Wrapper title="Latest on blog">
+				<MainBlog posts={posts.slice(0, 4)} />
 			</Wrapper>
 			<Wrapper title="Header 4">
 				<p>avatar</p>
