@@ -7,6 +7,7 @@ import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
 import { posts } from '../utils/mock';
 import RecentProjects from '../components/molecules/RecentProjects/RecentProjects';
 import MainBlog from '../components/molecules/MainBlog/MainBlog';
+import MainAbout from '../components/molecules/MainAbout/MainAbout';
 
 const test = 'Lorem Ipsum';
 
@@ -24,20 +25,8 @@ const IndexPage = () => (
 			<Wrapper title="Latest on blog">
 				<MainBlog posts={posts.slice(0, 4)} />
 			</Wrapper>
-			<Wrapper title="Header 4">
-				<p>avatar</p>
-				<p>
-					Lorem ipsum dolor sit amet consectetur. Sit egestas parturient velit
-					hendrerit consectetur nisi luctus interdum volutpat. Non ac a purus
-					massa elit lectus. Condimentum eu vel proin egestas curabitur ornare
-					nunc diam. Nibh tellus morbi mollis eget pellentesque interdum odio
-					et. Eget nunc ac felis ipsum neque vitae. Nisl nulla varius et ut sed.
-					Amet tincidunt vel pretium velit tristique vestibulum auctor pharetra
-					et. Quam tempor sed justo magnis. Pulvinar diam risus a ullamcorper
-					arcu hendrerit facilisi. Lobortis hendrerit lobortis massa interdum
-					est id. Elit laoreet arcu in odio. Massa pellentesque amet diam elit
-					adipiscing faucibus morbi. Tincidunt gravida in quis quam in eu.
-				</p>
+			<Wrapper title="About">
+				<MainAbout />
 			</Wrapper>
 		</Layout>
 	</AppProviders>
