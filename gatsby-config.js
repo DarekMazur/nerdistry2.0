@@ -69,5 +69,16 @@ module.exports = {
 				},
 			},
 		},
+		{
+			resolve: 'gatsby-source-strapi-graphql',
+			options: {
+				apiURL: process.env.GATSBY_STRAPI_API_URL,
+				collectionTypes: ['Post', 'Category'],
+				singleTypes: ['Home', 'Identity', 'MainMenu', 'FooterMenu'],
+				token: process.env.GATSBY_STRAPI_TOKEN,
+				preview: true,
+				cache: false,
+			},
+		},
 	],
 };
