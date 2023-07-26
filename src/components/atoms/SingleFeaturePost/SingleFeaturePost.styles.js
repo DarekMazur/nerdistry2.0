@@ -9,8 +9,10 @@ export const StyledSingleFeaturePost = styled.div`
 	position: relative;
 	overflow: hidden;
 
-	& > div {
+	& > a {
 		background-color: ${({ theme }) => `${theme.colors.black}cc`};
+		color: inherit;
+		text-decoration: none;
 		width: 100%;
 		min-height: 28.5rem;
 		height: 100%;
@@ -58,9 +60,15 @@ export const StyledSingleFeaturePost = styled.div`
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 		min-height: 69rem;
 
-		& > div {
+		& > a {
 			min-height: 69rem;
 			width: 50%;
+		}
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+		& > a {
+			width: 60%;
 		}
 	}
 `;
