@@ -25,6 +25,25 @@ export const StyledIcon = styled.div`
 		}
 	}
 	
+	&:hover {
+    svg {
+      path {
+        stroke: ${({ theme, isToTop, isDark }) =>
+					isToTop
+						? isDark
+							? theme.colors.black
+							: theme.colors.white
+						: theme.colors.darkBlue};
+        fill: ${({ theme, isToTop, isDark }) =>
+					isToTop
+						? isDark
+							? theme.colors.black
+							: theme.colors.white
+						: theme.colors.darkBlue};
+      }
+    }
+	}
+	
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		right: 3rem;
 	}
