@@ -9,6 +9,7 @@ import { StyledSingleFeaturePost } from './SingleFeaturePost.styles';
 import { P } from '../P/P.styles';
 import { getReadingTime } from '../../../utils/helpers/getReadingTime';
 import More from '../More/More';
+import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,11 @@ const SingleFeaturePost = ({ post }) => {
 					categories={post.attributes.categories.data}
 				/>
 				<h3>{post.attributes.Title}</h3>
-				<P ref={paragraphRef}>{post.attributes.Description}</P>
+				<P ref={paragraphRef}>
+					{post.attributes.Description
+						? post.attributes.Description
+						: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
+				</P>
 				<P isBold>{getReadingTime(post.attributes.Content)} minutes to read</P>
 				<More title="Read more" isAbsolute isHover={isHover} />
 			</div>
