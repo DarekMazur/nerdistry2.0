@@ -9,12 +9,25 @@ export const StyledProjectIconsWrapper = styled.div`
 	svg {
 		height: 4rem;
 		margin: 0 0.5rem;
+		cursor: pointer;
 
 		path {
 			stroke: ${({ theme, isDark }) =>
 				isDark ? theme.colors.white : theme.colors.black};
 			fill: ${({ theme, isDark }) =>
 				isDark ? theme.colors.white : theme.colors.black};
+		}
+
+		&:hover {
+			path {
+				stroke: ${({ theme, isDark }) =>
+					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				fill: ${({ theme, isDark }) =>
+					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				transition:
+					fill 0.3s ease-in-out,
+					stroke 0.3s ease-in-out;
+			}
 		}
 
 		@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
