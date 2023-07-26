@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { Link } from 'gatsby';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
@@ -18,7 +19,9 @@ const Header = () => {
 			<div>
 				<StyledHeaderWrapper position>
 					<div>
-						<Logo />
+						<Link to="/">
+							<Logo />
+						</Link>
 						<MenuList
 							menuList={mainMenu}
 							isOpen={isOpen}

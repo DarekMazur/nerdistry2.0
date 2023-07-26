@@ -11,6 +11,7 @@ import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
 import PostExcCover from '../../atoms/PostExcCover/PostExcCover';
 import More from '../../atoms/More/More';
 import { P } from '../../atoms/P/P.styles';
+import { getReadingTime } from '../../../utils/helpers/getReadingTime';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,7 +66,7 @@ const SinglePostExcerpt = ({ post }) => {
 					? post.attributes.Description
 					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
 			</P>
-			{/* eslint-disable-next-line react/button-has-type */}
+			<P>{getReadingTime(post.attributes.Content)} minutes to read</P>
 			<More title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);

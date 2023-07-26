@@ -44,6 +44,10 @@ export const StyledSingleFeaturePost = styled.div`
 			transition: transform 0.3s ease-in-out;
 		}
 
+		a {
+			color: ${({ theme }) => theme.colors.white};
+		}
+
 		svg {
 			path {
 				fill: ${({ theme }) => theme.colors.white};

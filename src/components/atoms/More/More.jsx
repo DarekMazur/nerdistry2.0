@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Arrow from '../../../assets/icons/arrow-solid.svg';
 import { StyledMore } from './More.styles';
 
-const More = ({ title, margin, padding, justify, isAbsolute, isHover }) => {
+const More = ({ title, margin, padding, justify, to, isAbsolute, isHover }) => {
 	const isDark = useSelector((state) => state.isDark);
 
 	return (
@@ -15,6 +15,7 @@ const More = ({ title, margin, padding, justify, isAbsolute, isHover }) => {
 			margin={margin}
 			padding={padding}
 			justify={justify}
+			to={to}
 		>
 			<span>{title}</span>
 			<Arrow />
@@ -31,6 +32,7 @@ More.defaultProps = {
 	margin: 'unset',
 	padding: 'unset',
 	justify: 'center',
+	to: '/',
 };
 
 More.propTypes = {
@@ -40,4 +42,5 @@ More.propTypes = {
 	margin: PropTypes.string,
 	padding: PropTypes.string,
 	justify: PropTypes.string,
+	to: PropTypes.string,
 };

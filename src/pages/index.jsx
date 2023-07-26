@@ -11,26 +11,34 @@ import MainAbout from '../components/molecules/MainAbout/MainAbout';
 
 const test = 'Lorem Ipsum';
 
-const IndexPage = () => (
-	<AppProviders>
-		<Layout>
-			{getFeaturedPosts(posts).length ? (
-				<Wrapper title="Nice to read" isWide>
-					<FeaturedPosts posts={getFeaturedPosts(posts)} />
+const IndexPage = () => {
+	const sortedPosts = posts.sort((a, b) => {
+		const dateA = new Date(a.attributes.publishedAt);
+		const dateB = new Date(b.attributes.publishedAt);
+		return dateB - dateA;
+	});
+
+	return (
+		<AppProviders>
+			<Layout>
+				{getFeaturedPosts(posts).length ? (
+					<Wrapper title="Nice to read" isWide>
+						<FeaturedPosts posts={getFeaturedPosts(posts)} />
+					</Wrapper>
+				) : null}
+				<Wrapper title="Recent projects">
+					<RecentProjects />
 				</Wrapper>
-			) : null}
-			<Wrapper title="Recent projects">
-				<RecentProjects />
-			</Wrapper>
-			<Wrapper title="Latest on blog">
-				<MainBlog posts={posts.slice(0, 4)} />
-			</Wrapper>
-			<Wrapper title="About">
-				<MainAbout />
-			</Wrapper>
-		</Layout>
-	</AppProviders>
-);
+				<Wrapper title="Latest on blog">
+					<MainBlog posts={sortedPosts.slice(0, 4)} />
+				</Wrapper>
+				<Wrapper title="About">
+					<MainAbout />
+				</Wrapper>
+			</Layout>
+		</AppProviders>
+	);
+};
 
 export default IndexPage;
 

@@ -6,7 +6,7 @@ export const StyledSinglePostExcerpt = styled(Link)`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 3rem 0 8rem;
+	padding: 3rem 0 9rem;
 	text-decoration: none;
 	background-color: transparent;
 	color: ${({ theme, isDark }) =>
@@ -33,11 +33,17 @@ export const StyledSinglePostExcerpt = styled(Link)`
 			font-style: italic;
 		}
 
-		&:last-of-type {
+		&:nth-last-of-type(2),
+		&:nth-last-of-type(1) {
 			font-weight: ${({ theme }) => theme.weights.regular};
 			font-size: ${({ theme }) => theme.fontSize.mobile.s};
 			width: 70%;
 			max-width: 30rem;
+		}
+
+		&:nth-last-of-type(1) {
+			font-weight: ${({ theme }) => theme.weights.semiBold};
+			margin: 1rem 0 0;
 		}
 	}
 
@@ -46,7 +52,8 @@ export const StyledSinglePostExcerpt = styled(Link)`
 			isDark ? theme.colors.black : theme.colors.gray};
 
 		h4,
-		p:last-of-type {
+		p:nth-last-of-type(2),
+		p:nth-last-of-type(1) {
 			transform: translateY(2rem);
 		}
 
