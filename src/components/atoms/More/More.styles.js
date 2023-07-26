@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
-export const StyledMore = styled(Link)`
+export const StyledMore = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: ${({ justify }) => justify};
@@ -29,6 +28,25 @@ export const StyledMore = styled(Link)`
 			? 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out;'
 			: 'unset'};
 
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: inherit;
+		text-decoration: none;
+		width: fit-content;
+
+		&:hover {
+			span {
+				transform: translateX(-0.8rem);
+			}
+
+			svg {
+				transform: translateX(0.8rem);
+			}
+		}
+	}
+
 	span {
 		font-size: ${({ theme }) => theme.fontSize.mobile.m};
 		font-weight: ${({ theme }) => theme.weights.semiBold};
@@ -41,16 +59,6 @@ export const StyledMore = styled(Link)`
 		path {
 			fill: ${({ theme, isDark }) =>
 				isDark ? theme.colors.white : theme.colors.black};
-		}
-	}
-
-	&:hover {
-		span {
-			transform: translateX(-0.8rem);
-		}
-
-		svg {
-			transform: translateX(0.8rem);
 		}
 	}
 `;

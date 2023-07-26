@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { Link } from 'gatsby';
 import FeaturedDetails from '../FeaturedDetails/FeaturedDetails';
 import { StyledSingleFeaturePost } from './SingleFeaturePost.styles';
 import { P } from '../P/P.styles';
@@ -45,7 +46,7 @@ const SingleFeaturePost = ({ post }) => {
 		<StyledSingleFeaturePost
 			cover={post.attributes.CoverImage.data.attributes.url}
 		>
-			<div onMouseEnter={handleHover} onMouseLeave={handleHover}>
+			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
 				<FeaturedDetails
 					publishedAt={post.attributes.publishedAt}
 					categories={post.attributes.categories.data}
@@ -58,7 +59,7 @@ const SingleFeaturePost = ({ post }) => {
 				</P>
 				<P isBold>{getReadingTime(post.attributes.Content)} minutes to read</P>
 				<More title="Read more" isAbsolute isHover={isHover} />
-			</div>
+			</Link>
 		</StyledSingleFeaturePost>
 	);
 };
