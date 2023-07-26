@@ -9,6 +9,7 @@ export const StyledProjectIconsWrapper = styled.div`
 	svg {
 		height: 4rem;
 		margin: 0 0.5rem;
+		cursor: pointer;
 
 		path {
 			stroke: ${({ theme, isDark }) =>

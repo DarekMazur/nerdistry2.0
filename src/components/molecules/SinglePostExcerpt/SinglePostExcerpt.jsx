@@ -1,19 +1,49 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import SplitType from 'split-type';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
 import PostExcCover from '../../atoms/PostExcCover/PostExcCover';
 import More from '../../atoms/More/More';
+import { P } from '../../atoms/P/P.styles';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SinglePostExcerpt = ({ post }) => {
 	const isDark = useSelector((state) => state.isDark);
 	const [isHover, setIsHover] = useState(false);
 	const publishedDate = new Date(post.attributes.publishedAt);
+	const paragraphRef = useRef(null);
 
 	const handleHover = () => setIsHover((prevState) => !prevState);
+
+	useEffect(() => {
+		SplitType.create(paragraphRef.current, { types: 'chars' });
+
+		gsap.fromTo(
+			paragraphRef.current.children,
+			{
+				y: '+=10px',
+				autoAlpha: 0,
+			},
+			{
+				y: 0,
+				duration: 0.2,
+				stagger: 0.025,
+				delay: 0.1,
+				autoAlpha: 1,
+				scrollTrigger: {
+					trigger: paragraphRef.current,
+					start: 'top bottom-=100px',
+				},
+			}
+		);
+	}, []);
 
 	return (
 		<StyledSinglePostExcerpt
@@ -30,11 +60,11 @@ const SinglePostExcerpt = ({ post }) => {
 				<span>posted on</span> {getDateFormat(publishedDate)}
 			</p>
 			<h4>{post.attributes.Title}</h4>
-			<p>
+			<P ref={paragraphRef}>
 				{post.attributes.Description
 					? post.attributes.Description
 					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
-			</p>
+			</P>
 			{/* eslint-disable-next-line react/button-has-type */}
 			<More title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>

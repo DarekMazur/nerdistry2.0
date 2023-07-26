@@ -39,11 +39,13 @@
     "gatsby-plugin-styled-components": "^6.11.0",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
+    "gsap": "^3.12.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "redux": "^4.2.1",
+    "split-type": "^0.3.3",
     "styled-components": "^6.0.2"
   },
   "devDependencies": {
