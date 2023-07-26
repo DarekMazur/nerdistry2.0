@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { Link } from 'gatsby';
 import Arrow from '../../../assets/icons/arrow-solid.svg';
 import { StyledMore } from './More.styles';
 
@@ -15,10 +16,11 @@ const More = ({ title, margin, padding, justify, to, isAbsolute, isHover }) => {
 			margin={margin}
 			padding={padding}
 			justify={justify}
-			to={to}
 		>
-			<span>{title}</span>
-			<Arrow />
+			<Link to={to}>
+				<span>{title}</span>
+				<Arrow />
+			</Link>
 		</StyledMore>
 	);
 };
