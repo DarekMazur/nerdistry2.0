@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-export const StyledMore = styled.div`
+export const StyledMore = styled(Link)`
 	display: flex;
 	align-items: center;
 	justify-content: ${({ justify }) => justify};
@@ -8,6 +9,9 @@ export const StyledMore = styled.div`
 	padding: ${({ padding }) => padding};
 	cursor: pointer;
 	line-height: 1.1;
+	text-decoration: none;
+	color: ${({ theme, isDark }) =>
+		isDark ? theme.colors.white : theme.colors.black};
 
 	position: ${({ isAbsolute }) => (isAbsolute ? 'absolute' : 'inherit')};
 	bottom: ${({ isAbsolute }) => (isAbsolute ? '2rem' : 'unset')};
