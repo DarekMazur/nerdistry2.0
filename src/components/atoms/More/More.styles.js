@@ -7,6 +7,7 @@ export const StyledMore = styled.div`
 	margin: ${({ margin }) => margin};
 	padding: ${({ padding }) => padding};
 	cursor: pointer;
+	line-height: 1.1;
 
 	position: ${({ isAbsolute }) => (isAbsolute ? 'absolute' : 'inherit')};
 	bottom: ${({ isAbsolute }) => (isAbsolute ? '2rem' : 'unset')};
