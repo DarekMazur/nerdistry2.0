@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
@@ -10,7 +11,7 @@ import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
 import { mainMenu } from '../../../utils/mock';
 
-const Header = () => {
+const Header = ({ pageInfo }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
 
@@ -20,7 +21,7 @@ const Header = () => {
 				<StyledHeaderWrapper position>
 					<div>
 						<Link to="/">
-							<Logo />
+							{<img src={pageInfo?.Logo?.url} alt="" /> || <Logo />}
 						</Link>
 						<MenuList
 							menuList={mainMenu}
@@ -31,10 +32,10 @@ const Header = () => {
 					</div>
 				</StyledHeaderWrapper>
 				<StyledHeaderWrapper>
-					<StyledPageHeader>Nerdistry.</StyledPageHeader>
+					<StyledPageHeader>{pageInfo?.Title || 'Nerdistry.'}</StyledPageHeader>
 					<p>
-						Z notatnika młodego deva, czyli od juniora do zera. Czy tam na
-						odwrót... ;)
+						{pageInfo?.Slogan ||
+							'Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)'}
 					</p>
 				</StyledHeaderWrapper>
 				<div>
@@ -46,3 +47,13 @@ const Header = () => {
 };
 
 export default Header;
+
+Header.propTypes = {
+	pageInfo: PropTypes.shape({
+		Logo: PropTypes.shape({
+			url: PropTypes.string,
+		}),
+		Slogan: PropTypes.string,
+		Title: PropTypes.string,
+	}).isRequired,
+};
