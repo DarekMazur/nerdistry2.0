@@ -1,26 +1,3 @@
-export const mainMenu = [
-	{
-		title: 'Lorem',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Ipsum',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Dolor',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-	{
-		title: 'Sit Amet',
-		subtitle: 'Lorem Ipsum Dolor Sit Amet',
-		url: '#',
-	},
-];
-
 export const footerMenu = [
 	{
 		name: 'Lorem',

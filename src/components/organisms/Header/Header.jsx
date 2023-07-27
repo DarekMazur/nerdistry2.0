@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
@@ -9,9 +9,19 @@ import { StyledHeader } from './Header.styles';
 import { StyledPageHeader } from '../../atoms/PageHeader/PageHeader.styles';
 import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper.styles';
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
-import { mainMenu } from '../../../utils/mock';
 
 const Header = ({ pageInfo }) => {
+	const mainMenuData = useStaticQuery(graphql`
+		query {
+			strapiMainMenu {
+				MenuElement {
+					Name
+					url
+					Description
+				}
+			}
+		}
+	`);
 	const [isOpen, setIsOpen] = useState(false);
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
 
@@ -28,7 +38,7 @@ const Header = ({ pageInfo }) => {
 							)}
 						</Link>
 						<MenuList
-							menuList={mainMenu}
+							menuList={mainMenuData.strapiMainMenu.MenuElement}
 							isOpen={isOpen}
 							handleClick={handleMenuClick}
 						/>
