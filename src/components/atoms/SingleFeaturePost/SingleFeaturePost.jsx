@@ -56,7 +56,13 @@ const SingleFeaturePost = ({ post }) => {
 						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
 				<P $isBold>{getReadingTime(post.Content)} minutes to read</P>
-				<More isDiv title="Read more" isAbsolute isHover={isHover} />
+				<More
+					tag="div"
+					title="Read more"
+					isAbsolute
+					isHover={isHover}
+					color="white"
+				/>
 			</Link>
 		</StyledSingleFeaturePost>
 	);
