@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const SinglePostExcerpt = ({ post }) => {
 	const isDark = useSelector((state) => state.isDark);
 	const [isHover, setIsHover] = useState(false);
-	const publishedDate = new Date(post.attributes.publishedAt);
+	const publishedDate = new Date(post.publishedAt);
 	const paragraphRef = useRef(null);
 
 	const handleHover = () => setIsHover((prevState) => !prevState);
@@ -53,20 +53,17 @@ const SinglePostExcerpt = ({ post }) => {
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
 		>
-			<PostExcCover
-				imageURL={post.attributes.CoverImage.data.attributes.formats.medium.url}
-				alt={post.attributes.Title}
-			/>
+			<PostExcCover imageURL={post.CoverImage.url} alt={post.Title} />
 			<p>
 				<span>posted on</span> {getDateFormat(publishedDate)}
 			</p>
-			<h4>{post.attributes.Title}</h4>
+			<h4>{post.Title}</h4>
 			<P ref={paragraphRef}>
-				{post.attributes.Description
-					? post.attributes.Description
-					: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
+				{post.Description
+					? post.Description
+					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
-			<P>{getReadingTime(post.attributes.Content)} minutes to read</P>
+			<P>{getReadingTime(post.Content)} minutes to read</P>
 			<More title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);
@@ -77,22 +74,12 @@ export default SinglePostExcerpt;
 SinglePostExcerpt.propTypes = {
 	post: PropTypes.shape({
 		id: PropTypes.number,
-		attributes: PropTypes.shape({
-			Title: PropTypes.string,
-			Description: PropTypes.string,
-			Content: PropTypes.string,
-			publishedAt: PropTypes.string,
-			CoverImage: PropTypes.shape({
-				data: {
-					attributes: {
-						format: {
-							medium: {
-								url: PropTypes.string,
-							},
-						},
-					},
-				},
-			}),
+		Title: PropTypes.string,
+		Description: PropTypes.string,
+		Content: PropTypes.string,
+		publishedAt: PropTypes.string,
+		CoverImage: PropTypes.shape({
+			url: PropTypes.string,
 		}),
 	}).isRequired,
 };

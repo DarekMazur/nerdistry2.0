@@ -5,7 +5,7 @@ import SingleFeaturePost from '../../atoms/SingleFeaturePost/SingleFeaturePost';
 const FeaturedPosts = ({ posts }) => (
 	<>
 		{posts.map((post) => (
-			<SingleFeaturePost post={post} />
+			<SingleFeaturePost key={post.node.id} post={post.node} />
 		))}
 	</>
 );

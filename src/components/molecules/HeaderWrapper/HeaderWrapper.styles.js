@@ -21,11 +21,21 @@ export const StyledHeaderWrapper = styled.div`
 		line-height: 1.2;
 	}
 
+	img {
+		height: 6rem;
+		width: 6rem;
+	}
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 		font-size: ${({ theme }) => theme.fontSize.tablet.xl};
 
 		p {
 			font-size: ${({ theme }) => theme.fontSize.tablet.l};
+		}
+
+		img {
+			height: 10rem;
+			width: 10rem;
 		}
 	}
 

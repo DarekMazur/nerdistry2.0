@@ -6,12 +6,19 @@ export const StyledMainAbout = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	svg {
+	svg,
+	img {
+		width: 10rem;
+		height: 10rem;
 		border-radius: 50%;
 		border: ${({ theme, isDark }) =>
 			isDark
 				? `0.3rem solid ${theme.colors.white}`
 				: `0.3rem solid ${theme.colors.black}`};
+	}
+
+	img {
+		padding: 0.4rem;
 	}
 
 	p {

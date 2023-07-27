@@ -12,7 +12,7 @@ const MenuList = ({ menuList, isOpen, handleClick }) => (
 		</StyledIcon>
 		<ul>
 			{menuList.map((listItem, index) => (
-				<MenuListItem listItem={listItem} index={index} />
+				<MenuListItem key={listItem.id} listItem={listItem} index={index} />
 			))}
 		</ul>
 	</StyledMenuList>

@@ -8,7 +8,7 @@ const MainBlog = ({ posts }) => (
 	<>
 		<StyledMainBlog>
 			{posts.map((post) => (
-				<SinglePostExcerpt key={post.id} post={post} />
+				<SinglePostExcerpt key={post.node.id} post={post.node} />
 			))}
 		</StyledMainBlog>
 		<More title="Check all" justify="flex-end" margin="2rem 0 0" />
