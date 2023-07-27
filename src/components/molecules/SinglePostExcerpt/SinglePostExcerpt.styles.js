@@ -63,30 +63,21 @@ export const StyledSinglePostExcerpt = styled(Link)`
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
-		border: 0.1rem solid black;
+		border-style: ${({ $length }) => ($length <= 1 ? 'none' : 'solid')};
+		border-color: ${({ theme }) => theme.colors.black};
+		border-width: 0 0.2rem 0.2rem 0;
 
-		&:nth-of-type(n) {
-			border-width: 0.1rem 0.1rem 0.1rem 0;
-		}
-
-		&:nth-of-type(2n) {
-			border-width: 0.1rem 0 0.1rem 0.1rem;
-		}
-
-		&:nth-of-type(1) {
-			border-width: 0 0.1rem 0.1rem 0;
-		}
-
-		&:nth-of-type(2) {
-			border-width: 0 0 0.1rem 0.1rem;
+		&:nth-of-type(even) {
+			border-right: 0;
 		}
 
 		&:nth-last-of-type(1) {
-			border-width: 0.1rem 0 0 0.1rem;
+			border-bottom: 0;
 		}
 
 		&:nth-last-of-type(2) {
-			border-width: 0.1rem 0.1rem 0 0;
+			border-bottom-width: ${({ $length }) =>
+				$length % 2 === 0 ? '0' : '0.2rem'};
 		}
 	}
 `;
