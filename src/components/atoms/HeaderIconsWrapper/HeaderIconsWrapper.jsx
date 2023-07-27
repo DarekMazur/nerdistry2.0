@@ -12,7 +12,7 @@ const HeaderIconsWrapper = ({ handleClick }) => {
 	return (
 		<StyledHeaderIconsWrapper>
 			<StyleSwitcher isDark={isDark} />
-			<StyledIcon isDark={isDark} justify="flex-end">
+			<StyledIcon $dark={isDark} $justify="flex-end">
 				<MenuIcon handleClick={handleClick} />
 			</StyledIcon>
 		</StyledHeaderIconsWrapper>

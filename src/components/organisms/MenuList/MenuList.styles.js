@@ -4,8 +4,8 @@ export const StyledMenuList = styled.nav`
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
-	display: ${({ isOpen }) => (isOpen ? `block` : 'none')};
-	opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+	display: ${({ $open }) => ($open ? `block` : 'none')};
+	opacity: ${({ $open }) => ($open ? '1' : '0')};
 	position: fixed;
 	top: 0;
 	left: 0;

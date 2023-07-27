@@ -6,15 +6,15 @@ export const StyledSingleProject = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto 4rem;
-	color: ${({ isDark, theme }) =>
-		isDark ? theme.colors.white : theme.colors.black};
+	color: ${({ $dark, theme }) =>
+		$dark ? theme.colors.white : theme.colors.black};
 
 	h3 {
 		font-size: ${({ theme }) => theme.fontSize.mobile.l};
 		font-weight: ${({ theme }) => theme.weights.semiBold};
 		margin: 0.5rem 0;
-		color: ${({ isDark, theme }) =>
-			isDark ? theme.colors.white : theme.colors.black};
+		color: ${({ $dark, theme }) =>
+			$dark ? theme.colors.white : theme.colors.black};
 	}
 
 	img {

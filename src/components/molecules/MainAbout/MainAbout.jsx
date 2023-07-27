@@ -38,7 +38,7 @@ const MainAbout = ({ content }) => {
 	}, []);
 
 	return (
-		<StyledMainAbout isDark={isDark}>
+		<StyledMainAbout $dark={isDark}>
 			{content.AboutCover?.url ? (
 				<img src={content.AboutCover.url} alt="" />
 			) : (

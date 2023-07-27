@@ -115,7 +115,11 @@ const Footer = ({ isDark }) => {
 			<ul>
 				{menuData.strapiSocialMenu.url.map((socialMenuItem) => (
 					<li key={socialMenuItem.id}>
-						<a href={socialMenuItem.url} target="_blank" rel="noreferrer">
+						<a
+							href={socialMenuItem.socialLink}
+							target="_blank"
+							rel="noreferrer"
+						>
 							<StyledIcon>
 								{getSocialIconSvg(
 									socialMenuItem.platformName || socialMenuItem.socialLink

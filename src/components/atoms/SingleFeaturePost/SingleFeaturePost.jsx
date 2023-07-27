@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
@@ -43,7 +43,7 @@ const SingleFeaturePost = ({ post }) => {
 	}, []);
 
 	return (
-		<StyledSingleFeaturePost cover={post.CoverImage.url}>
+		<StyledSingleFeaturePost $cover={post.CoverImage.url}>
 			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
 				<FeaturedDetails
 					publishedAt={post.publishedAt}
@@ -55,8 +55,8 @@ const SingleFeaturePost = ({ post }) => {
 						? post.Description
 						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
-				<P isBold>{getReadingTime(post.Content)} minutes to read</P>
-				<More title="Read more" isAbsolute isHover={isHover} />
+				<P $isBold>{getReadingTime(post.Content)} minutes to read</P>
+				<More isDiv title="Read more" isAbsolute isHover={isHover} />
 			</Link>
 		</StyledSingleFeaturePost>
 	);
@@ -65,5 +65,14 @@ const SingleFeaturePost = ({ post }) => {
 export default SingleFeaturePost;
 
 SingleFeaturePost.propTypes = {
-	post: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+	post: PropTypes.shape({
+		CoverImage: PropTypes.shape({
+			url: PropTypes.string,
+		}),
+		publishedAt: PropTypes.string,
+		categories: PropTypes.arrayOf(oneOfType([PropTypes.object])),
+		Title: PropTypes.string,
+		Description: PropTypes.string,
+		Content: PropTypes.string,
+	}).isRequired,
 };

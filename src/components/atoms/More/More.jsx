@@ -5,22 +5,38 @@ import { Link } from 'gatsby';
 import Arrow from '../../../assets/icons/arrow-solid.svg';
 import { StyledMore } from './More.styles';
 
-const More = ({ title, margin, padding, justify, to, isAbsolute, isHover }) => {
+const More = ({
+	title,
+	margin,
+	padding,
+	justify,
+	to,
+	isAbsolute,
+	isHover,
+	isDiv,
+}) => {
 	const isDark = useSelector((state) => state.isDark);
 
 	return (
 		<StyledMore
-			isDark={isDark}
-			isAbsolute={isAbsolute}
-			isHover={isHover}
-			margin={margin}
-			padding={padding}
-			justify={justify}
+			$dark={isDark}
+			$absolute={isAbsolute}
+			$hover={isHover}
+			$margin={margin}
+			$padding={padding}
+			$justify={justify}
 		>
-			<Link to={to}>
-				<span>{title}</span>
-				<Arrow />
-			</Link>
+			{isDiv ? (
+				<div>
+					<span>{title}</span>
+					<Arrow />
+				</div>
+			) : (
+				<Link to={to}>
+					<span>{title}</span>
+					<Arrow />
+				</Link>
+			)}
 		</StyledMore>
 	);
 };
@@ -35,6 +51,7 @@ More.defaultProps = {
 	padding: 'unset',
 	justify: 'center',
 	to: '/',
+	isDiv: false,
 };
 
 More.propTypes = {
@@ -45,4 +62,5 @@ More.propTypes = {
 	padding: PropTypes.string,
 	justify: PropTypes.string,
 	to: PropTypes.string,
+	isDiv: PropTypes.bool,
 };

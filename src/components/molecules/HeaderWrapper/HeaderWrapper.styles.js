@@ -5,10 +5,9 @@ export const StyledHeaderWrapper = styled.div`
 
 	div {
 		display: flex;
-		flex-direction: ${({ position }) => (position ? 'row' : 'column')};
-		justify-content: ${({ position }) =>
-			position ? 'space-between' : 'center'};
-		align-items: ${({ position }) => (position ? 'flex-start' : 'center')};
+		flex-direction: ${({ $isRow }) => ($isRow ? 'row' : 'column')};
+		justify-content: ${({ $isRow }) => ($isRow ? 'space-between' : 'center')};
+		align-items: ${({ $isRow }) => ($isRow ? 'flex-start' : 'center')};
 		color: ${({ theme }) => theme.colors.white};
 		font-size: ${({ theme }) => theme.fontSize.mobile.xl};
 		text-align: center;

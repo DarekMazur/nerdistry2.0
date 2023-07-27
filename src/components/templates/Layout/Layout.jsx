@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<>
-			<GlobalStyle isDark={isDark} />
+			<GlobalStyle $dark={isDark} />
 			<Header pageInfo={layoutData.strapiIdentity} />
 			<main>{children}</main>
 			<Footer />

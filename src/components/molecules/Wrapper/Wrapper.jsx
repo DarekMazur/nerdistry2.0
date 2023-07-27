@@ -5,7 +5,7 @@ import { StyledSectionTitle } from '../../atoms/SectionTitle/SectionTitle.styles
 
 function Wrapper({ children, title, isWide }) {
 	return (
-		<StyledWrapper isWide={isWide}>
+		<StyledWrapper $wide={isWide}>
 			<StyledSectionTitle>{title}</StyledSectionTitle>
 			{children}
 		</StyledWrapper>

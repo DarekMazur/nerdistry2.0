@@ -11,7 +11,7 @@ const StylesSwitcher = ({ isDark }) => {
 	const handleVersionChange = () => dispatch(switchColorVersion({ isDark }));
 
 	return (
-		<StyledStyleSwitcher isDark={isDark} onClick={handleVersionChange}>
+		<StyledStyleSwitcher $dark={isDark} onClick={handleVersionChange}>
 			<SunIcon />
 			<MoonIcon />
 		</StyledStyleSwitcher>

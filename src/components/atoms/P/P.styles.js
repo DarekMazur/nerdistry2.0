@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const P = styled.p`
-	font-weight: ${({ theme, isBold }) =>
-		isBold ? theme.weights.semiBold : theme.weights.regular};
+	font-weight: ${({ theme, $isBold }) =>
+		$isBold ? theme.weights.semiBold : theme.weights.regular};
 	font-size: ${({ theme }) => theme.fontSize.mobile.m};
 	margin: 0;
 	padding: 0;

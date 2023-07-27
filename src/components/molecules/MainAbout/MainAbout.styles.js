@@ -11,8 +11,8 @@ export const StyledMainAbout = styled.div`
 		width: 10rem;
 		height: 10rem;
 		border-radius: 50%;
-		border: ${({ theme, isDark }) =>
-			isDark
+		border: ${({ theme, $dark }) =>
+			$dark
 				? `0.3rem solid ${theme.colors.white}`
 				: `0.3rem solid ${theme.colors.black}`};
 	}
