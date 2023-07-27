@@ -39,7 +39,11 @@ const MainAbout = ({ content }) => {
 
 	return (
 		<StyledMainAbout isDark={isDark}>
-			{<img src={content.AboutCover?.url} alt="" /> || <Cover />}
+			{content.AboutCover?.url ? (
+				<img src={content.AboutCover.url} alt="" />
+			) : (
+				<Cover />
+			)}
 			<p ref={paragraphRef}>{content.AboutContent}</p>
 		</StyledMainAbout>
 	);

@@ -21,7 +21,11 @@ const Header = ({ pageInfo }) => {
 				<StyledHeaderWrapper position>
 					<div>
 						<Link to="/">
-							{<img src={pageInfo?.Logo?.url} alt="" /> || <Logo />}
+							{pageInfo?.Logo?.url ? (
+								<img src={pageInfo.Logo.url} alt="" />
+							) : (
+								<Logo />
+							)}
 						</Link>
 						<MenuList
 							menuList={mainMenu}
