@@ -15,7 +15,7 @@ import { getReadingTime } from '../../../utils/helpers/getReadingTime';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SinglePostExcerpt = ({ post }) => {
+const SinglePostExcerpt = ({ post, postsLength }) => {
 	const isDark = useSelector((state) => state.isDark);
 	const [isHover, setIsHover] = useState(false);
 	const publishedDate = new Date(post.publishedAt);
@@ -50,6 +50,7 @@ const SinglePostExcerpt = ({ post }) => {
 		<StyledSinglePostExcerpt
 			$dark={isDark}
 			to="/"
+			$length={postsLength}
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
 		>
@@ -82,4 +83,5 @@ SinglePostExcerpt.propTypes = {
 			url: PropTypes.string,
 		}),
 	}).isRequired,
+	postsLength: PropTypes.number.isRequired,
 };
