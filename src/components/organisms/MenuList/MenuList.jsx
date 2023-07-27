@@ -6,7 +6,7 @@ import CloseIcon from '../../../assets/icons/xmark-solid.svg';
 import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 
 const MenuList = ({ menuList, isOpen, handleClick }) => (
-	<StyledMenuList isOpen={isOpen}>
+	<StyledMenuList $open={isOpen}>
 		<StyledIcon>
 			<CloseIcon onClick={handleClick} />
 		</StyledIcon>

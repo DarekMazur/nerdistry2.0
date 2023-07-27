@@ -29,7 +29,7 @@ const Header = ({ pageInfo }) => {
 	return (
 		<StyledHeader>
 			<div>
-				<StyledHeaderWrapper position>
+				<StyledHeaderWrapper $isRow>
 					<div>
 						<Link to="/">
 							{pageInfo?.Logo?.url ? (

@@ -12,18 +12,18 @@ export const StyledProjectIconsWrapper = styled.div`
 		cursor: pointer;
 
 		path {
-			stroke: ${({ theme, isDark }) =>
-				isDark ? theme.colors.white : theme.colors.black};
-			fill: ${({ theme, isDark }) =>
-				isDark ? theme.colors.white : theme.colors.black};
+			stroke: ${({ theme, $dark }) =>
+				$dark ? theme.colors.white : theme.colors.black};
+			fill: ${({ theme, $dark }) =>
+				$dark ? theme.colors.white : theme.colors.black};
 		}
 
 		&:hover {
 			path {
-				stroke: ${({ theme, isDark }) =>
-					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
-				fill: ${({ theme, isDark }) =>
-					isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				stroke: ${({ theme, $dark }) =>
+					$dark ? theme.colors.darkBlue : theme.colors.lightBlue};
+				fill: ${({ theme, $dark }) =>
+					$dark ? theme.colors.darkBlue : theme.colors.lightBlue};
 				transition:
 					fill 0.3s ease-in-out,
 					stroke 0.3s ease-in-out;

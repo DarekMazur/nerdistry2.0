@@ -48,7 +48,7 @@ const SinglePostExcerpt = ({ post }) => {
 
 	return (
 		<StyledSinglePostExcerpt
-			isDark={isDark}
+			$dark={isDark}
 			to="/"
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
@@ -64,7 +64,7 @@ const SinglePostExcerpt = ({ post }) => {
 					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
 			<P>{getReadingTime(post.Content)} minutes to read</P>
-			<More title="Read more" isAbsolute isHover={isHover} />
+			<More isDiv title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);
 };

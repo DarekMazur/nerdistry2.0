@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledGoToTop = styled.div`
 	border-radius: 50%;
-	background-color: ${({ theme, isDark }) =>
-		isDark ? theme.colors.white : theme.colors.black};
+	background-color: ${({ theme, $dark }) =>
+		$dark ? theme.colors.white : theme.colors.black};
 	position: fixed;
 	display: flex;
 	justify-content: center;
@@ -12,7 +12,7 @@ export const StyledGoToTop = styled.div`
 	height: 4rem;
 	bottom: 1.5rem;
 	right: 1rem;
-	opacity: ${({ isHidden }) => (isHidden ? '0' : '1')};
+	opacity: ${({ $hidden }) => ($hidden ? '0' : '1')};
 	transition:
 		transform 0.1s ease-in-out,
 		opacity 0.3s ease-in-out;

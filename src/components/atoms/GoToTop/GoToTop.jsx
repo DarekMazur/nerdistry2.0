@@ -21,8 +21,8 @@ const GoToTop = () => {
 
 	return (
 		<>
-			<StyledGoToTop isDark={isDark} isHidden={isHidden} />
-			<StyledIcon isToTop isDark={isDark} isHidden={isHidden}>
+			<StyledGoToTop $dark={isDark} $hidden={isHidden} />
+			<StyledIcon $isToTop $dark={isDark} $hidden={isHidden}>
 				<ToTopIcon onClick={handleClick} />
 			</StyledIcon>
 		</>

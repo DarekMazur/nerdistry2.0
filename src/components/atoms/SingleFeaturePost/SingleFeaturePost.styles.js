@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const StyledSingleFeaturePost = styled.div`
 	min-height: 28.5rem;
 	width: 100%;
-	background: ${({ cover }) =>
-		cover ? `url(${cover}) center/cover no-repeat` : `unset`};
+	background: ${({ $cover }) =>
+		$cover ? `url(${$cover}) center/cover no-repeat` : `unset`};
 	color: ${({ theme }) => theme.colors.white};
 	position: relative;
 	overflow: hidden;

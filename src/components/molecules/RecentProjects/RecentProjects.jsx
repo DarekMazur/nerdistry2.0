@@ -19,7 +19,8 @@ const RecentProjects = () => {
 
 				setImages(fetchedImages.results);
 			} catch (error) {
-				console.log(error);
+				// eslint-disable-next-line no-console
+				console.warn(error);
 			}
 		};
 		getCoverImage();

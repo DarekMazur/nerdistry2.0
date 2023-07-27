@@ -8,7 +8,7 @@ const SingleProject = ({ isMain = false, project, cover }) => {
 	const isDark = useSelector((state) => state.isDark);
 
 	return (
-		<StyledSingleProject isMain={isMain} isDark={isDark}>
+		<StyledSingleProject $main={isMain} $dark={isDark}>
 			<h3>{project.name}</h3>
 			<div>
 				<img src={cover} alt={project.name} />

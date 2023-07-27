@@ -4,7 +4,7 @@ import LogoIcon from '../../../assets/icons/Logo.svg';
 import { StyledLogo } from './Logo.styles';
 
 const Logo = ({ isFooter }) => (
-	<StyledLogo isFooter={isFooter}>
+	<StyledLogo $footer={isFooter}>
 		<LogoIcon />
 	</StyledLogo>
 );

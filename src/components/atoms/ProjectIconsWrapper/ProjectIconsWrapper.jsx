@@ -9,7 +9,7 @@ const ProjectIconsWrapper = ({ ghLink, appLink }) => {
 	const isDark = useSelector((state) => state.isDark);
 
 	return (
-		<StyledProjectIconsWrapper isDark={isDark}>
+		<StyledProjectIconsWrapper $dark={isDark}>
 			<a href={ghLink} target="_blank" rel="noreferrer">
 				<GitHubIcon />
 			</a>

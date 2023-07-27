@@ -9,8 +9,8 @@ export const StyledSinglePostExcerpt = styled(Link)`
 	padding: 3rem 0 9rem;
 	text-decoration: none;
 	background-color: transparent;
-	color: ${({ theme, isDark }) =>
-		isDark ? theme.colors.white : theme.colors.black};
+	color: ${({ theme, $dark }) =>
+		$dark ? theme.colors.white : theme.colors.black};
 	transition: background-color 0.3s ease-in-out;
 	overflow: hidden;
 	position: relative;
@@ -28,8 +28,8 @@ export const StyledSinglePostExcerpt = styled(Link)`
 		transition: transform 0.3s ease-in-out;
 
 		span {
-			color: ${({ theme, isDark }) =>
-				isDark ? theme.colors.darkBlue : theme.colors.lightBlue};
+			color: ${({ theme, $dark }) =>
+				$dark ? theme.colors.darkBlue : theme.colors.lightBlue};
 			font-style: italic;
 		}
 
@@ -48,8 +48,8 @@ export const StyledSinglePostExcerpt = styled(Link)`
 	}
 
 	&:hover {
-		background-color: ${({ theme, isDark }) =>
-			isDark ? theme.colors.black : theme.colors.gray};
+		background-color: ${({ theme, $dark }) =>
+			$dark ? theme.colors.black : theme.colors.gray};
 
 		h4,
 		p:nth-last-of-type(2),

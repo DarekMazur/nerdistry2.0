@@ -43,8 +43,7 @@ const SingleFeaturePost = ({ post }) => {
 	}, []);
 
 	return (
-		<StyledSingleFeaturePost cover={post.CoverImage.url}>
-			{console.log(post)}
+		<StyledSingleFeaturePost $cover={post.CoverImage.url}>
 			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
 				<FeaturedDetails
 					publishedAt={post.publishedAt}
@@ -56,8 +55,8 @@ const SingleFeaturePost = ({ post }) => {
 						? post.Description
 						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
-				<P isBold>{getReadingTime(post.Content)} minutes to read</P>
-				<More title="Read more" isAbsolute isHover={isHover} />
+				<P $isBold>{getReadingTime(post.Content)} minutes to read</P>
+				<More isDiv title="Read more" isAbsolute isHover={isHover} />
 			</Link>
 		</StyledSingleFeaturePost>
 	);
