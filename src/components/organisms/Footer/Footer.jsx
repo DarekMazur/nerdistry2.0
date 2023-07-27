@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { graphql, useStaticQuery } from 'gatsby';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
@@ -8,9 +9,26 @@ import { StyledFooter } from './Footer.styles';
 import Logo from '../../atoms/Logo/Logo';
 import { getCurrentYear } from '../../../utils/helpers/getCurrentYear';
 import GoToTop from '../../atoms/GoToTop/GoToTop';
-import { footerMenu, socialMedia } from '../../../utils/mock';
+import { socialMedia } from '../../../utils/mock';
 
 const Footer = ({ isDark }) => {
+	const menuData = useStaticQuery(graphql`
+		query {
+			strapiMainMenu {
+				MenuElement {
+					Name
+					url
+				}
+			}
+			strapiFooterMenu {
+				FooterMenuElement {
+					Name
+					url
+				}
+			}
+		}
+	`);
+
 	const getSocialIconSvg = (socialPlatform) => {
 		switch (socialPlatform) {
 			case 'LinkedinIcon':
@@ -24,6 +42,10 @@ const Footer = ({ isDark }) => {
 		}
 	};
 
+	const footerMenu =
+		menuData.strapiFooterMenu.FooterMenuElement ||
+		menuData.strapiMainMenu.MenuElement;
+
 	return (
 		<StyledFooter>
 			<Logo isFooter />
@@ -31,7 +53,7 @@ const Footer = ({ isDark }) => {
 				<ul>
 					{footerMenu.map((menuItem) => (
 						<li>
-							<a href={menuItem.url}>{menuItem.name}</a>
+							<a href={menuItem.url}>{menuItem.Name}</a>
 						</li>
 					))}
 				</ul>
