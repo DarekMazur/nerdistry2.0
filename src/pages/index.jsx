@@ -8,6 +8,7 @@ import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
 import RecentProjects from '../components/molecules/RecentProjects/RecentProjects';
 import MainBlog from '../components/molecules/MainBlog/MainBlog';
 import MainAbout from '../components/molecules/MainAbout/MainAbout';
+import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
 
 const test = 'Lorem Ipsum';
 
@@ -70,7 +71,11 @@ const IndexPage = () => {
 					/>
 				</Wrapper>
 				<Wrapper title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}>
-					<MainBlog posts={homeData.allStrapiPost.edges.slice(0, 4)} />
+					{homeData.allStrapiPost.edges.length === 0 ? (
+						<EmptyBlog />
+					) : (
+						<MainBlog posts={homeData.allStrapiPost.edges.slice(0, 4)} />
+					)}
 				</Wrapper>
 				{homeData.strapiHome?.AboutContent ? (
 					<Wrapper title={homeData.strapiHome.AboutTitle || 'About'}>
