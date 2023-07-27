@@ -15,6 +15,7 @@ const Header = ({ pageInfo }) => {
 		query {
 			strapiMainMenu {
 				MenuElement {
+					id
 					Name
 					url
 					Description

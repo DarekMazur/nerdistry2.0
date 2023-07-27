@@ -27,18 +27,21 @@ const Footer = ({ isDark }) => {
 		query {
 			strapiMainMenu {
 				MenuElement {
+					id
 					Name
 					url
 				}
 			}
 			strapiFooterMenu {
 				FooterMenuElement {
+					id
 					Name
 					url
 				}
 			}
 			strapiSocialMenu {
 				url {
+					id
 					platformName
 					socialLink
 				}
@@ -102,7 +105,7 @@ const Footer = ({ isDark }) => {
 			<nav>
 				<ul>
 					{footerMenu.map((menuItem) => (
-						<li>
+						<li key={menuItem.id}>
 							<a href={menuItem.url}>{menuItem.Name}</a>
 						</li>
 					))}
@@ -111,7 +114,7 @@ const Footer = ({ isDark }) => {
 			<p>Gacek &copy; {getCurrentYear()}</p>
 			<ul>
 				{menuData.strapiSocialMenu.url.map((socialMenuItem) => (
-					<li>
+					<li key={socialMenuItem.id}>
 						<a href={socialMenuItem.url} target="_blank" rel="noreferrer">
 							<StyledIcon>
 								{getSocialIconSvg(
