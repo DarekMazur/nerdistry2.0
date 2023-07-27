@@ -4,13 +4,13 @@ import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import PropTypes from 'prop-types';
 import Cover from '../../../assets/icons/about.svg';
 import { StyledMainAbout } from './MainAbout.styles';
-import { about } from '../../../utils/mock';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MainAbout = () => {
+const MainAbout = ({ content }) => {
 	const isDark = useSelector((state) => state.isDark);
 	const paragraphRef = useRef(null);
 
@@ -39,10 +39,19 @@ const MainAbout = () => {
 
 	return (
 		<StyledMainAbout isDark={isDark}>
-			<Cover />
-			<p ref={paragraphRef}>{about}</p>
+			{<img src={content.AboutCover?.url} alt="" /> || <Cover />}
+			<p ref={paragraphRef}>{content.AboutContent}</p>
 		</StyledMainAbout>
 	);
 };
 
 export default MainAbout;
+
+MainAbout.propTypes = {
+	content: PropTypes.shape({
+		AboutContent: PropTypes.string,
+		AboutCover: PropTypes.shape({
+			url: PropTypes.string,
+		}),
+	}).isRequired,
+};

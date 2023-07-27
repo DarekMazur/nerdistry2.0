@@ -43,21 +43,19 @@ const SingleFeaturePost = ({ post }) => {
 	}, []);
 
 	return (
-		<StyledSingleFeaturePost
-			cover={post.attributes.CoverImage.data.attributes.url}
-		>
+		<StyledSingleFeaturePost cover={post.CoverImage.url}>
 			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
 				<FeaturedDetails
-					publishedAt={post.attributes.publishedAt}
-					categories={post.attributes.categories.data}
+					publishedAt={post.publishedAt}
+					categories={post.categories}
 				/>
-				<h3>{post.attributes.Title}</h3>
+				<h3>{post.Title}</h3>
 				<P ref={paragraphRef}>
-					{post.attributes.Description
-						? post.attributes.Description
-						: `${getTextExcerpt(post.attributes.Content, 200)}[...]`}
+					{post.Description
+						? post.Description
+						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
-				<P isBold>{getReadingTime(post.attributes.Content)} minutes to read</P>
+				<P isBold>{getReadingTime(post.Content)} minutes to read</P>
 				<More title="Read more" isAbsolute isHover={isHover} />
 			</Link>
 		</StyledSingleFeaturePost>

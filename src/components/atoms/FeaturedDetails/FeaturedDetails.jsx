@@ -10,7 +10,7 @@ const FeaturedDetails = ({ publishedAt, categories }) => {
 		<StyledFeaturedDetails>
 			<span>
 				{getDateFormat(publishedDate)}
-				{categories.map((category) => `, ${category.attributes.Name}`)}
+				{categories.map((category) => `, ${category.Name}`)}
 			</span>
 		</StyledFeaturedDetails>
 	);
