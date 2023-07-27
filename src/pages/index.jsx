@@ -5,7 +5,6 @@ import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import FeaturedPosts from '../components/molecules/FeaturedPosts/FeaturedPosts';
 import { getFeaturedPosts } from '../utils/helpers/getFeaturedPosts';
-import { posts } from '../utils/mock';
 import RecentProjects from '../components/molecules/RecentProjects/RecentProjects';
 import MainBlog from '../components/molecules/MainBlog/MainBlog';
 import MainAbout from '../components/molecules/MainAbout/MainAbout';
@@ -50,9 +49,9 @@ const IndexPage = () => {
 		}
 	`);
 
-	const sortedPosts = posts.sort((a, b) => {
-		const dateA = new Date(a.attributes.publishedAt);
-		const dateB = new Date(b.attributes.publishedAt);
+	const sortedPosts = homeData.allStrapiPost.edges.sort((a, b) => {
+		const dateA = new Date(a.node.publishedAt);
+		const dateB = new Date(b.node.publishedAt);
 		return dateB - dateA;
 	});
 
