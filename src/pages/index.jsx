@@ -49,12 +49,6 @@ const IndexPage = () => {
 		}
 	`);
 
-	const sortedPosts = homeData.allStrapiPost.edges.sort((a, b) => {
-		const dateA = new Date(a.node.publishedAt);
-		const dateB = new Date(b.node.publishedAt);
-		return dateB - dateA;
-	});
-
 	return (
 		<AppProviders>
 			<Layout>
@@ -74,7 +68,7 @@ const IndexPage = () => {
 					<RecentProjects />
 				</Wrapper>
 				<Wrapper title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}>
-					<MainBlog posts={sortedPosts.slice(0, 4)} />
+					<MainBlog posts={homeData.allStrapiPost.edges.slice(0, 4)} />
 				</Wrapper>
 				{homeData.strapiHome?.AboutContent ? (
 					<Wrapper title={homeData.strapiHome.AboutTitle || 'About'}>
