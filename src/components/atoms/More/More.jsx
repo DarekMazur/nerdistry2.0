@@ -10,7 +10,7 @@ const More = ({
 	margin,
 	padding,
 	justify,
-	to,
+	link,
 	isAbsolute,
 	isHover,
 	color,
@@ -29,7 +29,7 @@ const More = ({
 				$justify={justify}
 				$color={color}
 			>
-				<StyledMore $dark={isDark} as={Tag} to={to}>
+				<StyledMore $dark={isDark} as={Tag} to={link}>
 					<span>{title}</span>
 					<Arrow />
 				</StyledMore>
@@ -47,7 +47,7 @@ More.defaultProps = {
 	margin: 'unset',
 	padding: 'unset',
 	justify: 'center',
-	to: '/',
+	link: '/',
 	tag: null,
 	color: null,
 };
@@ -59,7 +59,7 @@ More.propTypes = {
 	margin: PropTypes.string,
 	padding: PropTypes.string,
 	justify: PropTypes.string,
-	to: PropTypes.string,
+	link: PropTypes.string,
 	tag: PropTypes.string,
 	color: PropTypes.string,
 };
