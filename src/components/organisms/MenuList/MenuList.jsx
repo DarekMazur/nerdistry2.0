@@ -21,7 +21,7 @@ const MenuList = ({ menuList, isOpen, handleClick }) => (
 export default MenuList;
 
 MenuList.propTypes = {
-	menuList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string]))
+	menuList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object]))
 		.isRequired,
 	handleClick: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,

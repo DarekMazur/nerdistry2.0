@@ -19,7 +19,7 @@ const FeaturedDetails = ({ publishedAt, categories }) => {
 export default FeaturedDetails;
 
 FeaturedDetails.propTypes = {
-	publishedAt: PropTypes.instanceOf(Date).isRequired,
-	categories: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string]))
+	publishedAt: PropTypes.string.isRequired,
+	categories: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object]))
 		.isRequired,
 };

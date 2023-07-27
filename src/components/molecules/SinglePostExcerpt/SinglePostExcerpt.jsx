@@ -73,7 +73,7 @@ export default SinglePostExcerpt;
 
 SinglePostExcerpt.propTypes = {
 	post: PropTypes.shape({
-		id: PropTypes.number,
+		id: PropTypes.string,
 		Title: PropTypes.string,
 		Description: PropTypes.string,
 		Content: PropTypes.string,

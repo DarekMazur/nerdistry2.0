@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
@@ -44,6 +44,7 @@ const SingleFeaturePost = ({ post }) => {
 
 	return (
 		<StyledSingleFeaturePost cover={post.CoverImage.url}>
+			{console.log(post)}
 			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
 				<FeaturedDetails
 					publishedAt={post.publishedAt}
@@ -65,5 +66,14 @@ const SingleFeaturePost = ({ post }) => {
 export default SingleFeaturePost;
 
 SingleFeaturePost.propTypes = {
-	post: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+	post: PropTypes.shape({
+		CoverImage: PropTypes.shape({
+			url: PropTypes.string,
+		}),
+		publishedAt: PropTypes.string,
+		categories: PropTypes.arrayOf(oneOfType([PropTypes.object])),
+		Title: PropTypes.string,
+		Description: PropTypes.string,
+		Content: PropTypes.string,
+	}).isRequired,
 };

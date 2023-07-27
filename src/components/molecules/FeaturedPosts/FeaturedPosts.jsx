@@ -13,5 +13,5 @@ const FeaturedPosts = ({ posts }) => (
 export default FeaturedPosts;
 
 FeaturedPosts.propTypes = {
-	posts: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+	posts: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
 };
