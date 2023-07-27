@@ -1,43 +1,40 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Link } from 'gatsby';
 import Arrow from '../../../assets/icons/arrow-solid.svg';
 import { StyledMore } from './More.styles';
+import { Wrapper } from './Wrapper.styles';
 
 const More = ({
 	title,
 	margin,
 	padding,
 	justify,
-	to,
+	link,
 	isAbsolute,
 	isHover,
-	isDiv,
+	color,
+	tag: Tag,
 }) => {
 	const isDark = useSelector((state) => state.isDark);
 
 	return (
-		<StyledMore
-			$dark={isDark}
-			$absolute={isAbsolute}
-			$hover={isHover}
-			$margin={margin}
-			$padding={padding}
-			$justify={justify}
-		>
-			{isDiv ? (
-				<div>
+		<div>
+			<Wrapper
+				$dark={isDark}
+				$absolute={isAbsolute}
+				$hover={isHover}
+				$margin={margin}
+				$padding={padding}
+				$justify={justify}
+				$color={color}
+			>
+				<StyledMore $dark={isDark} as={Tag} to={link}>
 					<span>{title}</span>
 					<Arrow />
-				</div>
-			) : (
-				<Link to={to}>
-					<span>{title}</span>
-					<Arrow />
-				</Link>
-			)}
-		</StyledMore>
+				</StyledMore>
+			</Wrapper>
+		</div>
 	);
 };
 
@@ -50,8 +47,9 @@ More.defaultProps = {
 	margin: 'unset',
 	padding: 'unset',
 	justify: 'center',
-	to: '/',
-	isDiv: false,
+	link: '/',
+	tag: null,
+	color: null,
 };
 
 More.propTypes = {
@@ -61,6 +59,7 @@ More.propTypes = {
 	margin: PropTypes.string,
 	padding: PropTypes.string,
 	justify: PropTypes.string,
-	to: PropTypes.string,
-	isDiv: PropTypes.bool,
+	link: PropTypes.string,
+	tag: PropTypes.string,
+	color: PropTypes.string,
 };

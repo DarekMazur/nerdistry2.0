@@ -1,50 +1,22 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-export const StyledMore = styled.div`
+export const StyledMore = styled(Link)`
 	display: flex;
 	align-items: center;
-	justify-content: ${({ $justify }) => $justify};
-	margin: ${({ $margin }) => $margin};
-	padding: ${({ $padding }) => $padding};
-	cursor: pointer;
-	line-height: 1.1;
+	justify-items: flex-end;
+	color: inherit;
 	text-decoration: none;
-	color: ${({ theme, $dark }) =>
-		$dark ? theme.colors.white : theme.colors.black};
+	width: fit-content;
+	cursor: pointer;
 
-	position: ${({ $absolute }) => ($absolute ? 'absolute' : 'inherit')};
-	bottom: ${({ $absolute }) => ($absolute ? '2rem' : 'unset')};
-	left: ${({ $absolute }) => ($absolute ? '50%' : 'unset')};
-	opacity: ${({ $absolute, $hover }) =>
-		$absolute ? ($hover ? '1' : '0') : 'unset'};
-	transform: ${({ $absolute, $hover }) =>
-		$absolute
-			? $hover
-				? 'translate(-50%, 0)'
-				: 'translate(-50%, 6rem)'
-			: 'unset'};
-	transition: ${({ $absolute }) =>
-		$absolute
-			? 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out;'
-			: 'unset'};
+	&:hover {
+		span {
+			transform: translateX(-0.8rem);
+		}
 
-	a,
-	div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: ${({ theme }) => theme.colors.white};
-		text-decoration: none;
-		width: fit-content;
-
-		&:hover {
-			span {
-				transform: translateX(-0.8rem);
-			}
-
-			svg {
-				transform: translateX(0.8rem);
-			}
+		svg {
+			transform: translateX(0.8rem);
 		}
 	}
 

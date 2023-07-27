@@ -65,7 +65,9 @@ const IndexPage = () => {
 				<Wrapper
 					title={homeData.strapiHome?.RecentProjectsTitle || 'Recent projects'}
 				>
-					<RecentProjects />
+					<RecentProjects
+						allProjects={homeData.strapiHome?.ProjectsLink || '/'}
+					/>
 				</Wrapper>
 				<Wrapper title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}>
 					<MainBlog posts={homeData.allStrapiPost.edges.slice(0, 4)} />

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import SingleProject from '../SingleProject/SingleProject';
 import DefaultCover from '../../../assets/images/defaultProjectCover.jpg';
 import { StyledRecentProjects } from './RecentProjects.styles';
 import More from '../../atoms/More/More';
 
-const RecentProjects = () => {
+const RecentProjects = ({ allProjects }) => {
 	const [projects, setProjects] = useState('');
 	const [images, setImages] = useState([]);
 
@@ -65,9 +66,17 @@ const RecentProjects = () => {
 					</div>
 				)}
 			</StyledRecentProjects>
-			<More title="Check all" justify="flex-end" />
+			<More title="Check all" link={allProjects} justify="flex-end" />
 		</>
 	);
 };
 
 export default RecentProjects;
+
+RecentProjects.defaultProps = {
+	allProjects: null,
+};
+
+RecentProjects.propTypes = {
+	allProjects: PropTypes.string,
+};
