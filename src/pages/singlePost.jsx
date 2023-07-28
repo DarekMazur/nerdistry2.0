@@ -23,7 +23,7 @@ const SinglePost = () => (
 									<StyledTag key={tag}>#{tag}</StyledTag>
 								))}
 							</p>
-							<Date date="01.01.2001" />
+							<Date date="01.01.2001" size="1.6rem" />
 						</>
 					)}
 				</DetailsWrapper>
