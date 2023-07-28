@@ -1,0 +1,15 @@
+import * as React from 'react';
+import Avatar from '../../atoms/Avatar/Avatar';
+import { StyledPostCoverWrapper } from './PostCoverWrapper.styles';
+
+const PostCoverWrapper = () => (
+	<StyledPostCoverWrapper>
+		<img
+			src="https://images.unsplash.com/photo-1661956602153-23384936a1d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+			alt="Lorem ipsum"
+		/>
+		<Avatar url="https://thispersondoesnotexist.com/" />
+	</StyledPostCoverWrapper>
+);
+
+export default PostCoverWrapper;
