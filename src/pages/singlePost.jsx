@@ -2,13 +2,14 @@ import * as React from 'react';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import Avatar from '../components/atoms/Avatar/Avatar';
+import { StyledSectionTitle } from '../components/atoms/SectionTitle/SectionTitle.styles';
 
 const test = 'Dolor';
 
 const SinglePost = () => (
 	<AppProviders>
 		<Layout>
-			<h2>Category</h2>
+			<StyledSectionTitle>Category</StyledSectionTitle>
 			<p>#tag, #tag, #tag</p>
 			<span>Posted on</span> 01.01.2001
 			<div>
