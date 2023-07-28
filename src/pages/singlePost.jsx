@@ -2,15 +2,26 @@ import * as React from 'react';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import Avatar from '../components/atoms/Avatar/Avatar';
-import { StyledSectionTitle } from '../components/atoms/SectionTitle/SectionTitle.styles';
+import { StyledTag } from '../components/atoms/Tag/Tag.styles';
+import Wrapper from '../components/molecules/Wrapper/Wrapper';
+import { TagsWrapper } from '../components/molecules/TagsWrapper/TagsWrapper.styles';
 
 const test = 'Dolor';
+
+const tags = 'lorem, ipsum, dolor';
 
 const SinglePost = () => (
 	<AppProviders>
 		<Layout>
-			<StyledSectionTitle>Category</StyledSectionTitle>
-			<p>#tag, #tag, #tag</p>
+			<Wrapper title="Category">
+				{tags.length === 0 ? null : (
+					<TagsWrapper>
+						{tags.split(', ').map((tag) => (
+							<StyledTag key={tag}>#{tag}</StyledTag>
+						))}
+					</TagsWrapper>
+				)}
+			</Wrapper>
 			<span>Posted on</span> 01.01.2001
 			<div>
 				<div style={{ position: 'relative' }}>
