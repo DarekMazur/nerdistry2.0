@@ -4,7 +4,8 @@ import AppProviders from '../providers/AppProviders';
 import Avatar from '../components/atoms/Avatar/Avatar';
 import { StyledTag } from '../components/atoms/Tag/Tag.styles';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
-import { TagsWrapper } from '../components/molecules/TagsWrapper/TagsWrapper.styles';
+import { DetailsWrapper } from '../components/molecules/DetailsWrapper/DetailsWrapper.styles';
+import Date from '../components/atoms/Date/Date';
 
 const test = 'Dolor';
 
@@ -14,15 +15,19 @@ const SinglePost = () => (
 	<AppProviders>
 		<Layout>
 			<Wrapper title="Category">
-				{tags.length === 0 ? null : (
-					<TagsWrapper>
-						{tags.split(', ').map((tag) => (
-							<StyledTag key={tag}>#{tag}</StyledTag>
-						))}
-					</TagsWrapper>
-				)}
+				<DetailsWrapper>
+					{tags.length === 0 ? null : (
+						<>
+							<p>
+								{tags.split(', ').map((tag) => (
+									<StyledTag key={tag}>#{tag}</StyledTag>
+								))}
+							</p>
+							<Date date="01.01.2001" />
+						</>
+					)}
+				</DetailsWrapper>
 			</Wrapper>
-			<span>Posted on</span> 01.01.2001
 			<div>
 				<div style={{ position: 'relative' }}>
 					<img
