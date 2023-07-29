@@ -30,15 +30,6 @@ const SinglePost = () => (
 			</Wrapper>
 			<div>
 				<PostCoverWrapper />
-				<div>
-					<h3>User</h3>
-					<p>
-						Lorem ipsum dolor sit amet consectetur. Eget ipsum neque at quam
-						nullam mattis consectetur pharetra dolor. Amet mauris ultrices id
-						cursus senectus vitae ac ac. Feugiat amet tincidunt nec malesuada
-						lobortis nec. Feugiat purus mauris netus scelerisque ut ac sit.
-					</p>
-				</div>
 			</div>
 			<div>
 				<p>
