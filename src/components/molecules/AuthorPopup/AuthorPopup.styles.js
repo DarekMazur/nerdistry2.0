@@ -9,7 +9,7 @@ export const StyledAuthorPopup = styled.div`
 	background-color: ${({ theme }) => theme.colors.white};
 	height: auto;
 	max-height: 40rem;
-	overflow-y: scroll;
+	overflow-y: auto;
 	width: 26rem;
 	z-index: 10;
 	opacity: ${({ $hover }) => ($hover ? '1' : '0')};
@@ -28,5 +28,10 @@ export const StyledAuthorPopup = styled.div`
 	&:hover {
 		display: block;
 		opacity: 1;
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+		top: calc(100% - 13rem);
+		left: 11rem;
 	}
 `;
