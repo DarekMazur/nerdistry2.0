@@ -17,15 +17,13 @@ const SinglePost = () => (
 			<Wrapper title="Category">
 				<DetailsWrapper>
 					{tags.length === 0 ? null : (
-						<>
-							<p>
-								{tags.split(', ').map((tag) => (
-									<StyledTag key={tag}>#{tag}</StyledTag>
-								))}
-							</p>
-							<Date date="01.01.2001" size="1.6rem" />
-						</>
+						<p>
+							{tags.split(', ').map((tag) => (
+								<StyledTag key={tag}>#{tag}</StyledTag>
+							))}
+						</p>
 					)}
+					<Date date="01.01.2001" size="1.6rem" />
 				</DetailsWrapper>
 			</Wrapper>
 			<div>
