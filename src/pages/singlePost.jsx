@@ -7,6 +7,7 @@ import { DetailsWrapper } from '../components/molecules/DetailsWrapper/DetailsWr
 import Date from '../components/atoms/Date/Date';
 import PostCoverWrapper from '../components/molecules/PostCoverWrapper/PostCoverWrapper';
 import PostContent from '../components/molecules/PostContent/PostContent';
+import PostNavigation from '../components/atoms/PostNavigation/PostNavigation';
 
 const test = 'Dolor';
 
@@ -29,10 +30,7 @@ const SinglePost = () => (
 			</Wrapper>
 			<PostCoverWrapper />
 			<PostContent />
-			<div>
-				<p>Previous</p>
-				<p>Next</p>
-			</div>
+			<PostNavigation />
 		</Layout>
 	</AppProviders>
 );
