@@ -39,10 +39,21 @@ const BlogPage = () => {
 		<AppProviders>
 			<Helmet>
 				<title>Blog | Nerdistry</title>
-				<meta name="description" content="" />
+				<meta
+					name="description"
+					content={
+						blogData.strapiIdentity.Slogan ||
+						`Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)`
+					}
+				/>
 			</Helmet>
-			<Layout title="Blog">
-				<Wrapper title={blogData.strapiIdentity.Slogan || `Blog`}>
+			<Layout title="Blog" isSubtitleHidden>
+				<Wrapper
+					title={
+						blogData.strapiIdentity.Slogan ||
+						`Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)`
+					}
+				>
 					{blogData.allStrapiPost.edges.length ? (
 						<StyledMainBlog>
 							{blogData.allStrapiPost.edges.map((post) => (
