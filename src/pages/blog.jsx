@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
 import SinglePostExcerpt from '../components/molecules/SinglePostExcerpt/SinglePostExcerpt';
 import { StyledMainBlog } from '../components/molecules/MainBlog/MainBlog.styles';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
+import Loading from '../components/atoms/Loading/Loading';
+import { ScrollEndMessage } from '../components/atoms/ScrollEndMessage/ScrollEndMessage.styles';
 
 const BlogPage = () => {
 	const blogData = useStaticQuery(graphql`
@@ -35,6 +39,24 @@ const BlogPage = () => {
 			}
 		}
 	`);
+
+	const posts = blogData.allStrapiPost.edges;
+
+	const [postsList, setPostList] = useState(
+		blogData.allStrapiPost.edges.slice(0, 2)
+	);
+	const [hasMore, setHasMore] = useState(true);
+
+	const getMorePosts = () => {
+		const newPosts = posts.slice(postsList.length, postsList.length + 2);
+		// eslint-disable-next-line no-shadow
+		setPostList((postsList) => [...postsList, ...newPosts]);
+	};
+
+	useEffect(() => {
+		setHasMore(posts.length > postsList.length);
+	}, [postsList]);
+
 	return (
 		<AppProviders>
 			<Helmet>
@@ -55,12 +77,23 @@ const BlogPage = () => {
 					}
 				>
 					{blogData.allStrapiPost.edges.length ? (
-						<StyledMainBlog>
-							{blogData.allStrapiPost.edges.map((post) => (
+						<StyledMainBlog
+							as={InfiniteScroll}
+							dataLength={postsList.length}
+							next={getMorePosts}
+							hasMore={hasMore}
+							loader={<Loading />}
+							endMessage={
+								<ScrollEndMessage>
+									To by było na tyle. Wróć później po więcej 😊
+								</ScrollEndMessage>
+							}
+						>
+							{postsList.map((post) => (
 								<SinglePostExcerpt
 									key={post.node.id}
 									post={post.node}
-									postsLength={blogData.allStrapiPost.edges.length}
+									postsLength={postsList.length}
 								/>
 							))}
 						</StyledMainBlog>
