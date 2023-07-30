@@ -2,26 +2,30 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import slugify from 'slugify';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import ArrowLeft from '../../../assets/icons/arrow-left-solid.svg';
 import ArrowRight from '../../../assets/icons/arrow-right-solid.svg';
 import { StyledPostNavigation } from './PostNavigation.styles';
 
-const PostNavigation = ({ next, prev }) => (
-	<StyledPostNavigation $prev={!!prev}>
-		{prev ? (
-			<Link to={`/blog/${slugify(prev.Title)}`}>
-				<ArrowLeft /> Previous
-			</Link>
-		) : null}
+const PostNavigation = ({ next, prev }) => {
+	const isDark = useSelector((state) => state.isDark);
 
-		{next ? (
-			<Link to={`/blog/${slugify(next.Title)}`}>
-				Next <ArrowRight />
-			</Link>
-		) : null}
-	</StyledPostNavigation>
-);
+	return (
+		<StyledPostNavigation $prev={!!prev} $dark={isDark}>
+			{prev ? (
+				<Link to={`/blog/${slugify(prev.Title)}`}>
+					<ArrowLeft /> Previous
+				</Link>
+			) : null}
 
+			{next ? (
+				<Link to={`/blog/${slugify(next.Title)}`}>
+					Next <ArrowRight />
+				</Link>
+			) : null}
+		</StyledPostNavigation>
+	);
+};
 export default PostNavigation;
 
 PostNavigation.defaultProps = {
