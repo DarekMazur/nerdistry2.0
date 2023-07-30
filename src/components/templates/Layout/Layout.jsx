@@ -6,7 +6,7 @@ import Header from '../../organisms/Header/Header';
 import Footer from '../../organisms/Footer/Footer';
 import { GlobalStyle } from '../../../styles/globalStyle';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title, subtitle }) => {
 	const layoutData = useStaticQuery(graphql`
 		query {
 			strapiIdentity {
@@ -24,7 +24,11 @@ const Layout = ({ children }) => {
 	return (
 		<>
 			<GlobalStyle $dark={isDark} />
-			<Header pageInfo={layoutData.strapiIdentity} />
+			<Header
+				pageInfo={layoutData.strapiIdentity}
+				title={title}
+				subtitle={subtitle}
+			/>
 			<main>{children}</main>
 			<Footer />
 		</>
@@ -33,6 +37,13 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
+Layout.defaultProps = {
+	title: '',
+	subtitle: '',
+};
+
 Layout.propTypes = {
 	children: PropTypes.node.isRequired,
+	title: PropTypes.string,
+	subtitle: PropTypes.string,
 };

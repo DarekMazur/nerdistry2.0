@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -9,8 +10,6 @@ import RecentProjects from '../components/molecules/RecentProjects/RecentProject
 import MainBlog from '../components/molecules/MainBlog/MainBlog';
 import MainAbout from '../components/molecules/MainAbout/MainAbout';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
-
-const test = 'Lorem Ipsum';
 
 const IndexPage = () => {
 	const homeData = useStaticQuery(graphql`
@@ -47,12 +46,21 @@ const IndexPage = () => {
 				}
 				AboutContent
 			}
+			strapiIdentity {
+				Title
+				Slogan
+			}
 		}
 	`);
 
 	return (
 		<AppProviders>
-			<Layout>
+			<Helmet>
+				<title>{homeData.strapiIdentity.Title || 'Home'}</title>
+				<meta name="description" content={homeData.strapiIdentity.Slogan} />
+			</Helmet>
+
+			<Layout title="" subtitle="">
 				{getFeaturedPosts(homeData.allStrapiPost.edges).length ? (
 					<Wrapper
 						title={homeData.strapiHome?.FeaturedPostsTitle || 'Nice to read'}
@@ -88,7 +96,3 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
-
-export function Head() {
-	return <title>{test}</title>;
-}
