@@ -64,7 +64,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 					? post.Description
 					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
-			<P>{getReadingTime(post.publishedAt.Content)} minutes to read</P>
+			<P>{getReadingTime(post.Content)} minutes to read</P>
 			<More tag="div" title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);
