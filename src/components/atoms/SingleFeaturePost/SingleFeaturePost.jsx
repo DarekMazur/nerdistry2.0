@@ -44,7 +44,11 @@ const SingleFeaturePost = ({ post }) => {
 
 	return (
 		<StyledSingleFeaturePost $cover={post.CoverImage.url}>
-			<Link to="/" onMouseEnter={handleHover} onMouseLeave={handleHover}>
+			<Link
+				to={`/blog/${post.Title}`}
+				onMouseEnter={handleHover}
+				onMouseLeave={handleHover}
+			>
 				<FeaturedDetails
 					publishedAt={post.publishedAt}
 					categories={post.categories}

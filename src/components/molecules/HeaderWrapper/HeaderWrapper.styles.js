@@ -14,12 +14,6 @@ export const StyledHeaderWrapper = styled.div`
 		line-height: 1;
 	}
 
-	p {
-		text-align: center;
-		font-size: ${({ theme }) => theme.fontSize.mobile.l};
-		line-height: 1.2;
-	}
-
 	img {
 		height: 6rem;
 		width: 6rem;
@@ -27,10 +21,6 @@ export const StyledHeaderWrapper = styled.div`
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 		font-size: ${({ theme }) => theme.fontSize.tablet.xl};
-
-		p {
-			font-size: ${({ theme }) => theme.fontSize.tablet.l};
-		}
 
 		img {
 			height: 10rem;
@@ -40,9 +30,5 @@ export const StyledHeaderWrapper = styled.div`
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		font-size: ${({ theme }) => theme.fontSize.desktop.xl};
-
-		p {
-			font-size: ${({ theme }) => theme.fontSize.desktop.l};
-		}
 	}
 `;

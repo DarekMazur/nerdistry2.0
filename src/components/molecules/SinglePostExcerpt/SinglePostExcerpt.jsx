@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import slugify from 'slugify';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
@@ -49,7 +50,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 	return (
 		<StyledSinglePostExcerpt
 			$dark={isDark}
-			to="/"
+			to={`/blog/${slugify(post.Title)}`}
 			$length={postsLength}
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
@@ -64,7 +65,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 					? post.Description
 					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
-			<P>{getReadingTime(post.publishedAt.Content)} minutes to read</P>
+			<P>{getReadingTime(post.Content)} minutes to read</P>
 			<More tag="div" title="Read more" isAbsolute isHover={isHover} />
 		</StyledSinglePostExcerpt>
 	);

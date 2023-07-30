@@ -65,6 +65,7 @@ const IndexPage = () => {
 					<Wrapper
 						title={homeData.strapiHome?.FeaturedPostsTitle || 'Nice to read'}
 						isWide
+						isBig
 					>
 						<FeaturedPosts
 							posts={getFeaturedPosts(homeData.allStrapiPost.edges)}
@@ -73,12 +74,16 @@ const IndexPage = () => {
 				) : null}
 				<Wrapper
 					title={homeData.strapiHome?.RecentProjectsTitle || 'Recent projects'}
+					isBig
 				>
 					<RecentProjects
 						allProjects={homeData.strapiHome?.ProjectsLink || '/'}
 					/>
 				</Wrapper>
-				<Wrapper title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}>
+				<Wrapper
+					title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}
+					isBig
+				>
 					{homeData.allStrapiPost.edges.length === 0 ? (
 						<EmptyBlog />
 					) : (
@@ -86,7 +91,7 @@ const IndexPage = () => {
 					)}
 				</Wrapper>
 				{homeData.strapiHome?.AboutContent ? (
-					<Wrapper title={homeData.strapiHome.AboutTitle || 'About'}>
+					<Wrapper title={homeData.strapiHome.AboutTitle || 'About'} isBig>
 						<MainAbout content={homeData.strapiHome} />
 					</Wrapper>
 				) : null}
