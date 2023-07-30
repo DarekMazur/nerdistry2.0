@@ -10,7 +10,7 @@ import { StyledPageHeader } from '../../atoms/PageHeader/PageHeader.styles';
 import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper.styles';
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
 
-const Header = ({ pageInfo }) => {
+const Header = ({ pageInfo, title, subtitle }) => {
 	const mainMenuData = useStaticQuery(graphql`
 		query {
 			strapiMainMenu {
@@ -47,9 +47,12 @@ const Header = ({ pageInfo }) => {
 					</div>
 				</StyledHeaderWrapper>
 				<StyledHeaderWrapper>
-					<StyledPageHeader>{pageInfo?.Title || 'Nerdistry.'}</StyledPageHeader>
+					<StyledPageHeader>
+						{title || pageInfo?.Title || 'Nerdistry.'}
+					</StyledPageHeader>
 					<p>
-						{pageInfo?.Slogan ||
+						{subtitle ||
+							pageInfo?.Slogan ||
 							'Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)'}
 					</p>
 				</StyledHeaderWrapper>
@@ -63,6 +66,11 @@ const Header = ({ pageInfo }) => {
 
 export default Header;
 
+Header.defaultProps = {
+	title: null,
+	subtitle: null,
+};
+
 Header.propTypes = {
 	pageInfo: PropTypes.shape({
 		Logo: PropTypes.shape({
@@ -71,4 +79,6 @@ Header.propTypes = {
 		Slogan: PropTypes.string,
 		Title: PropTypes.string,
 	}).isRequired,
+	title: PropTypes.string,
+	subtitle: PropTypes.string,
 };

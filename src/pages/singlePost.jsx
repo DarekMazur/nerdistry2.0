@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import { StyledTag } from '../components/atoms/Tag/Tag.styles';
@@ -9,13 +10,15 @@ import PostCoverWrapper from '../components/molecules/PostCoverWrapper/PostCover
 import PostContent from '../components/molecules/PostContent/PostContent';
 import PostNavigation from '../components/atoms/PostNavigation/PostNavigation';
 
-const test = 'Dolor';
-
 const tags = 'lorem, ipsum, dolor';
 
 const SinglePost = () => (
 	<AppProviders>
-		<Layout>
+		<Helmet>
+			<title>Dolor | Nerdistry</title>
+			<meta name="description" content="Lorem ipsum dolor sit amet" />
+		</Helmet>
+		<Layout title="BLog" subtitle="Lorem Ipsum">
 			<Wrapper title="Category">
 				<DetailsWrapper>
 					{tags.length === 0 ? null : (
@@ -36,7 +39,3 @@ const SinglePost = () => (
 );
 
 export default SinglePost;
-
-export function Head() {
-	return <title>{test}</title>;
-}
