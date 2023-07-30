@@ -50,8 +50,8 @@ const SinglePost = ({ pageContext }) => {
 				/>
 				<PostContent content={pageContext.article.node.Content} />
 				<PostNavigation
-					next={pageContext.article.next}
-					prev={pageContext.article.previous}
+					next={pageContext.article.previous}
+					prev={pageContext.article.next}
 				/>
 			</Layout>
 		</AppProviders>
