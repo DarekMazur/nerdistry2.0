@@ -46,6 +46,7 @@ const SinglePost = ({ pageContext }) => {
 				<PostCoverWrapper
 					coverUrl={pageContext.article.node.CoverImage.url}
 					postTitle={pageContext.article.node.Title}
+					userID={pageContext.article.node.User.data.id}
 				/>
 				<PostContent content={pageContext.article.node.Content} />
 				<PostNavigation
@@ -67,10 +68,15 @@ SinglePost.propTypes = {
 				Description: PropTypes.string,
 				Tags: PropTypes.string,
 				publishedAt: PropTypes.string,
-				categories: PropTypes.arrayOf(oneOfType([PropTypes.string])),
+				categories: PropTypes.arrayOf(oneOfType([PropTypes.object])),
 				Content: PropTypes.string,
 				CoverImage: PropTypes.shape({
 					url: PropTypes.string,
+				}),
+				User: PropTypes.shape({
+					data: PropTypes.shape({
+						id: PropTypes.string,
+					}),
 				}),
 			}),
 			next: PropTypes.objectOf(PropTypes.string),
