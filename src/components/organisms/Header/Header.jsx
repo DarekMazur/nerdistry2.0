@@ -9,6 +9,7 @@ import { StyledHeader } from './Header.styles';
 import { StyledPageHeader } from '../../atoms/PageHeader/PageHeader.styles';
 import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper.styles';
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
+import { StyledTitleDescription } from '../../atoms/TitleDescription/TitleDescription.styles';
 
 const Header = ({ pageInfo, title, subtitle }) => {
 	const mainMenuData = useStaticQuery(graphql`
@@ -46,15 +47,15 @@ const Header = ({ pageInfo, title, subtitle }) => {
 						<HeaderIconsWrapper handleClick={handleMenuClick} />
 					</div>
 				</StyledHeaderWrapper>
-				<StyledHeaderWrapper>
+				<StyledHeaderWrapper $big={!!title}>
 					<StyledPageHeader>
 						{title || pageInfo?.Title || 'Nerdistry.'}
 					</StyledPageHeader>
-					<p>
+					<StyledTitleDescription as={title ? 'h3' : 'p'} $big={!!title}>
 						{subtitle ||
 							pageInfo?.Slogan ||
 							'Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)'}
-					</p>
+					</StyledTitleDescription>
 				</StyledHeaderWrapper>
 				<div>
 					<HeaderMouseIcon />
