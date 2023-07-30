@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import slugify from 'slugify';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledSinglePostExcerpt } from './SinglePostExcerpt.styles';
@@ -49,7 +50,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 	return (
 		<StyledSinglePostExcerpt
 			$dark={isDark}
-			to="/"
+			to={`/blog/${slugify(post.Title)}`}
 			$length={postsLength}
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
