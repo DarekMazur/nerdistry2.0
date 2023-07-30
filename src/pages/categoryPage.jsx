@@ -1,15 +1,34 @@
 import { Helmet } from 'react-helmet';
 import * as React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useEffect, useState } from 'react';
 import AppProviders from '../providers/AppProviders';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
 import SinglePostExcerpt from '../components/molecules/SinglePostExcerpt/SinglePostExcerpt';
 import { StyledMainBlog } from '../components/molecules/MainBlog/MainBlog.styles';
+import Loading from '../components/atoms/Loading/Loading';
+import { ScrollEndMessage } from '../components/atoms/ScrollEndMessage/ScrollEndMessage.styles';
 
 const CategoryPage = ({ pageContext }) => {
-	console.log(pageContext);
+	const { posts } = pageContext.category;
+
+	const [postsList, setPostList] = useState(
+		pageContext.category.posts.slice(0, 2)
+	);
+	const [hasMore, setHasMore] = useState(true);
+
+	const getMorePosts = () => {
+		const newPosts = posts.slice(postsList.length, postsList.length + 2);
+		// eslint-disable-next-line no-shadow
+		setPostList((postsList) => [...postsList, ...newPosts]);
+	};
+
+	useEffect(() => {
+		setHasMore(posts.length > postsList.length);
+	}, [postsList]);
 
 	return (
 		<AppProviders>
@@ -22,7 +41,18 @@ const CategoryPage = ({ pageContext }) => {
 					title={pageContext.category.Description || 'All posts from category'}
 				>
 					{pageContext.category.posts.length ? (
-						<StyledMainBlog>
+						<StyledMainBlog
+							as={InfiniteScroll}
+							dataLength={postsList.length}
+							next={getMorePosts}
+							hasMore={hasMore}
+							loader={<Loading />}
+							endMessage={
+								<ScrollEndMessage>
+									To by było na tyle. Wróć później po więcej 😊
+								</ScrollEndMessage>
+							}
+						>
 							{pageContext.category.posts.map((post) => (
 								<SinglePostExcerpt
 									key={post.id}
