@@ -11,7 +11,9 @@ const SingleProject = ({ isMain = false, project, cover }) => {
 		<StyledSingleProject $main={isMain} $dark={isDark}>
 			<h3>{project.name}</h3>
 			<div>
-				<img src={cover} alt={project.name} />
+				<a href={project.html_url} target="_blank" rel="noreferrer">
+					<img src={cover} alt={project.name} />
+				</a>
 			</div>
 			<ProjectIconsWrapper
 				ghLink={project.html_url}
