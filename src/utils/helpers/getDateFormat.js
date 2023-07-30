@@ -1,4 +1,6 @@
-export const getDateFormat = (date) =>
-	`${String(date.getDate()).padStart(2, '0')}.${String(
-		date.getMonth() + 1
-	).padStart(2, '0')}.${date.getFullYear()}`;
+export const getDateFormat = (date) => {
+	const formatted = new Date(date);
+	return `${String(formatted.getDate()).padStart(2, '0')}.${String(
+		formatted.getMonth() + 1
+	).padStart(2, '0')}.${formatted.getFullYear()}`;
+};

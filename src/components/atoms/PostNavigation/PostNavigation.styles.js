@@ -4,7 +4,7 @@ export const StyledPostNavigation = styled.div`
 	padding: 0 2rem;
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: ${({ $prev }) => ($prev ? 'space-between' : 'flex-end')};
 	font-size: ${({ theme }) => theme.fontSize.mobile.m};
 	font-weight: ${({ theme }) => theme.weights.semiBold};
 

@@ -63,6 +63,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 							}
 						}
 					}
+					next {
+						Title
+					}
+					previous {
+						Title
+					}
 				}
 			}
 		}
@@ -73,13 +79,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		return;
 	}
 
-	const articleTemplate = path.resolve(`src/pages/singlePost.js`);
+	const articleTemplate = path.resolve(`src/pages/singlePost.jsx`);
 	result.data.allStrapiPost.edges.forEach((edge) => {
 		createPage({
-			path: `/blog/${slugify(edge.node)}`,
+			path: `/blog/${slugify(edge.node.Title)}`,
 			component: articleTemplate,
 			context: {
-				article: edge.node,
+				article: edge,
 			},
 		});
 	});

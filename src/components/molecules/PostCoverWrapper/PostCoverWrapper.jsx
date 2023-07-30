@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Avatar from '../../atoms/Avatar/Avatar';
 import { StyledPostCoverWrapper } from './PostCoverWrapper.styles';
 import AuthorPopup from '../AuthorPopup/AuthorPopup';
+import defaultCover from '../../../assets/images/defaultPostCover.jpg';
 
-const PostCoverWrapper = () => {
+const PostCoverWrapper = ({ coverUrl, postTitle }) => {
 	const [isHover, setIsHover] = useState(false);
 	const handleHover = () => setIsHover((prevState) => !prevState);
 	return (
 		<StyledPostCoverWrapper>
-			<img
-				src="https://images.unsplash.com/photo-1661956602153-23384936a1d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-				alt="Lorem ipsum"
-			/>
+			<img src={coverUrl || defaultCover} alt={postTitle || ''} />
 			<Avatar
 				url="https://thispersondoesnotexist.com/"
 				handleHover={handleHover}
@@ -22,3 +21,13 @@ const PostCoverWrapper = () => {
 	);
 };
 export default PostCoverWrapper;
+
+PostCoverWrapper.defaultProps = {
+	coverUrl: null,
+	postTitle: null,
+};
+
+PostCoverWrapper.propTypes = {
+	coverUrl: PropTypes.string,
+	postTitle: PropTypes.string,
+};
