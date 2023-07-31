@@ -5,6 +5,7 @@ import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from 'gatsby';
+import slugify from 'slugify';
 import FeaturedDetails from '../FeaturedDetails/FeaturedDetails';
 import { StyledSingleFeaturePost } from './SingleFeaturePost.styles';
 import { P } from '../P/P.styles';
@@ -45,7 +46,7 @@ const SingleFeaturePost = ({ post }) => {
 	return (
 		<StyledSingleFeaturePost $cover={post.CoverImage.url}>
 			<Link
-				to={`/blog/${post.Title}`}
+				to={`/blog/${slugify(post.Title)}`}
 				onMouseEnter={handleHover}
 				onMouseLeave={handleHover}
 			>

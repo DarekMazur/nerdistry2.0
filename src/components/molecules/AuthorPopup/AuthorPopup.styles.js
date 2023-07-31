@@ -7,6 +7,7 @@ export const StyledAuthorPopup = styled.div`
 	left: 7rem;
 	padding: 2rem;
 	background-color: ${({ theme }) => theme.colors.white};
+	color: ${({ theme }) => theme.colors.black};
 	height: auto;
 	max-height: 40rem;
 	overflow-y: auto;

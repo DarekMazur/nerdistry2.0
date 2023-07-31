@@ -37,5 +37,10 @@ export const StyledPostNavigation = styled.div`
 		margin: 0 2rem;
 		height: 2rem;
 		transition: transform 0.3s ease-in-out;
+
+		path {
+			fill: ${({ theme, $dark }) =>
+				$dark ? theme.colors.white : theme.colors.black};
+		}
 	}
 `;
