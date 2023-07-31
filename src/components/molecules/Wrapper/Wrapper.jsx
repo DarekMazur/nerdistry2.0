@@ -14,7 +14,7 @@ const Wrapper = ({ children, title, titleArray, isWide, isBig }) => {
 			<StyledSectionTitle $big={isBig} $dark={isDark}>
 				{title ||
 					titleArray.map((titleElement) => (
-						<Link to={`/category/${slugify(titleElement)}`}>
+						<Link key={titleElement} to={`/category/${slugify(titleElement)}`}>
 							{titleElement}
 						</Link>
 					))}
