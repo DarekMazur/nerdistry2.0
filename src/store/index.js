@@ -6,9 +6,7 @@ export const switchColorVersion = (payload) => ({
 });
 
 const initialState = {
-	isDark: JSON.parse(localStorage.getItem('isDark'))
-		? localStorage.getItem('isDark')
-		: false,
+	isDark: !!JSON.parse(localStorage.getItem('isDark')),
 };
 
 const saveToLocalStorage = (state) => {
