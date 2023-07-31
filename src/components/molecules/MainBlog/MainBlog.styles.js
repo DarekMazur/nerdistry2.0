@@ -9,5 +9,12 @@ export const StyledMainBlog = styled.div`
 		grid-template-rows: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		align-items: stretch;
+
+		// div:last-of-type, p:last-of-type {
+		// 	font-size: ${({ theme }) => theme.fontSize.mobile.lm};
+		//   grid-column: span 2;
+		//   justify-self: center;
+		//   text-align: center;
+		// }
 	}
 `;

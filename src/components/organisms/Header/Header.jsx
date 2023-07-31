@@ -11,7 +11,7 @@ import { StyledHeaderWrapper } from '../../molecules/HeaderWrapper/HeaderWrapper
 import HeaderIconsWrapper from '../../atoms/HeaderIconsWrapper/HeaderIconsWrapper';
 import { StyledTitleDescription } from '../../atoms/TitleDescription/TitleDescription.styles';
 
-const Header = ({ pageInfo, title, subtitle }) => {
+const Header = ({ pageInfo, title, subtitle, isSubtitleHidden }) => {
 	const mainMenuData = useStaticQuery(graphql`
 		query {
 			strapiMainMenu {
@@ -52,9 +52,11 @@ const Header = ({ pageInfo, title, subtitle }) => {
 						{title || pageInfo?.Title || 'Nerdistry.'}
 					</StyledPageHeader>
 					<StyledTitleDescription as={title ? 'h3' : 'p'} $big={!!title}>
-						{subtitle ||
-							pageInfo?.Slogan ||
-							'Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)'}
+						{isSubtitleHidden
+							? null
+							: subtitle ||
+							  pageInfo?.Slogan ||
+							  'Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)'}
 					</StyledTitleDescription>
 				</StyledHeaderWrapper>
 				<div>
@@ -70,6 +72,7 @@ export default Header;
 Header.defaultProps = {
 	title: null,
 	subtitle: null,
+	isSubtitleHidden: false,
 };
 
 Header.propTypes = {
@@ -82,4 +85,5 @@ Header.propTypes = {
 	}).isRequired,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
+	isSubtitleHidden: PropTypes.bool,
 };
