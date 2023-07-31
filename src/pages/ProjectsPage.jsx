@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
+import { StyledTechList } from '../components/atoms/TechList/TechList.styles';
 
 const ProjectsPage = () => {
 	const [projects, setProjects] = useState('');
@@ -69,13 +70,21 @@ const ProjectsPage = () => {
 								<h3>{project.name}</h3>
 								<img src={images[index].urls.regular} alt={project.name} />
 								<p>{project.description}</p>
-								<p>
-									{techList
+								<StyledTechList>
+									{techList[index]
 										? Object.keys(techList[index]).map((techName) => (
-												<span>{techName} </span>
+												<span>{techName}</span>
 										  ))
 										: null}
-								</p>
+								</StyledTechList>
+								<a href={project.html_url} target="_blank" rel="noreferrer">
+									GitHub
+								</a>
+								{project.homepage ? (
+									<a href={project.homepage} target="_blank" rel="noreferrer">
+										Link
+									</a>
+								) : null}
 							</>
 					  ))
 					: null}
