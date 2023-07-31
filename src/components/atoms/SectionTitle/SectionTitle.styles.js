@@ -9,6 +9,25 @@ export const StyledSectionTitle = styled.h3`
 	text-align: center;
 	margin: 2rem 0;
 
+	a {
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.3s ease-in-out;
+
+		&:hover {
+			color: ${({ theme, $dark }) =>
+				$dark ? theme.colors.darkBlue : theme.colors.lightBlue};
+		}
+
+		&:after {
+			content: ', ';
+		}
+
+		&:last-of-type:after {
+			content: '';
+		}
+	}
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 		font-size: ${({ theme, $big }) =>
 			$big ? theme.fontSize.tablet.xxl : theme.fontSize.tablet.l};
