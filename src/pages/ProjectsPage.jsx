@@ -3,7 +3,9 @@ import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
-import { StyledTechList } from '../components/atoms/TechList/TechList.styles';
+import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
+import Wrapper from '../components/molecules/Wrapper/Wrapper';
+import Project from '../components/molecules/Project/Project';
 
 const ProjectsPage = () => {
 	const [projects, setProjects] = useState('');
@@ -64,30 +66,21 @@ const ProjectsPage = () => {
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
 			<Layout title="BLog" subtitle="Lorem ipsum">
-				{projects && projects.length === images.length
-					? projects.map((project, index) => (
-							<>
-								<h3>{project.name}</h3>
-								<img src={images[index].urls.regular} alt={project.name} />
-								<p>{project.description}</p>
-								<StyledTechList>
-									{techList[index]
-										? Object.keys(techList[index]).map((techName) => (
-												<span>{techName}</span>
-										  ))
-										: null}
-								</StyledTechList>
-								<a href={project.html_url} target="_blank" rel="noreferrer">
-									GitHub
-								</a>
-								{project.homepage ? (
-									<a href={project.homepage} target="_blank" rel="noreferrer">
-										Link
-									</a>
-								) : null}
-							</>
-					  ))
-					: null}
+				<Wrapper title="My projects" isBig isWide>
+					{projects && projects.length === images.length ? (
+						projects.map((project, index) => (
+							<Project
+								key={project.name}
+								projectData={project}
+								index={index}
+								image={images[index].urls.regular}
+								techList={techList}
+							/>
+						))
+					) : (
+						<EmptyBlog />
+					)}
+				</Wrapper>
 			</Layout>
 		</AppProviders>
 	);
