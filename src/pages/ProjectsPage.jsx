@@ -7,6 +7,7 @@ import AppProviders from '../providers/AppProviders';
 const ProjectsPage = () => {
 	const [projects, setProjects] = useState('');
 	const [images, setImages] = useState([]);
+	const [techList, setTechList] = useState([]);
 
 	useEffect(() => {
 		const getCoverImage = async () => {
@@ -42,6 +43,19 @@ const ProjectsPage = () => {
 		getProjectsList();
 	}, []);
 
+	useEffect(() => {
+		const testFetch = async (url) => {
+			const res = await fetch(url);
+			const data = await res.json();
+
+			setTechList((prevState) => [...prevState, data]);
+		};
+
+		if (projects) {
+			projects.map((project) => testFetch(project.languages_url));
+		}
+	}, [projects]);
+
 	return (
 		<AppProviders>
 			<Helmet>
@@ -55,6 +69,13 @@ const ProjectsPage = () => {
 								<h3>{project.name}</h3>
 								<img src={images[index].urls.regular} alt={project.name} />
 								<p>{project.description}</p>
+								<p>
+									{techList
+										? Object.keys(techList[index]).map((techName) => (
+												<span>{techName} </span>
+										  ))
+										: null}
+								</p>
 							</>
 					  ))
 					: null}
