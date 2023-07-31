@@ -2,12 +2,13 @@ import * as React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
 import { StyledTechList } from '../../atoms/TechList/TechList.styles';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
+import { StyledProject } from './Project.styles';
 
 const Project = ({ projectData, image, techList, index }) => {
 	const formattedDate = (date) => new Date(date);
 
 	return (
-		<>
+		<StyledProject>
 			<h3>{projectData.name}</h3>
 			<img src={image} alt={projectData.name} />
 			<p>
@@ -27,7 +28,7 @@ const Project = ({ projectData, image, techList, index }) => {
 					Link
 				</a>
 			) : null}
-		</>
+		</StyledProject>
 	);
 };
 
