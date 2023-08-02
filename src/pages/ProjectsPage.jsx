@@ -65,7 +65,7 @@ const ProjectsPage = () => {
 				<title>Projects | Nerdistry</title>
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
-			<Layout title="BLog" subtitle="Lorem ipsum">
+			<Layout title="Projects" isSubtitleHidden>
 				<Wrapper title="My projects" isBig isWide>
 					{projects && projects.length === images.length ? (
 						projects.map((project, index) => (
