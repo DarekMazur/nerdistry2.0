@@ -1,5 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 
-const ContactForm = () => <>lorem ipsum</>;
+const ContactForm = () => (
+	<div>
+		<h2>Contact form</h2>
+	</div>
+);
 
 export default ContactForm;

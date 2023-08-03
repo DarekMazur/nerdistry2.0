@@ -21,6 +21,7 @@ import VimeoIcon from '../assets/icons/vimeo-v.svg';
 import LinkIcon from '../assets/icons/link-solid.svg';
 import { StyledIcon } from '../components/atoms/Icon/Icon.styles';
 import { StyledContactSectionWrapper } from '../components/molecules/ContactSectionWrapper/ContactSectionWrapper.styles';
+import ContactForm from '../components/molecules/ContactForm/ContasctForm';
 
 const ContactPage = () => {
 	const socialData = useStaticQuery(graphql`
@@ -122,7 +123,7 @@ const ContactPage = () => {
 							))}
 						</ul>
 					</StyledContactSectionWrapper>
-					<div>FORM</div>
+					<ContactForm />
 				</Wrapper>
 			</Layout>
 		</AppProviders>
