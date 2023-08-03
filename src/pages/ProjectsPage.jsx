@@ -6,6 +6,9 @@ import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Project from '../components/molecules/Project/Project';
+import ProjectIconsWrapper from '../components/atoms/ProjectIconsWrapper/ProjectIconsWrapper';
+import { blasts } from '../utils/data/blastFromThePast';
+import { StyledProjectIconWrapper } from '../components/atoms/ProjectIconWrapper/ProjectIconWrapper.styles';
 
 const ProjectsPage = () => {
 	const [projects, setProjects] = useState('');
@@ -80,6 +83,20 @@ const ProjectsPage = () => {
 					) : (
 						<EmptyBlog />
 					)}
+					<StyledProjectIconWrapper>
+						<p>Check more: </p>
+						<ProjectIconsWrapper ghLink={process.env.GATSBY_GITHUB_LINK} />
+					</StyledProjectIconWrapper>
+				</Wrapper>
+				<Wrapper title="Blast from the past" isWide>
+					{blasts.map((project) => (
+						<Project
+							key={project.name}
+							projectData={project}
+							image={project.image}
+							techList={project.techStack}
+						/>
+					))}
 				</Wrapper>
 			</Layout>
 		</AppProviders>

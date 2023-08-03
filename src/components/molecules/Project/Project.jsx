@@ -76,9 +76,14 @@ const Project = ({ projectData, image, techList, index }) => {
 			<ProjectSection $details ref={contentRef} $dark={isDark}>
 				<p>
 					<strong>Created at:</strong>{' '}
-					{getDateFormat(formattedDate(projectData.created_at))} (
-					<strong>last update:</strong>{' '}
-					{getDateFormat(formattedDate(projectData.updated_at))})
+					{getDateFormat(formattedDate(projectData.created_at))}
+					{projectData.updated_at ? (
+						<>
+							{' '}
+							(<strong>last update: </strong>
+							{getDateFormat(formattedDate(projectData.updated_at))})
+						</>
+					) : null}
 				</p>
 				<p>{projectData.description}</p>
 				<StyledTechList>
@@ -115,6 +120,7 @@ export default Project;
 Project.defaultProps = {
 	image: null,
 	techList: null,
+	index: 0,
 };
 
 Project.propTypes = {
@@ -127,5 +133,5 @@ Project.propTypes = {
 	}).isRequired,
 	image: PropTypes.string,
 	techList: PropTypes.arrayOf(oneOfType([PropTypes.object])),
-	index: PropTypes.number.isRequired,
+	index: PropTypes.number,
 };
