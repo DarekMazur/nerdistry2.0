@@ -77,7 +77,7 @@ const IndexPage = () => {
 					isBig
 				>
 					<RecentProjects
-						allProjects={homeData.strapiHome?.ProjectsLink || '/'}
+						allProjects={homeData.strapiHome?.ProjectsLink || '/projects'}
 					/>
 				</Wrapper>
 				<Wrapper
@@ -87,7 +87,10 @@ const IndexPage = () => {
 					{homeData.allStrapiPost.edges.length === 0 ? (
 						<EmptyBlog />
 					) : (
-						<MainBlog posts={homeData.allStrapiPost.edges.slice(0, 4)} />
+						<MainBlog
+							posts={homeData.allStrapiPost.edges.slice(0, 4)}
+							allPost={homeData.strapiHome?.BlogLink || '/blog'}
+						/>
 					)}
 				</Wrapper>
 				{homeData.strapiHome?.AboutContent ? (

@@ -9,6 +9,7 @@ export const StyledMore = styled(Link)`
 	text-decoration: none;
 	width: fit-content;
 	cursor: pointer;
+	padding-right: 1rem;
 
 	&:hover {
 		span {

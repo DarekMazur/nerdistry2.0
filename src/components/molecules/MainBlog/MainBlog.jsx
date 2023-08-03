@@ -4,7 +4,7 @@ import SinglePostExcerpt from '../SinglePostExcerpt/SinglePostExcerpt';
 import { StyledMainBlog } from './MainBlog.styles';
 import More from '../../atoms/More/More';
 
-const MainBlog = ({ posts }) => (
+const MainBlog = ({ posts, allPost }) => (
 	<>
 		<StyledMainBlog>
 			{posts.map((post) => (
@@ -15,11 +15,20 @@ const MainBlog = ({ posts }) => (
 				/>
 			))}
 		</StyledMainBlog>
-		<More title="Check all" justify="flex-end" margin="2rem 0 0" />
+		<More
+			title="Check all"
+			justify="flex-end"
+			margin="2rem 0 0"
+			link={allPost}
+		/>
 	</>
 );
 
 export default MainBlog;
+
+MainBlog.defaultProps = {
+	allPost: null,
+};
 
 MainBlog.propTypes = {
 	posts: arrayOf(
@@ -29,4 +38,5 @@ MainBlog.propTypes = {
 			}),
 		])
 	).isRequired,
+	allPost: PropTypes.string,
 };
