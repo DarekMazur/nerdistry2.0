@@ -13,7 +13,7 @@ export default async (req, res) => {
 		to: 'kontakt@nerdistry.pl',
 		replyTo: `${req.body.name} <${req.body.email}>`,
 		subject: `nerdistry.pl - message from ${req.body.name}`,
-		text: `${req.body.name} (${req.body.email}) pisze: ${req.body.message}`,
+		text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
 		html: `<h1>Hello world!</h1>
     <h3>You've got message from ${req.body.name} (${req.body.email})</h3>
     <p>${req.body.message}</p>`,
@@ -22,11 +22,11 @@ export default async (req, res) => {
 	const confirmMail = {
 		from: `Nerdistry <no-replay@nerdistry.pl>`,
 		to: `${req.body.name} <${req.body.email}>`,
-		subject: `Hey ${req.body.name}, thanks for your message!`,
+		subject: `Hi ${req.body.name}, thanks for your message!`,
 		text: `Hello ${req.body.name}, your message from nerdistry.pl was sent: "${req.body.message}"`,
 		html: `<h1>Hello ${req.body.name}</h1>
-    <h3>Thanks for message!</h3>
-    <p>For sure, I'll read it and do my best to answer!</p>
+    <h3>Thanks for your message!</h3>
+    <p>I will 100% read it and do my best to respond!</p>
     <p>Regards,</p>
     <p>Gacek</p>
     <p>You can check your message bellow:</p>
@@ -34,23 +34,26 @@ export default async (req, res) => {
 	};
 
 	Promise.all([transport.sendMail(mailMail), transport.sendMail(confirmMail)])
-		// eslint-disable-next-line no-shadow
-		.then(([res]) => {
+		.then(([transportRes]) => {
+			// eslint-disable-next-line no-console
 			console.log(
 				'Message delivered with code %s %s',
-				res.statusCode,
-				res.statusMessage
+				transportRes.statusCode,
+				transportRes.statusMessage
 			);
-			return res.end();
+			return transportRes.end();
 		})
 		.catch((err) => {
+			// eslint-disable-next-line no-console
 			console.log('Errors occurred, failed to deliver message');
 
 			if (err.response && err.response.body && err.response.body.errors) {
+				// eslint-disable-next-line no-console
 				err.response.body.errors.forEach((error) =>
 					console.log('%s: %s', error.field, error.message)
 				);
 			} else {
+				// eslint-disable-next-line no-console
 				console.log(err);
 			}
 

@@ -27,7 +27,7 @@ export const StyledContactSectionWrapper = styled.div`
 		svg {
 			path {
 				fill: ${({ theme, $dark }) =>
-					$dark ? theme.colors.black : theme.colors.black};
+					$dark ? theme.colors.white : theme.colors.black};
 			}
 		}
 	}

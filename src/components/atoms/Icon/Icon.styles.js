@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledIcon = styled.div`
-	 position: ${({ $isToTop }) => ($isToTop ? 'fixed' : 'inherit')};
-	 display: flex;
+	position: ${({ $isToTop }) => ($isToTop ? 'fixed' : 'inherit')};
+	display: flex;
 	justify-content: ${({ $justify }) =>
 		$justify ? `${$justify} !important` : 'center'};
 	align-items: center;
@@ -24,28 +24,27 @@ export const StyledIcon = styled.div`
 				$dark ? theme.colors.black : theme.colors.white};
 		}
 	}
-	
+
 	&:hover {
-    svg {
-      path {
-        stroke: ${({ theme, $isToTop, $dark }) =>
+		svg {
+			path {
+				stroke: ${({ theme, $isToTop, $dark }) =>
 					$isToTop
 						? $dark
 							? theme.colors.black
 							: theme.colors.white
 						: theme.colors.darkBlue};
-        fill: ${({ theme, $isToTop, $dark }) =>
+				fill: ${({ theme, $isToTop, $dark }) =>
 					$isToTop
 						? $dark
 							? theme.colors.black
 							: theme.colors.white
 						: theme.colors.darkBlue};
-      }
-    }
+			}
+		}
 	}
-	
+
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		right: 3rem;
 	}
-}
 `;
