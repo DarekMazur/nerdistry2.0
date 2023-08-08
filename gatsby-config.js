@@ -73,7 +73,7 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-strapi-graphql',
 			options: {
-				apiURL: process.env.GATSBY_STRAPI_API_URL || 'http://localhost:1339',
+				apiURL: process.env.GATSBY_STRAPI_API_URL,
 				collectionTypes: ['Post', 'Category'],
 				singleTypes: [
 					'Home',

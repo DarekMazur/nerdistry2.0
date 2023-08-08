@@ -22,6 +22,7 @@
   "react/function-component-definition": "off",
   "default-param-last": "off",
   "no-nested-ternary": "off",
-  "jsx-a11y/control-has-associated-label": "off"
+  "jsx-a11y/control-has-associated-label": "off",
+  "consistent-return": "off"
  }
 }
