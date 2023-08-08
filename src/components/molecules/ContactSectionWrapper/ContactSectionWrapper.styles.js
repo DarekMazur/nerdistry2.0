@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledContactSectionWrapper = styled.div`
 	min-height: 40rem;
-	padding: 0 3.2rem 5.2rem;
+	padding: 0 3rem 5.2rem;
+	margin: 0 3rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;

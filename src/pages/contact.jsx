@@ -4,8 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
-import ContactForm from '../components/molecules/ContactForm/ContactForm';
 import ContactSection from '../components/molecules/ContactSectionWrapper/ContactSection';
+import ContactFormWrapper from '../components/molecules/ContactFormWrapper/ContactFormWrapper';
 
 const ContactPage = () => {
 	const socialData = useStaticQuery(graphql`
@@ -27,13 +27,9 @@ const ContactPage = () => {
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
 			<Layout title="Contact" isSubtitleHidden>
-				<Wrapper title="Stay in contact!">
+				<Wrapper title="Stay in contact!" isWide>
 					<ContactSection data={socialData.strapiSocialMenu} />
-					<ContactForm
-						primaryText="Send"
-						secondaryText="Sent!"
-						loadingText="Sending..."
-					/>
+					<ContactFormWrapper />
 				</Wrapper>
 			</Layout>
 		</AppProviders>
