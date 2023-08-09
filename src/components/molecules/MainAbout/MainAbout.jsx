@@ -20,13 +20,13 @@ const MainAbout = ({ content }) => {
 		gsap.fromTo(
 			paragraphRef.current.children,
 			{
-				y: '+=20px%',
+				y: '+=10px',
 				autoAlpha: 0,
 			},
 			{
 				y: 0,
-				duration: 0.2,
-				stagger: 0.017,
+				duration: 0.12,
+				stagger: 0.009,
 				delay: 0.1,
 				autoAlpha: 1,
 				scrollTrigger: {

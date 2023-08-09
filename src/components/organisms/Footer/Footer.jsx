@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, useStaticQuery } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
@@ -101,7 +101,9 @@ const Footer = ({ isDark }) => {
 
 	return (
 		<StyledFooter>
-			<Logo isFooter />
+			<Link to="/">
+				<Logo isFooter />
+			</Link>
 			<nav>
 				<ul>
 					{footerMenu.map((menuItem) => (

@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.mainFont};
     color: ${({ theme, $dark }) =>
 			$dark ? theme.colors.white : theme.colors.black};
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.mobile.m};
     line-height: 2;
     width: 100vw;
     overflow-x: hidden;
@@ -30,6 +30,14 @@ export const GlobalStyle = createGlobalStyle`
 			$dark ? theme.colors.darkGrey : theme.colors.white};
     padding: 0;
     margin: 0;
+
+    @media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+      font-size: ${({ theme }) => theme.fontSize.tablet.m};
+    }
+
+    @media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+      font-size: ${({ theme }) => theme.fontSize.desktop.m};
+    }
   }
   
   p {
