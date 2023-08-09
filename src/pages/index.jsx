@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -53,17 +54,21 @@ const IndexPage = () => {
 		}
 	`);
 
+	const { t } = useTranslation();
+
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>{homeData.strapiIdentity.Title || 'Home'}</title>
+				<title>{homeData.strapiIdentity.Title || t('main.home')}</title>
 				<meta name="description" content={homeData.strapiIdentity.Slogan} />
 			</Helmet>
 
 			<Layout title="" subtitle="">
 				{getFeaturedPosts(homeData.allStrapiPost.edges).length ? (
 					<Wrapper
-						title={homeData.strapiHome?.FeaturedPostsTitle || 'Nice to read'}
+						title={
+							homeData.strapiHome?.FeaturedPostsTitle || t('main.feturedTitle')
+						}
 						isWide
 						isBig
 					>
@@ -73,7 +78,9 @@ const IndexPage = () => {
 					</Wrapper>
 				) : null}
 				<Wrapper
-					title={homeData.strapiHome?.RecentProjectsTitle || 'Recent projects'}
+					title={
+						homeData.strapiHome?.RecentProjectsTitle || t('main.recentProjects')
+					}
 					isBig
 				>
 					<RecentProjects
@@ -81,7 +88,7 @@ const IndexPage = () => {
 					/>
 				</Wrapper>
 				<Wrapper
-					title={homeData.strapiHome?.BlogTitle || 'Latest on blog'}
+					title={homeData.strapiHome?.BlogTitle || t('main.blogLatest')}
 					isBig
 				>
 					{homeData.allStrapiPost.edges.length === 0 ? (
@@ -94,7 +101,10 @@ const IndexPage = () => {
 					)}
 				</Wrapper>
 				{homeData.strapiHome?.AboutContent ? (
-					<Wrapper title={homeData.strapiHome.AboutTitle || 'About'} isBig>
+					<Wrapper
+						title={homeData.strapiHome.AboutTitle || t('main.about')}
+						isBig
+					>
 						<MainAbout content={homeData.strapiHome} />
 					</Wrapper>
 				) : null}
