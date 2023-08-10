@@ -3,6 +3,7 @@ import PropTypes, { oneOfType } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { StyledTechList } from '../../atoms/TechList/TechList.styles';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledProject } from './Project.styles';
@@ -21,6 +22,8 @@ const Project = ({ projectData, image, techList, index }) => {
 	const imageRef = useRef(null);
 	const contentRef = useRef(null);
 	const [parHeight, setParHeight] = useState(0);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		setParHeight(contentRef.current.offsetHeight);
@@ -70,24 +73,24 @@ const Project = ({ projectData, image, techList, index }) => {
 			>
 				<img src={image} alt={projectData.name} />
 				<StyledShowMore>
-					{isOpen ? 'Hide details' : 'Show details'}
+					{isOpen ? t('project.hideDetails') : t('project.showDetails')}
 				</StyledShowMore>
 			</ProjectSection>
 			<ProjectSection $details ref={contentRef} $dark={isDark}>
 				<p>
-					<strong>Created at:</strong>{' '}
+					<strong>{t('project.createdAt')}</strong>{' '}
 					{getDateFormat(formattedDate(projectData.created_at))}
 					{projectData.updated_at ? (
 						<>
 							{' '}
-							(<strong>last update: </strong>
+							(<strong>{t('project.updatedAt')} </strong>
 							{getDateFormat(formattedDate(projectData.updated_at))})
 						</>
 					) : null}
 				</p>
 				<p>{projectData.description}</p>
 				<StyledTechList>
-					<strong>Stack: </strong>
+					<strong>{t('project.stack')} </strong>
 					{techList[index]
 						? Object.keys(techList[index]).map((techName) => (
 								<span key={techName}>{techName}</span>
@@ -103,13 +106,13 @@ const Project = ({ projectData, image, techList, index }) => {
 						onMouseLeave={handleMouseLeave}
 						$mouesOver={isMouseOver}
 					>
-						<span>See project</span>
-						<span>Click!</span>
+						<span>{t('project.checkProject')}</span>
+						<span>{t('project.click')}</span>
 					</StyledButton>
 				) : (
-					<i>-- work in progress --</i>
+					<i>-- {t('project.workInProgress')} --</i>
 				)}
-				<Pointer onClick={handleClick}>[click to close]</Pointer>
+				<Pointer onClick={handleClick}>[{t('project.close')}]</Pointer>
 			</ProjectSection>
 		</StyledProject>
 	);

@@ -5,6 +5,7 @@ import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from 'gatsby';
+import { useTranslation } from 'react-i18next';
 import slugify from 'slugify';
 import FeaturedDetails from '../FeaturedDetails/FeaturedDetails';
 import { StyledSingleFeaturePost } from './SingleFeaturePost.styles';
@@ -19,6 +20,8 @@ const SingleFeaturePost = ({ post }) => {
 	const [isHover, setIsHover] = useState(false);
 	const paragraphRef = useRef(null);
 	const handleHover = () => setIsHover((prevState) => !prevState);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		SplitType.create(paragraphRef.current, { types: 'chars' });
@@ -60,10 +63,12 @@ const SingleFeaturePost = ({ post }) => {
 						? post.Description
 						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
-				<P $isBold>{getReadingTime(post.Content)} minutes to read</P>
+				<P $isBold>
+					{getReadingTime(post.Content)} {t('blog.post.readingTime')}
+				</P>
 				<More
 					tag="div"
-					title="Read more"
+					title={t('blog.post.more')}
 					isAbsolute
 					isHover={isHover}
 					color="white"

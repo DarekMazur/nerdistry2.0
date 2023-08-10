@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -40,6 +41,8 @@ const BlogPage = () => {
 		}
 	`);
 
+	const { t } = useTranslation();
+
 	const posts = blogData.allStrapiPost.edges;
 
 	const [postsList, setPostList] = useState(
@@ -63,18 +66,12 @@ const BlogPage = () => {
 				<title>Blog | Nerdistry</title>
 				<meta
 					name="description"
-					content={
-						blogData.strapiIdentity.Slogan ||
-						`Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)`
-					}
+					content={blogData.strapiIdentity.Slogan || t('identification.slogan')}
 				/>
 			</Helmet>
 			<Layout title="Blog" isSubtitleHidden>
 				<Wrapper
-					title={
-						blogData.strapiIdentity.Slogan ||
-						`Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)`
-					}
+					title={blogData.strapiIdentity.Slogan || t('identification.slogan')}
 				>
 					{blogData.allStrapiPost.edges.length ? (
 						<StyledMainBlog
@@ -84,9 +81,7 @@ const BlogPage = () => {
 							hasMore={hasMore}
 							loader={<Loading />}
 							endMessage={
-								<ScrollEndMessage>
-									To by było na tyle. Wróć później po więcej 😊
-								</ScrollEndMessage>
+								<ScrollEndMessage>{t('blog.postsEnd')}</ScrollEndMessage>
 							}
 						>
 							{postsList.map((post) => (

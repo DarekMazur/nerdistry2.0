@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
@@ -21,6 +22,8 @@ import { StyledIcon } from '../../atoms/Icon/Icon.styles';
 
 const ContactSection = ({ data }) => {
 	const isDark = useSelector((state) => state.isDark);
+
+	const { t } = useTranslation();
 
 	const getSocialIconSvg = (socialPlatform) => {
 		if (socialPlatform.toLowerCase().indexOf('linkedin') !== -1) {
@@ -70,19 +73,7 @@ const ContactSection = ({ data }) => {
 
 	return (
 		<StyledContactSectionWrapper $dark={isDark}>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet
-				asperiores cum doloribus esse in incidunt inventore, nemo omnis porro
-				qui repudiandae sit soluta tempora unde ut vero. Alias amet asperiores
-				aspernatur blanditiis commodi consequatur corporis cumque deleniti dicta
-				dignissimos dolore doloremque error eum ex facere fugiat ipsa iste
-				labore laboriosam, magnam magni modi necessitatibus nemo nulla odit quam
-				quibusdam quisquam, ratione rem rerum saepe sapiente sed suscipit
-				tempora tempore vero voluptatibus! Corporis culpa deserunt est et,
-				eveniet excepturi fugiat inventore ipsam, iste laborum minus natus neque
-				reprehenderit tempora ut, voluptatem voluptates. Adipisci blanditiis cum
-				eum, quos similique voluptates. A!
-			</p>
+			<p>{t('contact.desctiption')}</p>
 			<ul>
 				{data.url.map((socialMenuItem) => (
 					<li key={socialMenuItem.id}>
