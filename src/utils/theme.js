@@ -12,7 +12,7 @@ export const theme = {
 	fonts: {
 		mainFont: '"Montserrat", sans-serif',
 		headerFont: '"Montserrat Alternates", sans-serif',
-		topHeaderFont: '"Notable", sans-serif',
+		topHeaderFont: '"Russo One", sans-serif',
 		menuFont: '"Montserrat Subrayada", sans-serif',
 		codeFont: '"Share Tech Mono", monospace',
 	},
