@@ -27,6 +27,8 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 
 	const { t } = useTranslation();
 
+	const estimation = getReadingTime(post.Content);
+
 	useEffect(() => {
 		SplitType.create(paragraphRef.current, { types: 'chars' });
 
@@ -68,9 +70,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 					? post.Description
 					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
-			<P>
-				{getReadingTime(post.Content)} {t('blog.post.readingTime')}
-			</P>
+			<P>{t('blog.post.readingTime', { estimation })}</P>
 			<More
 				tag="div"
 				title={t('blog.post.more')}
