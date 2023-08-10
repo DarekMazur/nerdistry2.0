@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+import { useTranslation } from 'react-i18next';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
@@ -20,14 +21,16 @@ const ContactPage = () => {
 		}
 	`);
 
+	const { t } = useTranslation();
+
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>Contact | Nerdistry</title>
+				<title>{t('contact.title')} | Nerdistry</title>
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
-			<Layout title="Contact" isSubtitleHidden>
-				<Wrapper title="Stay in contact!" isWide>
+			<Layout title={t('contact.title')} isSubtitleHidden>
+				<Wrapper title={t('contact.subTitle')} isWide>
 					<ContactSection data={socialData.strapiSocialMenu} />
 					<ContactFormWrapper />
 				</Wrapper>

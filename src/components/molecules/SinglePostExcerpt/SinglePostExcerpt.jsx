@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import slugify from 'slugify';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
@@ -23,6 +24,8 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 	const paragraphRef = useRef(null);
 
 	const handleHover = () => setIsHover((prevState) => !prevState);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		SplitType.create(paragraphRef.current, { types: 'chars' });
@@ -57,7 +60,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 		>
 			<PostExcCover imageURL={post.CoverImage.url} alt={post.Title} />
 			<p>
-				<span>posted on</span> {getDateFormat(publishedDate)}
+				<span>{t('blog.post.postedOn')}</span> {getDateFormat(publishedDate)}
 			</p>
 			<h4>{post.Title}</h4>
 			<P ref={paragraphRef}>
@@ -65,8 +68,15 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 					? post.Description
 					: `${getTextExcerpt(post.Content, 200)}[...]`}
 			</P>
-			<P>{getReadingTime(post.Content)} minutes to read</P>
-			<More tag="div" title="Read more" isAbsolute isHover={isHover} />
+			<P>
+				{getReadingTime(post.Content)} {t('blog.post.readingTime')}
+			</P>
+			<More
+				tag="div"
+				title={t('blog.post.more')}
+				isAbsolute
+				isHover={isHover}
+			/>
 		</StyledSinglePostExcerpt>
 	);
 };

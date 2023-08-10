@@ -3,25 +3,17 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { StyledContactForm } from './ContactForm.styles';
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';
 
-const validationSchema = Yup.object().shape({
-	name: Yup.string()
-		.required('name is required')
-		.min(2, 'name is to short, it should be at least 2 chars long')
-		.max(30, 'name is to long, it should be not longer than 30 characters'),
-	email: Yup.string()
-		.required('email is required')
-		.email('incorrect email format'),
-	message: Yup.string().required(`message can't be empty`),
-	acceptTerms: Yup.bool().oneOf([true], 'accept privacy police'),
-});
-
 const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(false);
+
+	const { t } = useTranslation();
 
 	const errorMessage = (message) => {
 		const error = message ? <div>{message}</div> : null;
@@ -37,6 +29,23 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 			{sufix ? ` ${sufix}` : ''}
 		</>
 	);
+
+	const validationSchema = Yup.object().shape({
+		name: Yup.string()
+			.required(i18next.t('contact.form.validation.nameRequired'))
+			.min(2, i18next.t('contact.form.validation.nameShot'))
+			.max(30, i18next.t('contact.form.validation.nameLong')),
+		email: Yup.string()
+			.required(i18next.t('contact.form.validation.emailRequired'))
+			.email(i18next.t('contact.form.validation.emailFormat')),
+		message: Yup.string().required(
+			i18next.t('contact.form.validation.messageRequired')
+		),
+		acceptTerms: Yup.bool().oneOf(
+			[true],
+			i18next.t('contact.form.validation.privacyAcceptance')
+		),
+	});
 
 	return (
 		<StyledContactForm>
@@ -76,7 +85,7 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 						<Input
 							name="name"
 							id="name"
-							label="Name"
+							label={t('contact.form.name')}
 							onChange={handleChange}
 							value={values.name}
 							errorMessage={errorMessage(errors.name)}
@@ -86,7 +95,7 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 							type="email"
 							name="email"
 							id="email"
-							label="E-mail"
+							label={t('contact.form.email')}
 							onChange={handleChange}
 							value={values.email}
 							errorMessage={errorMessage(errors.email)}
@@ -96,7 +105,7 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 							tag="textarea"
 							name="message"
 							id="message"
-							label="Message"
+							label={t('contact.form.message')}
 							onChange={handleChange}
 							value={values.message}
 							errorMessage={errorMessage(errors.message)}
@@ -106,7 +115,10 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 							type="checkbox"
 							name="acceptTerms"
 							id="acceptTerms"
-							label={privacyLink('privacy policy', 'Accept')}
+							label={privacyLink(
+								t('contact.form.privacy'),
+								t('contact.form.accept')
+							)}
 							onChange={handleChange}
 							value={values.acceptTerms}
 							errorMessage={errorMessage(errors.acceptTerms)}

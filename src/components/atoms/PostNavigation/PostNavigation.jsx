@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import slugify from 'slugify';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import ArrowLeft from '../../../assets/icons/arrow-left-solid.svg';
 import ArrowRight from '../../../assets/icons/arrow-right-solid.svg';
@@ -10,17 +11,19 @@ import { StyledPostNavigation } from './PostNavigation.styles';
 const PostNavigation = ({ next, prev }) => {
 	const isDark = useSelector((state) => state.isDark);
 
+	const { t } = useTranslation();
+
 	return (
 		<StyledPostNavigation $prev={!!prev} $dark={isDark}>
 			{prev ? (
 				<Link to={`/blog/${slugify(prev.Title)}`}>
-					<ArrowLeft /> Previous
+					<ArrowLeft /> {t('blog.post.previous')}
 				</Link>
 			) : null}
 
 			{next ? (
 				<Link to={`/blog/${slugify(next.Title)}`}>
-					Next <ArrowRight />
+					{t('blog.post.next')} <ArrowRight />
 				</Link>
 			) : null}
 		</StyledPostNavigation>

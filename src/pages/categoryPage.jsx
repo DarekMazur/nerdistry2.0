@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes, { oneOfType } from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useEffect, useState } from 'react';
@@ -20,6 +21,8 @@ const CategoryPage = ({ pageContext }) => {
 	);
 	const [hasMore, setHasMore] = useState(true);
 
+	const { t } = useTranslation();
+
 	const getMorePosts = () => {
 		const newPosts = posts.slice(postsList.length, postsList.length + 2);
 		// eslint-disable-next-line no-shadow
@@ -33,12 +36,14 @@ const CategoryPage = ({ pageContext }) => {
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>Category {pageContext.category.Name} | Nerdistry</title>
+				<title>
+					{t('category.title')} {pageContext.category.Name} | Nerdistry
+				</title>
 				<meta name="description" content="Lorem ipsum" />
 			</Helmet>
 			<Layout title="Blog" subtitle={pageContext.category.Name}>
 				<Wrapper
-					title={pageContext.category.Description || 'All posts from category'}
+					title={pageContext.category.Description || t('category.description')}
 				>
 					{pageContext.category.posts.length ? (
 						<StyledMainBlog
@@ -48,9 +53,7 @@ const CategoryPage = ({ pageContext }) => {
 							hasMore={hasMore}
 							loader={<Loading />}
 							endMessage={
-								<ScrollEndMessage>
-									To by było na tyle. Wróć później po więcej 😊
-								</ScrollEndMessage>
+								<ScrollEndMessage>{t('category.postsEnd')}</ScrollEndMessage>
 							}
 						>
 							{pageContext.category.posts.map((post) => (

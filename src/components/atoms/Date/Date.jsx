@@ -1,12 +1,16 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { StyledDate } from './Date.styles';
 
-const Date = ({ date, size }) => (
-	<StyledDate $size={size}>
-		<span>Posted on</span> {date}
-	</StyledDate>
-);
+const Date = ({ date, size }) => {
+	const { t } = useTranslation();
+	return (
+		<StyledDate $size={size}>
+			<span>{t('blog.post.postedOn')}</span> {date}
+		</StyledDate>
+	);
+};
 
 export default Date;
 

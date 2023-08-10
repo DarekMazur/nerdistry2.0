@@ -27,7 +27,7 @@ const SinglePost = ({ pageContext }) => {
 					content={pageContext.article.node.Description}
 				/>
 			</Helmet>
-			<Layout title="BLog" subtitle={pageContext.article.node.Title}>
+			<Layout title="Blog" subtitle={pageContext.article.node.Title}>
 				<Wrapper titleArray={catList}>
 					<DetailsWrapper>
 						{pageContext.article.node.Tags.length === 0 ? null : (

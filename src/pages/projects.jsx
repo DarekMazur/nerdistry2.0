@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
@@ -14,6 +15,8 @@ const ProjectsPage = () => {
 	const [projects, setProjects] = useState('');
 	const [images, setImages] = useState([]);
 	const [techList, setTechList] = useState([]);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const getCoverImage = async () => {
@@ -65,11 +68,11 @@ const ProjectsPage = () => {
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>Projects | Nerdistry</title>
+				<title>{t('project.title')} | Nerdistry</title>
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
-			<Layout title="Projects" isSubtitleHidden>
-				<Wrapper title="My projects" isBig isWide>
+			<Layout title={t('project.title')} isSubtitleHidden>
+				<Wrapper title={t('project.subTitle')} isBig isWide>
 					{projects && projects.length === images.length ? (
 						projects.map((project, index) => (
 							<Project
@@ -88,7 +91,7 @@ const ProjectsPage = () => {
 						<ProjectIconsWrapper ghLink={process.env.GATSBY_GITHUB_LINK} />
 					</StyledProjectIconWrapper>
 				</Wrapper>
-				<Wrapper title="Blast from the past" isWide>
+				<Wrapper title={t('project.older')} isWide>
 					{blasts.map((project) => (
 						<Project
 							key={project.name}
