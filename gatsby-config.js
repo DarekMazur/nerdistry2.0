@@ -53,16 +53,31 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-google-fonts`,
+			resolve: `gatsby-plugin-google-fonts-v2`,
 			options: {
 				fonts: [
-					`Montserrat: 400,400i,700,900`,
-					`Montserrat Alternates: 400,700`,
-					`Montserrat Subrayada`,
-					`Share Tech Mono`,
-					`Russo One`,
+					{
+						family: 'Montserrat',
+						weights: ['400', '700', '900'],
+						variable: ['ital'],
+					},
+					{
+						family: 'Montserrat Alternates',
+						weights: ['400', '700'],
+					},
+					{
+						family: 'Montserrat Subrayada',
+						weights: ['400'],
+					},
+					{
+						family: 'Share Tech Mono',
+						weights: ['400'],
+					},
+					{
+						family: 'Russo One',
+						weights: ['400'],
+					},
 				],
-				display: 'swap',
 			},
 		},
 		{
