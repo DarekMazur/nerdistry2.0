@@ -23,6 +23,8 @@ const SingleFeaturePost = ({ post }) => {
 
 	const { t } = useTranslation();
 
+	const estimation = getReadingTime(post.Content);
+
 	useEffect(() => {
 		SplitType.create(paragraphRef.current, { types: 'chars' });
 
@@ -63,9 +65,7 @@ const SingleFeaturePost = ({ post }) => {
 						? post.Description
 						: `${getTextExcerpt(post.Content, 200)}[...]`}
 				</P>
-				<P $isBold>
-					{getReadingTime(post.Content)} {t('blog.post.readingTime')}
-				</P>
+				<P $isBold>{t('blog.post.readingTime', { estimation })}</P>
 				<More
 					tag="div"
 					title={t('blog.post.more')}

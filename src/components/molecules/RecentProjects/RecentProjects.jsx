@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import SingleProject from '../SingleProject/SingleProject';
 import DefaultCover from '../../../assets/images/defaultProjectCover.jpg';
 import { StyledRecentProjects } from './RecentProjects.styles';
@@ -9,6 +10,8 @@ import More from '../../atoms/More/More';
 const RecentProjects = ({ allProjects }) => {
 	const [projects, setProjects] = useState('');
 	const [images, setImages] = useState([]);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const getCoverImage = async () => {
@@ -66,7 +69,7 @@ const RecentProjects = ({ allProjects }) => {
 					</div>
 				)}
 			</StyledRecentProjects>
-			<More title="Check all" link={allProjects} justify="flex-end" />
+			<More title={t('main.more')} link={allProjects} justify="flex-end" />
 		</>
 	);
 };
