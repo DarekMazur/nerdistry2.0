@@ -5,14 +5,20 @@ export const switchColorVersion = (payload) => ({
 	payload,
 });
 
+const isBrowser = typeof window !== 'undefined';
+
 const initialState = {
-	isDark: !!JSON.parse(localStorage.getItem('isDark')),
+	isDark: isBrowser
+		? !!JSON.parse(window.localStorage.getItem('isDark'))
+		: false,
 };
 
 const saveToLocalStorage = (state) => {
 	try {
 		const serialisedVersionState = JSON.stringify(state.isDark);
-		localStorage.setItem('isDark', serialisedVersionState);
+		if (isBrowser) {
+			window.localStorage.setItem('isDark', serialisedVersionState);
+		}
 	} catch (e) {
 		console.warn(e);
 	}

@@ -10,6 +10,9 @@ module.exports = {
 		title: `nerdistry_gatsbyjs`,
 		siteUrl: `https://www.yourdomain.tld`,
 	},
+	flags: {
+		DEV_SSR: true,
+	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
 		'gatsby-plugin-styled-components',
