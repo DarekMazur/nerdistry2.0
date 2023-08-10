@@ -1,7 +1,6 @@
 import ranczo from '../../assets/images/blast/ranczo.jpg';
 import sw from '../../assets/images/blast/sw.jpg';
 import kwk from '../../assets/images/blast/kwk.jpg';
-import calc from '../../assets/images/blast/calc.jpg';
 import ohp from '../../assets/images/blast/ohp.jpg';
 import quiz from '../../assets/images/blast/quiz.jpg';
 
@@ -20,10 +19,10 @@ export const blasts = [
 			},
 		],
 		description:
-			'Strona informacyjna motelu/hotelu dla koni, na podstawie projektu graficznego.',
+			'Strona informacyjna motelu/hotelu dla koni, na podstawie projektu graficznego (wydaje się, że nie przetrwali lockdownu)',
 		created_at: '10.01.2019',
 		updated_at: null,
-		homepage: 'http://www.ranczopodlysica.pl/',
+		homepage: '/',
 		image: ranczo,
 	},
 	{
@@ -57,27 +56,11 @@ export const blasts = [
 			},
 		],
 		description:
-			'Strona Klubu Wspinaczkowego Kielce. Niestey klub się rozpadł i finalnie nigdy nie wyszła na produkcję :(',
+			'Strona Klubu Wspinaczkowego Kielce. Niestey klub się rozpadł i finalnie nigdy nie wyszła na produkcję ☹️',
 		created_at: '06.01.2019',
 		updated_at: null,
 		homepage: 'http://demo.dariusz-mazur.pl/',
 		image: kwk,
-	},
-	{
-		name: 'Lista płac',
-		techStack: [
-			{
-				PHP: '',
-				JavaScript: '',
-				HTML5: '',
-				CSS3: '',
-			},
-		],
-		description: 'Kalkulator listy płac (nieaktualne wylicznenia!)',
-		created_at: '06.01.2019',
-		updated_at: null,
-		homepage: 'http://cv.dariusz-mazur.pl/place.php',
-		image: calc,
 	},
 	{
 		name: 'Świętokrzyska Wojewódzka Komenda OHP',
