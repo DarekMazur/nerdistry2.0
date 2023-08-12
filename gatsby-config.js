@@ -1,8 +1,6 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-const { languages, defaultLanguage } = require('./languages');
-
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
@@ -46,12 +44,13 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-react-i18next',
 			options: {
-				languages,
-				defaultLanguage,
+				languages: [`en`, `pl`],
+				defaultLanguage: 'pl',
+				fallbackLanguage: 'en',
 				i18nextOptions: {
-					// debug: true,
-					fallbackLng: defaultLanguage,
-					supportedLngs: languages,
+					debug: true,
+					fallbackLng: 'en',
+					supportedLngs: [`en`, `pl`],
 					defaultNS: 'translation',
 					interpolation: {
 						escapeValue: false,
