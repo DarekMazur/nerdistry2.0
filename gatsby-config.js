@@ -11,7 +11,7 @@ module.exports = {
 		siteUrl: `https://www.yourdomain.tld`,
 	},
 	flags: {
-		DEV_SSR: true,
+		DEV_SSR: process.env.GATSBY_DEBUGGER,
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -48,7 +48,7 @@ module.exports = {
 				defaultLanguage: 'pl',
 				fallbackLanguage: 'en',
 				i18nextOptions: {
-					debug: true,
+					debug: process.env.GATSBY_DEBUGGER,
 					fallbackLng: 'en',
 					supportedLngs: [`en`, `pl`],
 					defaultNS: 'translation',
