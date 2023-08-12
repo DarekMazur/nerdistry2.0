@@ -13,6 +13,10 @@ const AppProviders = ({ children }) => (
 
 export default AppProviders;
 
+AppProviders.defaultProps = {
+	children: null,
+};
+
 AppProviders.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes, { oneOfType } from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import { StyledTag } from '../components/atoms/Tag/Tag.styles';
@@ -19,6 +19,12 @@ const SinglePost = ({ pageContext }) => {
 	if (article) {
 		article.node.categories.map((category) => catList.push(category.Name));
 	}
+
+	React.useEffect(() => {
+		if (!article) {
+			navigate('/404');
+		}
+	}, []);
 
 	return (
 		<AppProviders>
@@ -54,7 +60,7 @@ const SinglePost = ({ pageContext }) => {
 					</Layout>
 				</>
 			) : (
-				<div />
+				<div>Somethings goes wrong...</div>
 			)}
 		</AppProviders>
 	);

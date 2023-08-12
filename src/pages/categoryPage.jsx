@@ -4,7 +4,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes, { oneOfType } from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useEffect, useState } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import AppProviders from '../providers/AppProviders';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
@@ -25,10 +25,18 @@ const CategoryPage = ({ pageContext }) => {
 	const { t } = useTranslation();
 
 	const getMorePosts = () => {
-		const newPosts = posts.slice(postsList.length, postsList.length + 2);
-		// eslint-disable-next-line no-shadow
-		setPostList((postsList) => [...postsList, ...newPosts]);
+		if (posts) {
+			const newPosts = posts.slice(postsList.length, postsList.length + 2);
+			// eslint-disable-next-line no-shadow
+			setPostList((postsList) => [...postsList, ...newPosts]);
+		}
 	};
+
+	React.useEffect(() => {
+		if (!posts) {
+			navigate('/404');
+		}
+	}, []);
 
 	useEffect(() => {
 		setHasMore(posts.length > postsList.length);
@@ -36,40 +44,50 @@ const CategoryPage = ({ pageContext }) => {
 
 	return (
 		<AppProviders>
-			<Helmet>
-				<title>
-					{t('category.title')} {pageContext.category.Name} | Nerdistry
-				</title>
-				<meta name="description" content="Lorem ipsum" />
-			</Helmet>
-			<Layout title="Blog" subtitle={pageContext.category.Name}>
-				<Wrapper
-					title={pageContext.category.Description || t('category.description')}
-				>
-					{pageContext.category.posts.length ? (
-						<StyledMainBlog
-							as={InfiniteScroll}
-							dataLength={postsList.length}
-							next={getMorePosts}
-							hasMore={hasMore}
-							loader={<Loading />}
-							endMessage={
-								<ScrollEndMessage>{t('category.postsEnd')}</ScrollEndMessage>
+			{posts ? (
+				<>
+					<Helmet>
+						<title>
+							{t('category.title')} {pageContext.category.Name} | Nerdistry
+						</title>
+						<meta name="description" content="Lorem ipsum" />
+					</Helmet>
+					<Layout title="Blog" subtitle={pageContext.category.Name}>
+						<Wrapper
+							title={
+								pageContext.category.Description || t('category.description')
 							}
 						>
-							{pageContext.category.posts.map((post) => (
-								<SinglePostExcerpt
-									key={post.id}
-									post={post}
-									postsLength={pageContext.category.posts.length}
-								/>
-							))}
-						</StyledMainBlog>
-					) : (
-						<EmptyBlog />
-					)}
-				</Wrapper>
-			</Layout>
+							{pageContext.category.posts.length ? (
+								<StyledMainBlog
+									as={InfiniteScroll}
+									dataLength={postsList.length}
+									next={getMorePosts}
+									hasMore={hasMore}
+									loader={<Loading />}
+									endMessage={
+										<ScrollEndMessage>
+											{t('category.postsEnd')}
+										</ScrollEndMessage>
+									}
+								>
+									{pageContext.category.posts.map((post) => (
+										<SinglePostExcerpt
+											key={post.id}
+											post={post}
+											postsLength={pageContext.category.posts.length}
+										/>
+									))}
+								</StyledMainBlog>
+							) : (
+								<EmptyBlog />
+							)}
+						</Wrapper>
+					</Layout>
+				</>
+			) : (
+				<div>Something goes wrong...</div>
+			)}
 		</AppProviders>
 	);
 };
