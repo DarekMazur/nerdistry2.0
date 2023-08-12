@@ -16,38 +16,46 @@ import { getDateFormat } from '../utils/helpers/getDateFormat';
 const SinglePost = ({ pageContext }) => {
 	const { article } = pageContext;
 	const catList = [];
-	article.node.categories.map((category) => catList.push(category.Name));
+	if (article) {
+		article.node.categories.map((category) => catList.push(category.Name));
+	}
 
 	return (
 		<AppProviders>
-			<Helmet>
-				<title>{article.node.Title} | Nerdistry</title>
-				<meta name="description" content={article.node.Description} />
-			</Helmet>
-			<Layout title="Blog" subtitle={article.node.Title}>
-				<Wrapper titleArray={catList}>
-					<DetailsWrapper>
-						{article.node.Tags.length === 0 ? null : (
-							<p>
-								{article.node.Tags.split(', ').map((tag) => (
-									<StyledTag key={tag}>#{tag}</StyledTag>
-								))}
-							</p>
-						)}
-						<Date
-							date={getDateFormat(article.node.publishedAt)}
-							size="1.6rem"
+			{article ? (
+				<>
+					<Helmet>
+						<title>{article.node.Title} | Nerdistry</title>
+						<meta name="description" content={article.node.Description} />
+					</Helmet>
+					<Layout title="Blog" subtitle={article.node.Title}>
+						<Wrapper titleArray={catList}>
+							<DetailsWrapper>
+								{article.node.Tags.length === 0 ? null : (
+									<p>
+										{article.node.Tags.split(', ').map((tag) => (
+											<StyledTag key={tag}>#{tag}</StyledTag>
+										))}
+									</p>
+								)}
+								<Date
+									date={getDateFormat(article.node.publishedAt)}
+									size="1.6rem"
+								/>
+							</DetailsWrapper>
+						</Wrapper>
+						<PostCoverWrapper
+							coverUrl={article.node.CoverImage.url}
+							postTitle={article.node.Title}
+							userID={article.node.User.data.id}
 						/>
-					</DetailsWrapper>
-				</Wrapper>
-				<PostCoverWrapper
-					coverUrl={article.node.CoverImage.url}
-					postTitle={article.node.Title}
-					userID={article.node.User.data.id}
-				/>
-				<PostContent content={article.node.Content} />
-				<PostNavigation next={article.previous} prev={article.next} />
-			</Layout>
+						<PostContent content={article.node.Content} />
+						<PostNavigation next={article.previous} prev={article.next} />
+					</Layout>
+				</>
+			) : (
+				<div />
+			)}
 		</AppProviders>
 	);
 };
