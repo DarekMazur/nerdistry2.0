@@ -8,9 +8,12 @@ import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
 import ContactSection from '../components/molecules/ContactSectionWrapper/ContactSection';
 import ContactFormWrapper from '../components/molecules/ContactFormWrapper/ContactFormWrapper';
+import { useSocialData } from '../hooks/useSocialData';
 
-const ContactPage = ({ pageContext }) => {
+const ContactPage = () => {
 	const { t } = useTranslation();
+
+	const { strapiSocialMenu } = useSocialData();
 
 	return (
 		<AppProviders>
@@ -20,7 +23,7 @@ const ContactPage = ({ pageContext }) => {
 			</Helmet>
 			<Layout title={t('contact.title')} isSubtitleHidden>
 				<Wrapper title={t('contact.subTitle')} isWide>
-					<ContactSection data={pageContext.contact} />
+					<ContactSection data={strapiSocialMenu} />
 					<ContactFormWrapper />
 				</Wrapper>
 			</Layout>

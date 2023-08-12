@@ -14,46 +14,39 @@ import PostNavigation from '../components/atoms/PostNavigation/PostNavigation';
 import { getDateFormat } from '../utils/helpers/getDateFormat';
 
 const SinglePost = ({ pageContext }) => {
+	const { article } = pageContext;
 	const catList = [];
-	pageContext.article.node.categories.map((category) =>
-		catList.push(category.Name)
-	);
+	article.node.categories.map((category) => catList.push(category.Name));
 
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>{pageContext.article.node.Title} | Nerdistry</title>
-				<meta
-					name="description"
-					content={pageContext.article.node.Description}
-				/>
+				<title>{article.node.Title} | Nerdistry</title>
+				<meta name="description" content={article.node.Description} />
 			</Helmet>
-			<Layout title="Blog" subtitle={pageContext.article.node.Title}>
+			<Layout title="Blog" subtitle={article.node.Title}>
 				<Wrapper titleArray={catList}>
 					<DetailsWrapper>
-						{pageContext.article.node.Tags.length === 0 ? null : (
+						{article.node.Tags.length === 0 ? null : (
 							<p>
-								{pageContext.article.node.Tags.split(', ').map((tag) => (
+								{article.node.Tags.split(', ').map((tag) => (
 									<StyledTag key={tag}>#{tag}</StyledTag>
 								))}
 							</p>
 						)}
 						<Date
-							date={getDateFormat(pageContext.article.node.publishedAt)}
+							date={getDateFormat(article.node.publishedAt)}
 							size="1.6rem"
 						/>
 					</DetailsWrapper>
 				</Wrapper>
 				<PostCoverWrapper
-					coverUrl={pageContext.article.node.CoverImage.url}
-					postTitle={pageContext.article.node.Title}
-					userID={pageContext.article.node.User.data.id}
+					coverUrl={article.node.CoverImage.url}
+					postTitle={article.node.Title}
+					userID={article.node.User.data.id}
 				/>
-				<PostContent content={pageContext.article.node.Content} />
-				<PostNavigation
-					next={pageContext.article.previous}
-					prev={pageContext.article.next}
-				/>
+				<PostContent content={article.node.Content} />
+				<PostNavigation next={article.previous} prev={article.next} />
 			</Layout>
 		</AppProviders>
 	);
