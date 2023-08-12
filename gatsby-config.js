@@ -1,6 +1,8 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const { languages, defaultLanguage } = require('./languages');
+
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
@@ -35,9 +37,31 @@ module.exports = {
 			__key: 'images',
 		},
 		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				path: `${__dirname}/locales`,
+				name: `locale`,
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-react-i18next',
+			options: {
+				languages,
+				defaultLanguage,
+				i18nextOptions: {
+					// debug: true,
+					fallbackLng: defaultLanguage,
+					supportedLngs: languages,
+					defaultNS: 'translation',
+					interpolation: {
+						escapeValue: false,
+					},
+				},
+			},
+		},
+		{
 			resolve: `gatsby-plugin-google-gtag`,
 			options: {
-				// You can add multiple tracking ids and a pageview event will be fired for all of them.
 				trackingIds: [`${process.env.GATSBY_TRACKING_ID}`],
 				gtagConfig: {
 					optimize_id: 'OPT_CONTAINER_ID',
@@ -53,31 +77,16 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-google-fonts-v2`,
+			resolve: `gatsby-plugin-google-fonts`,
 			options: {
 				fonts: [
-					{
-						family: 'Montserrat',
-						weights: ['400', '700', '900'],
-						variable: ['ital'],
-					},
-					{
-						family: 'Montserrat Alternates',
-						weights: ['400', '700'],
-					},
-					{
-						family: 'Montserrat Subrayada',
-						weights: ['400'],
-					},
-					{
-						family: 'Share Tech Mono',
-						weights: ['400'],
-					},
-					{
-						family: 'Russo One',
-						weights: ['400'],
-					},
+					`Montserrat: 400,400i,700,900`,
+					`Montserrat Alternates: 400,700`,
+					`Montserrat Subrayada`,
+					`Share Tech Mono`,
+					`Russo One`,
 				],
+				display: 'swap',
 			},
 		},
 		{

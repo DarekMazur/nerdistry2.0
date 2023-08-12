@@ -1,26 +1,15 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
-import { useTranslation } from 'react-i18next';
+import { graphql } from 'gatsby';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import PropTypes, { oneOfType } from 'prop-types';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
 import ContactSection from '../components/molecules/ContactSectionWrapper/ContactSection';
 import ContactFormWrapper from '../components/molecules/ContactFormWrapper/ContactFormWrapper';
 
-const ContactPage = () => {
-	const socialData = useStaticQuery(graphql`
-		query {
-			strapiSocialMenu {
-				url {
-					id
-					platformName
-					socialLink
-				}
-			}
-		}
-	`);
-
+const ContactPage = ({ pageContext }) => {
 	const { t } = useTranslation();
 
 	return (
@@ -31,7 +20,7 @@ const ContactPage = () => {
 			</Helmet>
 			<Layout title={t('contact.title')} isSubtitleHidden>
 				<Wrapper title={t('contact.subTitle')} isWide>
-					<ContactSection data={socialData.strapiSocialMenu} />
+					<ContactSection data={pageContext.contact} />
 					<ContactFormWrapper />
 				</Wrapper>
 			</Layout>
@@ -39,3 +28,23 @@ const ContactPage = () => {
 	);
 };
 export default ContactPage;
+
+ContactPage.propTypes = {
+	pageContext: PropTypes.shape({
+		contact: PropTypes.objectOf(oneOfType([PropTypes.array])),
+	}).isRequired,
+};
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;
