@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import PropTypes, { oneOfType } from 'prop-types';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
@@ -13,40 +14,13 @@ import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Loading from '../components/atoms/Loading/Loading';
 import { ScrollEndMessage } from '../components/atoms/ScrollEndMessage/ScrollEndMessage.styles';
 
-const BlogPage = () => {
-	const blogData = useStaticQuery(graphql`
-		query {
-			allStrapiPost(sort: { publishedAt: DESC }) {
-				edges {
-					node {
-						id
-						Title
-						Description
-						Content
-						publishedAt
-						Tags
-						Feature
-						categories {
-							Name
-						}
-						CoverImage {
-							url
-						}
-					}
-				}
-			}
-			strapiIdentity {
-				Slogan
-			}
-		}
-	`);
-
+const BlogPage = ({ pageContext }) => {
 	const { t } = useTranslation();
 
-	const posts = blogData.allStrapiPost.edges;
+	const posts = pageContext.blog.allStrapiPost.edges;
 
 	const [postsList, setPostList] = useState(
-		blogData.allStrapiPost.edges.slice(0, 2)
+		pageContext.blog.allStrapiPost.edges.slice(0, 2)
 	);
 	const [hasMore, setHasMore] = useState(true);
 
@@ -66,14 +40,18 @@ const BlogPage = () => {
 				<title>Blog | Nerdistry</title>
 				<meta
 					name="description"
-					content={blogData.strapiIdentity.Slogan || t('identification.slogan')}
+					content={
+						pageContext.blog.strapiIdentity.Slogan || t('identification.slogan')
+					}
 				/>
 			</Helmet>
 			<Layout title="Blog" isSubtitleHidden>
 				<Wrapper
-					title={blogData.strapiIdentity.Slogan || t('identification.slogan')}
+					title={
+						pageContext.blog.strapiIdentity.Slogan || t('identification.slogan')
+					}
 				>
-					{blogData.allStrapiPost.edges.length ? (
+					{pageContext.blog.allStrapiPost.edges.length ? (
 						<StyledMainBlog
 							as={InfiniteScroll}
 							dataLength={postsList.length}
@@ -101,3 +79,30 @@ const BlogPage = () => {
 	);
 };
 export default BlogPage;
+
+BlogPage.propTypes = {
+	pageContext: PropTypes.shape({
+		blog: PropTypes.shape({
+			allStrapiPost: PropTypes.shape({
+				edges: PropTypes.arrayOf(oneOfType([PropTypes.object])),
+			}),
+			strapiIdentity: PropTypes.shape({
+				Slogan: PropTypes.string,
+			}),
+		}),
+	}).isRequired,
+};
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;

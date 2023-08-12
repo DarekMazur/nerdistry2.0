@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { graphql } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
@@ -24,3 +25,17 @@ const PrivacyPage = () => {
 };
 
 export default PrivacyPage;
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;

@@ -5,7 +5,7 @@ import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from 'gatsby';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import slugify from 'slugify';
 import FeaturedDetails from '../FeaturedDetails/FeaturedDetails';
 import { StyledSingleFeaturePost } from './SingleFeaturePost.styles';

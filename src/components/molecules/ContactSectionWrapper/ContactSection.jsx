@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';

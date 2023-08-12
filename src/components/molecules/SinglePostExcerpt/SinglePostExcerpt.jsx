@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import slugify from 'slugify';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';

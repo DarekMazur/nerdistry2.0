@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { StyledPrivacyContent } from './PrivacyContent.styles';
 
 const PrivacyContent = () => {

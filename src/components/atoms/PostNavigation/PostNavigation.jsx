@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import slugify from 'slugify';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { useSelector } from 'react-redux';
 import ArrowLeft from '../../../assets/icons/arrow-left-solid.svg';
 import ArrowRight from '../../../assets/icons/arrow-right-solid.svg';

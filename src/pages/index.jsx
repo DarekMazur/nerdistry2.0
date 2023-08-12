@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import PropTypes, { oneOfType } from 'prop-types';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -12,100 +13,66 @@ import MainBlog from '../components/molecules/MainBlog/MainBlog';
 import MainAbout from '../components/molecules/MainAbout/MainAbout';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
 
-const IndexPage = () => {
-	const homeData = useStaticQuery(graphql`
-		query {
-			allStrapiPost(sort: { publishedAt: DESC }) {
-				edges {
-					node {
-						id
-						Title
-						Description
-						Content
-						publishedAt
-						Tags
-						Feature
-						categories {
-							Name
-						}
-						CoverImage {
-							url
-						}
-					}
-				}
-			}
-			strapiHome {
-				FeaturedPostsTitle
-				RecentProjectsTitle
-				ProjectsLink
-				BlogTitle
-				BlogLink
-				AboutTitle
-				AboutCover {
-					name
-					url
-				}
-				AboutContent
-			}
-			strapiIdentity {
-				Title
-				Slogan
-			}
-		}
-	`);
-
+const IndexPage = ({ pageContext }) => {
 	const { t } = useTranslation();
 
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>{homeData.strapiIdentity.Title || t('main.home')}</title>
-				<meta name="description" content={homeData.strapiIdentity.Slogan} />
+				<title>{pageContext.home.strapiIdentity.Title || t('main.home')}</title>
+				<meta
+					name="description"
+					content={pageContext.home.strapiIdentity.Slogan}
+				/>
 			</Helmet>
 
 			<Layout title="" subtitle="">
-				{getFeaturedPosts(homeData.allStrapiPost.edges).length ? (
+				{getFeaturedPosts(pageContext.home.allStrapiPost.edges).length ? (
 					<Wrapper
 						title={
-							homeData.strapiHome?.FeaturedPostsTitle || t('main.feturedTitle')
+							pageContext.home.strapiHome?.FeaturedPostsTitle ||
+							t('main.feturedTitle')
 						}
 						isWide
 						isBig
 					>
 						<FeaturedPosts
-							posts={getFeaturedPosts(homeData.allStrapiPost.edges)}
+							posts={getFeaturedPosts(pageContext.home.allStrapiPost.edges)}
 						/>
 					</Wrapper>
 				) : null}
 				<Wrapper
 					title={
-						homeData.strapiHome?.RecentProjectsTitle || t('main.recentProjects')
+						pageContext.home.strapiHome?.RecentProjectsTitle ||
+						t('main.recentProjects')
 					}
 					isBig
 				>
 					<RecentProjects
-						allProjects={homeData.strapiHome?.ProjectsLink || '/projects'}
+						allProjects={
+							pageContext.home.strapiHome?.ProjectsLink || '/projects'
+						}
 					/>
 				</Wrapper>
 				<Wrapper
-					title={homeData.strapiHome?.BlogTitle || t('main.blogLatest')}
+					title={pageContext.home.strapiHome?.BlogTitle || t('main.blogLatest')}
 					isBig
 				>
-					{homeData.allStrapiPost.edges.length === 0 ? (
+					{pageContext.home.allStrapiPost.edges.length === 0 ? (
 						<EmptyBlog />
 					) : (
 						<MainBlog
-							posts={homeData.allStrapiPost.edges.slice(0, 4)}
-							allPost={homeData.strapiHome?.BlogLink || '/blog'}
+							posts={pageContext.home.allStrapiPost.edges.slice(0, 4)}
+							allPost={pageContext.home.strapiHome?.BlogLink || '/blog'}
 						/>
 					)}
 				</Wrapper>
-				{homeData.strapiHome?.AboutContent ? (
+				{pageContext.home.strapiHome?.AboutContent ? (
 					<Wrapper
-						title={homeData.strapiHome.AboutTitle || t('main.about')}
+						title={pageContext.home.strapiHome.AboutTitle || t('main.about')}
 						isBig
 					>
-						<MainAbout content={homeData.strapiHome} />
+						<MainAbout content={pageContext.home.strapiHome} />
 					</Wrapper>
 				) : null}
 			</Layout>
@@ -114,3 +81,38 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+IndexPage.propTypes = {
+	pageContext: PropTypes.shape({
+		home: PropTypes.shape({
+			allStrapiPost: PropTypes.objectOf(oneOfType([PropTypes.array])),
+			strapiHome: PropTypes.shape({
+				FeaturedPostsTitle: PropTypes.string,
+				RecentProjectsTitle: PropTypes.string,
+				ProjectsLink: PropTypes.string,
+				BlogTitle: PropTypes.string,
+				BlogLink: PropTypes.string,
+				AboutContent: PropTypes.string,
+				AboutTitle: PropTypes.string,
+			}),
+			strapiIdentity: PropTypes.shape({
+				Title: PropTypes.string,
+				Slogan: PropTypes.string,
+			}),
+		}),
+	}).isRequired,
+};
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;

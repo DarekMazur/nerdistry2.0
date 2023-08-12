@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SingleProject from '../SingleProject/SingleProject';
 import DefaultCover from '../../../assets/images/defaultProjectCover.jpg';
 import { StyledRecentProjects } from './RecentProjects.styles';

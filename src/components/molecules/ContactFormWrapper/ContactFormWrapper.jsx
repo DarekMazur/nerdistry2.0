@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import ContactCover from '../../../assets/images/contactCover.jpg';
 import ContactForm from '../ContactForm/ContactForm';
 import { StyledContactCover } from '../../atoms/ContactCover/ContactCover.styles';

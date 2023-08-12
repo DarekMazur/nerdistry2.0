@@ -3,7 +3,7 @@ import PropTypes, { oneOfType } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { StyledTechList } from '../../atoms/TechList/TechList.styles';
 import { getDateFormat } from '../../../utils/helpers/getDateFormat';
 import { StyledProject } from './Project.styles';

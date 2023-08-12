@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import i18next from 'i18next';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { StyledContactForm } from './ContactForm.styles';
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';

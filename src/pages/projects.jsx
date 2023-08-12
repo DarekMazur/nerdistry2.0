@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { graphql } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
@@ -107,3 +108,17 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;

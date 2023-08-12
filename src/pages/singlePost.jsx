@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes, { oneOfType } from 'prop-types';
+import { graphql } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import { StyledTag } from '../components/atoms/Tag/Tag.styles';
@@ -84,3 +85,17 @@ SinglePost.propTypes = {
 		}),
 	}).isRequired,
 };
+
+export const query = graphql`
+	query ($language: String!) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
+			edges {
+				node {
+					ns
+					data
+					language
+				}
+			}
+		}
+	}
+`;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes, { arrayOf, oneOfType } from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SinglePostExcerpt from '../SinglePostExcerpt/SinglePostExcerpt';
 import { StyledMainBlog } from './MainBlog.styles';
 import More from '../../atoms/More/More';
