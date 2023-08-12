@@ -15,50 +15,49 @@ import Loading from '../components/atoms/Loading/Loading';
 import { ScrollEndMessage } from '../components/atoms/ScrollEndMessage/ScrollEndMessage.styles';
 
 const CategoryPage = ({ pageContext }) => {
-	const { posts } = pageContext.category;
+	const { category } = pageContext;
 
 	const [postsList, setPostList] = useState(
-		pageContext.category.posts.slice(0, 2)
+		category ? category.posts.slice(0, 2) : []
 	);
 	const [hasMore, setHasMore] = useState(true);
 
 	const { t } = useTranslation();
 
 	const getMorePosts = () => {
-		if (posts) {
-			const newPosts = posts.slice(postsList.length, postsList.length + 2);
+		if (category) {
+			const newPosts = category.posts.slice(
+				postsList.length,
+				postsList.length + 2
+			);
 			// eslint-disable-next-line no-shadow
 			setPostList((postsList) => [...postsList, ...newPosts]);
 		}
 	};
 
 	React.useEffect(() => {
-		if (!posts) {
+		if (!category) {
 			navigate('/404');
 		}
 	}, []);
 
 	useEffect(() => {
-		setHasMore(posts.length > postsList.length);
+		setHasMore(category.posts.length > postsList.length);
 	}, [postsList]);
 
 	return (
 		<AppProviders>
-			{posts ? (
+			{category ? (
 				<>
 					<Helmet>
 						<title>
-							{t('category.title')} {pageContext.category.Name} | Nerdistry
+							{t('category.title')} {category.Name} | Nerdistry
 						</title>
 						<meta name="description" content="Lorem ipsum" />
 					</Helmet>
-					<Layout title="Blog" subtitle={pageContext.category.Name}>
-						<Wrapper
-							title={
-								pageContext.category.Description || t('category.description')
-							}
-						>
-							{pageContext.category.posts.length ? (
+					<Layout title="Blog" subtitle={category.Name}>
+						<Wrapper title={category.Description || t('category.description')}>
+							{category.posts.length ? (
 								<StyledMainBlog
 									as={InfiniteScroll}
 									dataLength={postsList.length}
@@ -71,11 +70,11 @@ const CategoryPage = ({ pageContext }) => {
 										</ScrollEndMessage>
 									}
 								>
-									{pageContext.category.posts.map((post) => (
+									{category.posts.map((post) => (
 										<SinglePostExcerpt
 											key={post.id}
 											post={post}
-											postsLength={pageContext.category.posts.length}
+											postsLength={category.posts.length}
 										/>
 									))}
 								</StyledMainBlog>
