@@ -84,6 +84,7 @@ module.exports = {
 					`Montserrat Subrayada`,
 					`Share Tech Mono`,
 					`Russo One`,
+					`Inconsolata`,
 				],
 				display: 'swap',
 			},

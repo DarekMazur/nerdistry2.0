@@ -15,6 +15,7 @@ export const theme = {
 		topHeaderFont: '"Russo One", sans-serif',
 		menuFont: '"Montserrat Subrayada", sans-serif',
 		codeFont: '"Share Tech Mono", monospace',
+		notFoundFont: '"Inconsolata", sans-serif',
 	},
 
 	weights: {
