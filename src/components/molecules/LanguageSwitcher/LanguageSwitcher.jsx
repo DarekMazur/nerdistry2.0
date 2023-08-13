@@ -26,13 +26,14 @@ const LanguageSwitcher = () => {
 			langRef.current.children,
 			{
 				autoAlpha: 0,
-				y: -25,
+				x: 0,
+				y: -20,
 			},
 			{
 				autoAlpha: 1,
-				y: 0,
-				duration: 0.5,
-				stagger: 0.3,
+				x: -60,
+				duration: 0.2,
+				stagger: 0.1,
 				delay: 0.1,
 			}
 		);
@@ -41,7 +42,7 @@ const LanguageSwitcher = () => {
 	}, []);
 
 	return (
-		<StyledLanguageSwitcher ref={hoverRef}>
+		<StyledLanguageSwitcher ref={hoverRef} $langs={languages.length}>
 			<li>
 				<img
 					src={
