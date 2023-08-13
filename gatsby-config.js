@@ -7,8 +7,8 @@ require('dotenv').config({
 
 module.exports = {
 	siteMetadata: {
-		title: `nerdistry_gatsbyjs`,
-		siteUrl: `https://www.yourdomain.tld`,
+		title: `Nerdisty`,
+		siteUrl: process.env.GATSBY_URL,
 	},
 	flags: {
 		DEV_SSR: process.env.GATSBY_DEBUGGER,
