@@ -5,6 +5,8 @@ import { StyledLanguageSwitcher } from './LanguageSwitcher.styles';
 import { StyledLanguageSwitcherItem } from '../../atoms/LanguageSwitcherItem/LanguageSwitcherItem.styles';
 import en from '../../../assets/flags/gb.svg';
 import pl from '../../../assets/flags/pl.svg';
+import uk from '../../../assets/flags/ua.svg';
+import ru from '../../../assets/flags/ru.svg';
 
 const LanguageSwitcher = () => {
 	const { languages, originalPath, i18n } = useI18next();
@@ -13,6 +15,8 @@ const LanguageSwitcher = () => {
 	const flags = {
 		en,
 		pl,
+		uk,
+		ru,
 	};
 
 	const tl = gsap.timeline({ paused: true });

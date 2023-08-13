@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import background from '../../../assets/images/headerBackground.jpg';
+import altBgr from '../../../assets/images/rwgfy.jpg';
 
 export const StyledHeader = styled.header`
 	width: 100%;
-	background: url(${background}) no-repeat center/cover;
+	background: url(${({ $ru }) => ($ru ? altBgr : background)}) no-repeat
+		center/cover;
 	color: ${({ theme }) => theme.colors.white};
 
 	& > div {
