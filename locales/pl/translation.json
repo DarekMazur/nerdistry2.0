@@ -3,6 +3,15 @@
     "title": "Nerdistry",
     "slogan": "Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... 😉"
   },
+  "404": {
+    "error": "Błąd",
+    "message": "Strona, której szukasz została usunięta, ma zmieniony adres lub jest czasowo niedostępna.",
+    "try": "Spróbuj",
+    "goBack": "zawrócić",
+    "or": "lub",
+    "return": "przejść do strony głównej",
+    "goodLuck": "Powodzenia."
+  },
   "main": {
     "home": "Strona główna",
     "feturedTitle": "Warto przeczytać",

@@ -3,6 +3,15 @@
     "title": "Nerdistry",
     "slogan": "From the notes of a young developer, it seems that from junior to zero. Or the other way around... 😉"
   },
+  "404": {
+    "error": "Error",
+    "message": "The page you are looking for might have been removed, had its name changed or is temporarily unavailable.",
+    "try": "Please try to",
+    "goBack": "go back",
+    "or": "or",
+    "return": "return to the homepage",
+    "goodLuck": "Good luck."
+  },
   "main": {
     "home": "Home",
     "feturedTitle": "Nice to read",
