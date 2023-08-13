@@ -25,7 +25,7 @@ const IndexPage = () => {
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>{strapiIdentity.Title || t('main.home')}</title>
+				<title>{strapiIdentity.Title || t('main.home')} | Nerdistry</title>
 				<meta name="description" content={strapiIdentity.Slogan} />
 			</Helmet>
 			<Layout title="" subtitle="">
