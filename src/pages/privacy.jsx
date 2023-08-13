@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import { graphql } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
@@ -9,6 +9,7 @@ import PrivacyContent from '../components/molecules/PrivacyContent/PrivacyConten
 
 const PrivacyPage = () => {
 	const { t } = useTranslation();
+	const { i18n } = useI18next();
 	return (
 		<AppProviders>
 			<Helmet>
@@ -16,9 +17,13 @@ const PrivacyPage = () => {
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
 			<Layout title={t('privacy.title')} isSubtitleHidden>
-				<Wrapper title={t('privacy.pageTitle')}>
-					<PrivacyContent />
-				</Wrapper>
+				{i18n.resolvedLanguage === 'ru' ? (
+					<Wrapper title={t('main.feturedTitle')} isWide isBig />
+				) : (
+					<Wrapper title={t('privacy.pageTitle')}>
+						<PrivacyContent />
+					</Wrapper>
+				)}
 			</Layout>
 		</AppProviders>
 	);
