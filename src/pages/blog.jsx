@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -17,6 +17,7 @@ import { usePageIdentity } from '../hooks/usePageIdentity';
 
 const BlogPage = () => {
 	const { t } = useTranslation();
+	const { i18n } = useI18next();
 
 	const { allStrapiPost } = useIndexContent();
 	const { strapiIdentity } = usePageIdentity();
@@ -46,30 +47,34 @@ const BlogPage = () => {
 				/>
 			</Helmet>
 			<Layout title="Blog" isSubtitleHidden>
-				<Wrapper title={strapiIdentity.Slogan || t('identification.slogan')}>
-					{allStrapiPost.edges.length ? (
-						<StyledMainBlog
-							as={InfiniteScroll}
-							dataLength={postsList.length}
-							next={getMorePosts}
-							hasMore={hasMore}
-							loader={<Loading />}
-							endMessage={
-								<ScrollEndMessage>{t('blog.postsEnd')}</ScrollEndMessage>
-							}
-						>
-							{postsList.map((post) => (
-								<SinglePostExcerpt
-									key={post.node.id}
-									post={post.node}
-									postsLength={postsList.length}
-								/>
-							))}
-						</StyledMainBlog>
-					) : (
-						<EmptyBlog />
-					)}
-				</Wrapper>
+				{i18n.resolvedLanguage === 'ru' ? (
+					<Wrapper title={t('main.feturedTitle')} isWide isBig />
+				) : (
+					<Wrapper title={strapiIdentity.Slogan || t('identification.slogan')}>
+						{allStrapiPost.edges.length ? (
+							<StyledMainBlog
+								as={InfiniteScroll}
+								dataLength={postsList.length}
+								next={getMorePosts}
+								hasMore={hasMore}
+								loader={<Loading />}
+								endMessage={
+									<ScrollEndMessage>{t('blog.postsEnd')}</ScrollEndMessage>
+								}
+							>
+								{postsList.map((post) => (
+									<SinglePostExcerpt
+										key={post.node.id}
+										post={post.node}
+										postsLength={postsList.length}
+									/>
+								))}
+							</StyledMainBlog>
+						) : (
+							<EmptyBlog />
+						)}
+					</Wrapper>
+				)}
 			</Layout>
 		</AppProviders>
 	);

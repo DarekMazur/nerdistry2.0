@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import * as React from 'react';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes, { oneOfType } from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useEffect, useState } from 'react';
@@ -23,6 +23,7 @@ const CategoryPage = ({ pageContext }) => {
 	const [hasMore, setHasMore] = useState(true);
 
 	const { t } = useTranslation();
+	const { i18n } = useI18next();
 
 	const getMorePosts = () => {
 		if (category) {
@@ -56,32 +57,38 @@ const CategoryPage = ({ pageContext }) => {
 						<meta name="description" content="Lorem ipsum" />
 					</Helmet>
 					<Layout title="Blog" subtitle={category.Name}>
-						<Wrapper title={category.Description || t('category.description')}>
-							{category.posts.length ? (
-								<StyledMainBlog
-									as={InfiniteScroll}
-									dataLength={postsList.length}
-									next={getMorePosts}
-									hasMore={hasMore}
-									loader={<Loading />}
-									endMessage={
-										<ScrollEndMessage>
-											{t('category.postsEnd')}
-										</ScrollEndMessage>
-									}
-								>
-									{category.posts.map((post) => (
-										<SinglePostExcerpt
-											key={post.id}
-											post={post}
-											postsLength={category.posts.length}
-										/>
-									))}
-								</StyledMainBlog>
-							) : (
-								<EmptyBlog />
-							)}
-						</Wrapper>
+						{i18n.resolvedLanguage === 'ru' ? (
+							<Wrapper title={t('main.feturedTitle')} isWide isBig />
+						) : (
+							<Wrapper
+								title={category.Description || t('category.description')}
+							>
+								{category.posts.length ? (
+									<StyledMainBlog
+										as={InfiniteScroll}
+										dataLength={postsList.length}
+										next={getMorePosts}
+										hasMore={hasMore}
+										loader={<Loading />}
+										endMessage={
+											<ScrollEndMessage>
+												{t('category.postsEnd')}
+											</ScrollEndMessage>
+										}
+									>
+										{category.posts.map((post) => (
+											<SinglePostExcerpt
+												key={post.id}
+												post={post}
+												postsLength={category.posts.length}
+											/>
+										))}
+									</StyledMainBlog>
+								) : (
+									<EmptyBlog />
+								)}
+							</Wrapper>
+						)}
 					</Layout>
 				</>
 			) : (

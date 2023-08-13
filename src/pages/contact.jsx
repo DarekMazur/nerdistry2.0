@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes, { oneOfType } from 'prop-types';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
@@ -12,6 +12,7 @@ import { useSocialData } from '../hooks/useSocialData';
 
 const ContactPage = () => {
 	const { t } = useTranslation();
+	const { i18n } = useI18next();
 
 	const { strapiSocialMenu } = useSocialData();
 
@@ -22,10 +23,14 @@ const ContactPage = () => {
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
 			<Layout title={t('contact.title')} isSubtitleHidden>
-				<Wrapper title={t('contact.subTitle')} isWide>
-					<ContactSection data={strapiSocialMenu} />
-					<ContactFormWrapper />
-				</Wrapper>
+				{i18n.resolvedLanguage === 'ru' ? (
+					<Wrapper title={t('main.feturedTitle')} isWide isBig />
+				) : (
+					<Wrapper title={t('contact.subTitle')} isWide>
+						<ContactSection data={strapiSocialMenu} />
+						<ContactFormWrapper />
+					</Wrapper>
+				)}
 			</Layout>
 		</AppProviders>
 	);

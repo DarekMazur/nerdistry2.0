@@ -25,18 +25,24 @@ export const StyledLanguageSwitcher = styled.ul`
 
 	ul {
 		position: absolute;
-		top: 2.5rem;
+		top: 2rem;
 		right: 0;
 		height: 100%;
-		width: 100%;
+		width: ${({ $langs }) => `calc(4rem * ${$langs})`};
 		margin: 0;
 		padding: 0;
 		list-style: none;
+		display: flex;
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
 		height: 5rem;
 		width: 7.5rem;
+
+		ul {
+			top: 0;
+			width: ${({ $langs }) => `calc(8rem * ${$langs})`};
+		}
 
 		img {
 			height: 4rem;
@@ -46,6 +52,11 @@ export const StyledLanguageSwitcher = styled.ul`
 	@media screen and (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
 		height: 2.5rem;
 		width: 3.75rem;
+
+		ul {
+			top: 2rem;
+			width: ${({ $langs }) => `calc(4rem * ${$langs})`};
+		}
 
 		img {
 			height: 2rem;

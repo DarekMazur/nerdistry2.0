@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import { graphql } from 'gatsby';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -18,6 +18,7 @@ const ProjectsPage = () => {
 	const [techList, setTechList] = useState([]);
 
 	const { t } = useTranslation();
+	const { i18n } = useI18next();
 
 	useEffect(() => {
 		const getCoverImage = async () => {
@@ -73,35 +74,41 @@ const ProjectsPage = () => {
 				<meta name="description" content="lorem ipsum" />
 			</Helmet>
 			<Layout title={t('project.title')} isSubtitleHidden>
-				<Wrapper title={t('project.subTitle')} isBig isWide>
-					{projects && projects.length === images.length ? (
-						projects.map((project, index) => (
-							<Project
-								key={project.name}
-								projectData={project}
-								index={index}
-								image={images[index].urls.regular}
-								techList={techList}
-							/>
-						))
-					) : (
-						<EmptyBlog />
-					)}
-					<StyledProjectIconWrapper>
-						<p>Check more: </p>
-						<ProjectIconsWrapper ghLink={process.env.GATSBY_GITHUB_LINK} />
-					</StyledProjectIconWrapper>
-				</Wrapper>
-				<Wrapper title={t('project.older')} isWide>
-					{blasts.map((project) => (
-						<Project
-							key={project.name}
-							projectData={project}
-							image={project.image}
-							techList={project.techStack}
-						/>
-					))}
-				</Wrapper>
+				{i18n.resolvedLanguage === 'ru' ? (
+					<Wrapper title={t('main.feturedTitle')} isWide isBig />
+				) : (
+					<>
+						<Wrapper title={t('project.subTitle')} isBig isWide>
+							{projects && projects.length === images.length ? (
+								projects.map((project, index) => (
+									<Project
+										key={project.name}
+										projectData={project}
+										index={index}
+										image={images[index].urls.regular}
+										techList={techList}
+									/>
+								))
+							) : (
+								<EmptyBlog />
+							)}
+							<StyledProjectIconWrapper>
+								<p>Check more: </p>
+								<ProjectIconsWrapper ghLink={process.env.GATSBY_GITHUB_LINK} />
+							</StyledProjectIconWrapper>
+						</Wrapper>
+						<Wrapper title={t('project.older')} isWide>
+							{blasts.map((project) => (
+								<Project
+									key={project.name}
+									projectData={project}
+									image={project.image}
+									techList={project.techStack}
+								/>
+							))}
+						</Wrapper>
+					</>
+				)}
 			</Layout>
 		</AppProviders>
 	);
