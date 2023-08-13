@@ -1,9 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { StyledPostContent } from './PostContent.styles';
 
 const PostContent = ({ content }) => (
-	<StyledPostContent>{content}</StyledPostContent>
+	<StyledPostContent>
+		<ReactMarkdown>{content}</ReactMarkdown>
+	</StyledPostContent>
 );
 
 export default PostContent;
