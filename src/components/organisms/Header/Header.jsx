@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
@@ -25,13 +25,22 @@ const Header = ({ pageInfo, title, subtitle, isSubtitleHidden }) => {
 			}
 		}
 	`);
+	const { i18n } = useI18next();
 	const [isOpen, setIsOpen] = useState(false);
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
 
 	const { t } = useTranslation();
 
+	React.useEffect(() => {
+		if (i18n.resolvedLanguage === 'ru') {
+			alert(
+				"If you're not a pro-war orc please change language. In other way... well, please follow warship Moscow 😁"
+			);
+		}
+	}, []);
+
 	return (
-		<StyledHeader>
+		<StyledHeader $ru={i18n.resolvedLanguage === 'ru'}>
 			<div>
 				<StyledHeaderWrapper $isRow>
 					<div>

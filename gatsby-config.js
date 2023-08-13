@@ -44,13 +44,13 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-react-i18next',
 			options: {
-				languages: [`en`, `pl`],
+				languages: [`en`, `pl`, `uk`, `ru`],
 				defaultLanguage: 'pl',
 				fallbackLanguage: 'en',
 				i18nextOptions: {
 					debug: process.env.GATSBY_DEBUGGER,
 					fallbackLng: 'en',
-					supportedLngs: [`en`, `pl`],
+					supportedLngs: [`en`, `pl`, `uk`, `ru`],
 					defaultNS: 'translation',
 					interpolation: {
 						escapeValue: false,
