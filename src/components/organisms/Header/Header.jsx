@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-// import { useTranslation } from 'gatsby-plugin-react-i18next';
-import {
-	Link as LocalizeLink,
-	useI18next,
-	useTranslation,
-} from 'gatsby-plugin-react-i18next';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import MenuList from '../MenuList/MenuList';
 import HeaderMouseIcon from '../../atoms/HeaderMounseIcon/HeaderMouseIcon';
 import Logo from '../../atoms/Logo/Logo';
@@ -34,7 +29,6 @@ const Header = ({ pageInfo, title, subtitle, isSubtitleHidden }) => {
 	const handleMenuClick = () => setIsOpen((prevState) => !prevState);
 
 	const { t } = useTranslation();
-	const { languages, originalPath, i18n } = useI18next();
 
 	return (
 		<StyledHeader>
@@ -54,22 +48,6 @@ const Header = ({ pageInfo, title, subtitle, isSubtitleHidden }) => {
 							handleClick={handleMenuClick}
 						/>
 						<HeaderIconsWrapper handleClick={handleMenuClick} />
-						<ul className="languages">
-							{languages.map((lng) => (
-								<li key={lng}>
-									<LocalizeLink
-										to={originalPath}
-										language={lng}
-										style={{
-											textDecoration:
-												i18n.resolvedLanguage === lng ? 'underline' : 'none',
-										}}
-									>
-										{lng}
-									</LocalizeLink>
-								</li>
-							))}
-						</ul>
 					</div>
 				</StyledHeaderWrapper>
 				<StyledHeaderWrapper $big={!!title}>
