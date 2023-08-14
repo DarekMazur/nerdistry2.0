@@ -1,49 +1,86 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+    <img alt="Nerdistry logo" src="assets/images/icons/Logo.svg" width="150" />
 </p>
+
 <h1 align="center">
-  Gatsby Minimal Starter
+  Nerdistry blog
 </h1>
+
+## Version: 2.0.1-beta
+
+Live demo: [app]
+
+## :black_nib: About app
+
+Hello world! Welcome on Nerdistry project - blog based on Gatsby connected with Strapi backend.
+
+In this project you will find frontned part of blog. It was created mostly for fun and learn. During coding I decided to test also some APIs - so finally this blog has some portflio option.
+
+You can check current live version of this project <a href="https://nerdistry.pl" target="_blank">HERE</a>
+
+Develop version is available <a href="https://develop-nerdistry.netlify.app" target="_blank">HERE</a>
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1.  **Requirement**
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+    - npm (v9.3.1)
+
+2.  **Installation**
+
+    To install application navigate to app's directory and use npm command
 
     ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
+    cd app-main-dir/
+    npm install
+    npm run build
     ```
 
-2.  **Start developing.**
+3.  **Developer mode**
 
-    Navigate into your new site’s directory and start it up.
+    You can run app in developer mode by using command
 
     ```shell
-    cd my-gatsby-site/
     npm run develop
     ```
 
-3.  **Open the code and start customizing!**
+    Application will run on port 8000 (localhost:8000)
 
-    Your site is now running at http://localhost:8000!
+## :computer: Frontend
 
-    Edit `src/pages/index.jsx` to see your site update in real-time!
+This application is created using GatsbyJS and CSSinJS (styled-components).
 
-4.  **Learn more**
+Other libraries:
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- fontawesome
+- sendgrid
+- axios
+- formik
+- gsap
+- nodemailer
+- react infinite scroll component
+- yup
+- react markdown
+- slugify
 
-## 🚀 Quick start (Netlify)
+## :wrench: Backend
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+App is designed to work with [Strapi.io] (used v4). You can also use this tool, choose other API provider (Wordpress, DatoCMS etc) or design your API server.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+## Changelog
+
+**2.0.1**
+
+- fix markdown for about and author components
+
+## ToDo
+
+- fix desktop posts list view for few (1 - 2) posts 
+- tests
+- search
+- storybook
+
+
+[app]: https://nerdistry.pl/
+[develop]: https://develop-nerdistry.netlify.app
+[strapi.io]: https://strapi.io/
