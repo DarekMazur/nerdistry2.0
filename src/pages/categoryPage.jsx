@@ -18,7 +18,7 @@ const CategoryPage = ({ pageContext }) => {
 	const { category } = pageContext;
 
 	const [postsList, setPostList] = useState(
-		category ? category.posts.slice(0, 2) : []
+		category && category.posts ? category.posts.slice(0, 2) : []
 	);
 	const [hasMore, setHasMore] = useState(true);
 
