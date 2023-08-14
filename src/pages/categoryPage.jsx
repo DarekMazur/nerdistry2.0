@@ -54,7 +54,7 @@ const CategoryPage = ({ pageContext }) => {
 						<title>
 							{t('category.title')} {category.Name} | Nerdistry
 						</title>
-						<meta name="description" content="Lorem ipsum" />
+						<meta name="description" content={t('category.metaDescription')} />
 					</Helmet>
 					<Layout title="Blog" subtitle={category.Name}>
 						{i18n.resolvedLanguage === 'ru' ? (
