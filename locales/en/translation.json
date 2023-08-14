@@ -1,0 +1,196 @@
+{
+  "identification": {
+    "title": "Nerdistry",
+    "slogan": "From the notes of a young developer, it seems that from junior to zero. Or the other way around... 😉"
+  },
+  "404": {
+    "error": "Error",
+    "message": "The page you are looking for might have been removed, had its name changed or is temporarily unavailable.",
+    "try": "Please try to",
+    "goBack": "go back",
+    "or": "or",
+    "return": "return to the homepage",
+    "goodLuck": "Good luck."
+  },
+  "main": {
+    "home": "Home",
+    "feturedTitle": "Nice to read",
+    "recentProjects": "Recent projects",
+    "blogLatest": "Latest on blog",
+    "about": "About",
+    "more": "Check more"
+  },
+  "blog": {
+    "postsEnd": "That would be it. Come back later for more 😊",
+    "post": {
+      "readingTime": "{{ estimation }} minutes to read",
+      "postedOn": "Posted on",
+      "more": "Read more",
+      "next": "Next",
+      "previous": "Previous"
+    }
+  },
+  "project": {
+    "title": "Projects",
+    "metaDescription": "Check my projects",
+    "subTitle": "My projects",
+    "more": "Check more:",
+    "older": "Blast from the past",
+    "hideDetails": "Hide details",
+    "showDetails": "Show details",
+    "createdAt": "Created at:",
+    "updatedAt": "last update:",
+    "stack": "Stack:",
+    "checkProject": "See project",
+    "click": "Click!",
+    "workInProgress": "work in progress",
+    "close": "click to close"
+  },
+  "contact": {
+    "title": "Contact",
+    "metaDescription": "Stay in contact!",
+    "subTitle": "Stay in contact!",
+    "desctiption": "You can write to me using socialmedia. But if you prefer a more traditional way - that's not a problem either. Fill out the contact form and click [Send!]. I read all messages and try to answer all of them 😉",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "accept": "Accept",
+      "privacy": "privacy policy",
+      "send": "Send",
+      "sending": "Sending...",
+      "sent": "Sent!",
+      "validation": {
+        "nameRequired": "name is required",
+        "emailRequired": "email is required",
+        "messageRequired": "message can't be empty",
+        "nameShot": "name is to short, it should be at least 2 chars long",
+        "nameLong": "name is to long, it should be not longer than 30 characters",
+        "emailFormat": "incorrect email format",
+        "privacyAcceptance": "accept privacy police"
+      }
+    }
+  },
+  "category": {
+    "title": "Category",
+    "metaDescription": "All posts from category - let's find something interesting!",
+    "description": "All posts from category",
+    "postsEnd": "That would be it. Come back later for more 😊"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "metaDescription": "Privacy policy - all you need to know",
+    "pageTitle": "Privacy policy",
+    "content": {
+      "header": "The privacy policy describes how we process information about you, including personal information and cookies, or so-called &quot;cookies&quot;. cookies.",
+      "generalInformation": {
+        "title": "General information",
+        "content": {
+          "1": "This policy applies to the Website, operating under the url: nerdistry.pl",
+          "2": "The operator of the service and the Administrator of personal data is: Nerdistry",
+          "3": "Operator's email contact address: rodo@nerdistry.pl",
+          "4": "The Operator is the Administrator of your personal data in with respect to the data you voluntarily provide on the Website.",
+          "5": {
+            "header": "The Service uses personal data for the following purposes:",
+            "1": "Running a newsletter",
+            "2": "Handling inquiries via form"
+          },
+          "6": {
+            "header": "The service performs functions of obtaining information about users and their behavior as follows:",
+            "1": "Through voluntarily entered data in the forms, which are are entered into the Operator's systems.",
+            "2": "By storing cookies on end devices)."
+          }
+        }
+      },
+      "dataProtection": {
+        "header": "Selected data protection methods used by the Operator",
+        "content": {
+          "1": "The login and personal data entry sites are protected in the transmission layer (SSL certificate). This ensures that the personal data and login data, entered on the site, are encrypted in the user's computer and can only be read on the target server server.",
+          "2": "Personal data stored in the database are encrypted in such a way such that only those holding the Operator's key can read it. Thus, the data is protected in case the database is stolen from the server.",
+          "3": "User passwords are stored in hashed form. The hash function works unidirectionally - it is not possible to reverse its operation, which is now the modern standard for storing user passwords.",
+          "4": "The Service uses two-factor authentication, which provides an additional form of protection for logging into the Service.",
+          "5": "In order to protect the data, the Operator regularly makes backups security.",
+          "6": "An important element of data protection is the regular updating of any software used by the Operator to processing personal data, which in particular means regular updates of software components."
+        }
+      },
+      "hosting": {
+        "header": "Hosting",
+        "content": {
+          "1": "The service is hosted (technically maintained) on the servers of the operator: Netlify"
+        }
+      },
+      "userRights": {
+        "header": "Your rights and additional information about how your data is used",
+        "content": {
+          "1": "In certain situations, the Administrator has the right to transfer your personal data to other recipients, if it is necessary to perform a contract concluded with you or to fulfill obligations incumbent on the Administrator. This applies to such groups of recipients: o a hosting company on a trust basis o authorized employees and co-workers who use the data in order to fulfill the purpose of the website",
+          "2": "Your personal data processed by the Administrator for no longer, than it is necessary to perform the related activities specified by separate regulations (e.g., on the conduct of accounting). With regard to marketing data, the data will not will be processed for longer than 3 years.",
+          "3": "You are entitled to request from the Administrator: o access to personal data concerning you, o rectification, o erasure, o restriction of processing, o and data portability data.",
+          "4": "You have the right to object in terms of processing indicated in 3.3 c) against the processing of your data of your personal data for the purpose of pursuing legitimate interests carried out by the Administrator, including profiling, whereby whereby the right to object will not be exercisable in the event of there are valid legitimate grounds for processing, overriding your interests, rights and freedoms freedoms, in particular to establish, assert or defend claims.",
+          "5": "The actions of the Administrator may be complained about to Prezes Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa.",
+          "6": "Provision of personal data is voluntary, but necessary tooperate the Service.",
+          "7": "The following actions may be taken in relation to youon automated decision-making, including profiling for the for the purpose of providing services under the concluded agreement and for the purpose of conducting direct marketing by the Administrator.",
+          "8": "Personal data is not transferred from third countries within the meaning of the Regulations on the protection of personal data. This means that we do not transfer them outside the European Union."
+        }
+      },
+      "formsInformations": {
+        "header": "Information in forms",
+        "content": {
+          "1": "The service collects information voluntarily provided by the user, including including personal information, if provided.",
+          "2": "The service can save information about the parameters of the connection (time stamp, IP address).",
+          "3": "The service, in some cases, may record information facilitating the association of the data in the form with the e-mail address of the of the user filling out the form. In such a case, the e-mail address of the user appears inside the url of the page containing the form.",
+          "4": "The data provided in the form is processed for the purpose resulting from the function of a specific form, e.g. for the purpose of performing the process of handling a service request or commercial contact, registration of services, etc. Each time the context and description of the form in a clearly informs what it is used for."
+        }
+      },
+      "adminLogs": {
+        "header": "Administrator Logs",
+        "content": {
+          "1": "User behavior information on the site may be subject to logging. This data is used for the administration of the service."
+        }
+      },
+      "marketing": {
+        "header": "Relevant marketing techniques",
+        "content": {
+          "1": "The operator uses statistical analysis of website traffic, through Google Analytics (Google Inc., based in the USA). The operator does not transmits personal data to the operator of this service, but only anonymized information. The service is based on the use of cookies on the user's terminal device. In terms of information about the user's preferences collected by the Google advertising network, the user can view and edit the information resulting from cookies using <a href=\"https://www.google.com/ads/preferences/\" target=\"_blank\" rel=\"noreferrer\">the tool</a>"
+        }
+      },
+      "cookies": {
+        "header": "Information about cookies",
+        "content": {
+          "1": "The website uses cookies.",
+          "2": "Cookies are computer data, in particular. particular text files, which are stored in Service User's terminal equipment and are intended for use of the Website's websites. Cookies usually contain the name of the website from which they come, the time stored on the terminal equipment and a unique number.",
+          "3": "The entity placing on the User's terminal equipment of the Website and having access to them is operator of the Website.",
+          "4": {
+            "header": "Cookies are used for the following purposes:",
+            "1": "maintaining the session of the user of the Website (after logging in), thanks to which a user does not have to enter his/her login and password again on each subpage of the Service again to enter login and password;",
+            "2": "To achieve the objectives set out above under \"Relevant marketing techniques\""
+          },
+          "5": "The Service uses two main types of files cookies: \"session\" (session cookies) and \"permanent\" (persistent cookies). \"Session\" cookies are temporary files, which are stored on the User's terminal equipment until the time of logging out, leaving the website or switching off software (web browser). \"Permanent\" cookies cookies are stored on the User's end device for the the time specified in the parameters of the cookies or until they are deleted by the User.",
+          "6": "Web browsing software (browser Internet browser) usually allows the storage of cookies on the User's terminal device. Users of the Website may change their settings in this regard. The Internet browser makes it possible to delete cookies. It is possible also automatic blocking of cookies Detailed information on this subject can be found in the help or documentation of your web browser.",
+          "7": "Restrictions on the use of cookies may affect certain functionality available on the Website.",
+          "8": "Cookies placed on the User's terminal equipment Service may also be used by entities cooperating with the operator of the Website, in particular this concerns companies: Google (Google Inc. headquartered in the USA), Facebook (Facebook Inc. based in the USA), Twitter (Twitter Inc. based in the USA)."
+        }
+      },
+      "cookiesManaging": {
+        "header": "Managing cookies - how to give and revoke consent in practice?",
+        "content": {
+          "1": "If you do not want to receive cookies, you can change your browser settings. We stipulate that disabling handling of cookies necessary for the processes of authentication, security, maintaining user preferences user may make it more difficult, and in extreme cases may make it impossible to use the websites",
+          "2": {
+            "header": "To manage your cookie settings, select from the list below the web browser you are using and follow the instructions:",
+            "1": "Edge",
+            "2": "Internet Explorer",
+            "3": "Chrome",
+            "4": "Safari",
+            "5": "Firefox",
+            "6": "Opera"
+          },
+          "mobile": {
+            "header": "Mobile devices:",
+            "1": "Android",
+            "2": "Safari (iOS)",
+            "3": "Windows Phone"
+          }
+        } 
+      }  
+    }
+  }
+}
