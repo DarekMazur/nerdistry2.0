@@ -18,7 +18,7 @@ const CategoryPage = ({ pageContext }) => {
 	const { category } = pageContext;
 
 	const [postsList, setPostList] = useState(
-		category ? category.posts.slice(0, 2) : []
+		category && category.posts ? category.posts.slice(0, 2) : []
 	);
 	const [hasMore, setHasMore] = useState(true);
 
@@ -43,7 +43,7 @@ const CategoryPage = ({ pageContext }) => {
 	}, []);
 
 	useEffect(() => {
-		setHasMore(category.posts.length > postsList.length);
+		setHasMore(category.posts?.length > postsList.length);
 	}, [postsList]);
 
 	return (
@@ -63,7 +63,7 @@ const CategoryPage = ({ pageContext }) => {
 							<Wrapper
 								title={category.Description || t('category.description')}
 							>
-								{category.posts.length ? (
+								{category.posts?.length ? (
 									<StyledMainBlog
 										as={InfiniteScroll}
 										dataLength={postsList.length}

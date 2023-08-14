@@ -1,11 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { StyledAuthorPopup } from './AuthorPopup.styles';
 
 const AuthorPopup = ({ isHover, name, desc }) => (
 	<StyledAuthorPopup $hover={isHover}>
 		<h3>{name}</h3>
-		{desc || null}
+		<ReactMarkdown>{desc || null}</ReactMarkdown>
 	</StyledAuthorPopup>
 );
 
