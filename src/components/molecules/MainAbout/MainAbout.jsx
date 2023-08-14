@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
 import { gsap } from 'gsap';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PropTypes from 'prop-types';
 import Cover from '../../../assets/icons/about.svg';
@@ -44,7 +45,9 @@ const MainAbout = ({ content }) => {
 			) : (
 				<Cover />
 			)}
-			<p ref={paragraphRef}>{content.AboutContent}</p>
+			<p ref={paragraphRef}>
+				<ReactMarkdown>{content.AboutContent}</ReactMarkdown>
+			</p>
 		</StyledMainAbout>
 	);
 };
