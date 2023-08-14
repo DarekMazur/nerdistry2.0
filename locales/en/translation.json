@@ -32,6 +32,7 @@
   },
   "project": {
     "title": "Projects",
+    "metaDescription": "Check my projects",
     "subTitle": "My projects",
     "more": "Check more:",
     "older": "Blast from the past",
@@ -47,6 +48,7 @@
   },
   "contact": {
     "title": "Contact",
+    "metaDescription": "Stay in contact!",
     "subTitle": "Stay in contact!",
     "desctiption": "You can write to me using socialmedia. But if you prefer a more traditional way - that's not a problem either. Fill out the contact form and click [Send!]. I read all messages and try to answer all of them 😉",
     "form": {
@@ -71,11 +73,13 @@
   },
   "category": {
     "title": "Category",
+    "metaDescription": "All posts from category - let's find something interesting!",
     "description": "All posts from category",
     "postsEnd": "That would be it. Come back later for more 😊"
   },
   "privacy": {
     "title": "Privacy",
+    "metaDescription": "Privacy policy - all you need to know",
     "pageTitle": "Privacy policy",
     "content": {
       "header": "The privacy policy describes how we process information about you, including personal information and cookies, or so-called &quot;cookies&quot;. cookies.",

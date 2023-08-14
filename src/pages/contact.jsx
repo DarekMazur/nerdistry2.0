@@ -20,7 +20,7 @@ const ContactPage = () => {
 		<AppProviders>
 			<Helmet>
 				<title>{t('contact.title')} | Nerdistry</title>
-				<meta name="description" content="lorem ipsum" />
+				<meta name="description" content={t('contact.metaDescription')} />
 			</Helmet>
 			<Layout title={t('contact.title')} isSubtitleHidden>
 				{i18n.resolvedLanguage === 'ru' ? (

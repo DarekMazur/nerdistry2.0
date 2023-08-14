@@ -71,7 +71,7 @@ const ProjectsPage = () => {
 		<AppProviders>
 			<Helmet>
 				<title>{t('project.title')} | Nerdistry</title>
-				<meta name="description" content="lorem ipsum" />
+				<meta name="description" content={t('project.metaDescription')} />
 			</Helmet>
 			<Layout title={t('project.title')} isSubtitleHidden>
 				{i18n.resolvedLanguage === 'ru' ? (

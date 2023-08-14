@@ -14,7 +14,7 @@ const PrivacyPage = () => {
 		<AppProviders>
 			<Helmet>
 				<title>{t('privacy.title')} | Nerdistry</title>
-				<meta name="description" content="lorem ipsum" />
+				<meta name="description" content={t('privacy.metaDescription')} />
 			</Helmet>
 			<Layout title={t('privacy.title')} isSubtitleHidden>
 				{i18n.resolvedLanguage === 'ru' ? (

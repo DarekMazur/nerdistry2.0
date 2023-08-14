@@ -32,6 +32,7 @@
   },
   "project": {
     "title": "Projekty",
+    "metaDescription": "Подивіться мої проекти",
     "subTitle": "Moje projekty",
     "more": "Zobacz więcej:",
     "older": "Blast from the past",
@@ -47,6 +48,7 @@
   },
   "contact": {
     "title": "Kontakt",
+    "metaDescription": "Zostańmy w kontakcie!",
     "subTitle": "Zostańmy w kontakcie!",
     "desctiprion": "Możesz napisać do mnie za pomocą socialmediów. Ale jeśli preferujesz bardziej tradycyjny sposób - to też nie problem. Wypełnij formularz kontaktowy i kliknij [Wyślij!]. Czytam wszytkie wiadomości i na wszystkie staram się odpowiedzieć 😉",
     "form": {
@@ -71,11 +73,13 @@
   },
   "category": {
     "title": "Kategoria",
+    "metaDescription": "Wszystkie posty z kategorii - znajdź coś interesującego!",
     "description": "Wszystkie wpisy z kategorii",
     "postsEnd": "To by było na tyle. Wróć później po więcej 😊"
   },
   "privacy": {
     "title": "Prywatność",
+    "metaDescription": "Polityka prywatności - wszytko, co powinieneś wiedzieć",
     "pageTitle": "Polityka prywatności",
     "content": {
       "header": "Polityka prywatności opisuje zasady przetwarzania przez nas informacji na Twój temat, w tym danych osobowych oraz ciasteczek, czyli tzw. cookies.",
