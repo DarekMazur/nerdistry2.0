@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import i18next from 'i18next';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { StyledContactForm } from './ContactForm.styles';
 import Input from '../../atoms/Input/Input';
@@ -32,18 +31,18 @@ const ContactForm = ({ primaryText, secondaryText, loadingText }) => {
 
 	const validationSchema = Yup.object().shape({
 		name: Yup.string()
-			.required(i18next.t('contact.form.validation.nameRequired'))
-			.min(2, i18next.t('contact.form.validation.nameShot'))
-			.max(30, i18next.t('contact.form.validation.nameLong')),
+			.required(t('contact.form.validation.nameRequired'))
+			.min(2, t('contact.form.validation.nameShot'))
+			.max(30, t('contact.form.validation.nameLong')),
 		email: Yup.string()
-			.required(i18next.t('contact.form.validation.emailRequired'))
-			.email(i18next.t('contact.form.validation.emailFormat')),
+			.required(t('contact.form.validation.emailRequired'))
+			.email(t('contact.form.validation.emailFormat')),
 		message: Yup.string().required(
-			i18next.t('contact.form.validation.messageRequired')
+			t('contact.form.validation.messageRequired')
 		),
 		acceptTerms: Yup.bool().oneOf(
 			[true],
-			i18next.t('contact.form.validation.privacyAcceptance')
+			t('contact.form.validation.privacyAcceptance')
 		),
 	});
 
