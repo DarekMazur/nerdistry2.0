@@ -50,7 +50,7 @@
     "title": "Kontakt",
     "metaDescription": "Zostańmy w kontakcie!",
     "subTitle": "Zostańmy w kontakcie!",
-    "desctiprion": "Możesz napisać do mnie za pomocą socialmediów. Ale jeśli preferujesz bardziej tradycyjny sposób - to też nie problem. Wypełnij formularz kontaktowy i kliknij [Wyślij!]. Czytam wszytkie wiadomości i na wszystkie staram się odpowiedzieć 😉",
+    "description": "Możesz napisać do mnie za pomocą socialmediów. Ale jeśli preferujesz bardziej tradycyjny sposób - to też nie problem. Wypełnij formularz kontaktowy i kliknij [Wyślij!]. Czytam wszytkie wiadomości i na wszystkie staram się odpowiedzieć 😉",
     "form": {
       "name": "Imię",
       "email": "Email",
