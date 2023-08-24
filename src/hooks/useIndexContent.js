@@ -3,7 +3,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useIndexContent = () => {
 	const homeData = useStaticQuery(graphql`
 		query {
-			allStrapiPost(sort: { publishedAt: DESC }) {
+			allStrapiPost(
+				filter: { publishedAt: { ne: null } }
+				sort: { publishedAt: DESC }
+			) {
 				edges {
 					node {
 						id

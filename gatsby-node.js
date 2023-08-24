@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	const categoriesResults = await graphql(`
 		{
-			allStrapiCategory {
+			allStrapiCategory(filter: { publishedAt: { ne: null } }) {
 				edges {
 					node {
 						Name
@@ -39,7 +39,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	const postsResults = await graphql(`
 		{
-			allStrapiPost(sort: { publishedAt: DESC }) {
+			allStrapiPost(
+				filter: { publishedAt: { ne: null } }
+				sort: { publishedAt: DESC }
+			) {
 				edges {
 					node {
 						id
