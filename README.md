@@ -73,6 +73,10 @@ App is designed to work with [Strapi.io] (used v4). You can also use this tool, 
 
 - fix markdown for about and author components
 
+**2.0.2**
+
+- fix posts query - query only published posts, skip drafts
+
 ## ToDo
 
 - fix desktop posts list view for few (1 - 2) posts 
