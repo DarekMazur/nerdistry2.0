@@ -80,6 +80,9 @@ App is designed to work with [Strapi.io] (used v4). You can also use this tool, 
 - fix contact issue (sending messages)
 - fix contact form translation
 
+**2.0.4-beta**
+- quickfix: filter unpublish (draft) posts
+
 ## ToDo
 
 - fix desktop posts list view for few (1 - 2) posts 
