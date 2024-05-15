@@ -13,6 +13,7 @@ import PostCoverWrapper from '../components/molecules/PostCoverWrapper/PostCover
 import PostContent from '../components/molecules/PostContent/PostContent';
 import PostNavigation from '../components/atoms/PostNavigation/PostNavigation';
 import { getDateFormat } from '../utils/helpers/getDateFormat';
+import DefaultCover from '../assets/images/defaultPostCover.jpg';
 
 const SinglePost = ({ pageContext }) => {
 	const { t } = useTranslation();
@@ -58,7 +59,11 @@ const SinglePost = ({ pageContext }) => {
 									</DetailsWrapper>
 								</Wrapper>
 								<PostCoverWrapper
-									coverUrl={article.node.CoverImage.url}
+									coverUrl={
+										article.node.CoverImage
+											? article.node.CoverImage.url
+											: DefaultCover
+									}
 									postTitle={article.node.Title}
 									userID={article.node.User.data.id}
 								/>
