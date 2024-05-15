@@ -13,6 +13,7 @@ import { P } from '../P/P.styles';
 import { getReadingTime } from '../../../utils/helpers/getReadingTime';
 import More from '../More/More';
 import { getTextExcerpt } from '../../../utils/helpers/getTextExcerpt';
+import DefaultCover from '../../../assets/images/defaultPostCover.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,7 +50,9 @@ const SingleFeaturePost = ({ post }) => {
 	}, []);
 
 	return (
-		<StyledSingleFeaturePost $cover={post.CoverImage.url}>
+		<StyledSingleFeaturePost
+			$cover={post.CoverImage ? post.CoverImage.url : DefaultCover}
+		>
 			<Link
 				to={`/blog/${slugify(post.Title)}`}
 				onMouseEnter={handleHover}
