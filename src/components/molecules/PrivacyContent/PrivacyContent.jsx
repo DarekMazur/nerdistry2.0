@@ -13,7 +13,7 @@ const PrivacyContent = () => {
 			<p>{t('privacy.content.header')}</p>
 			<ol>
 				<li>
-					{t('privacy.content.generalInformation.header')}
+					{t('privacy.content.generalInformation.title')}
 					<ol>
 						<li>{t('privacy.content.generalInformation.content.1')}</li>
 						<li>{t('privacy.content.generalInformation.content.2')}</li>
