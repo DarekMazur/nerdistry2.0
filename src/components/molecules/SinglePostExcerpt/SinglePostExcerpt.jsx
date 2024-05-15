@@ -14,6 +14,7 @@ import PostExcCover from '../../atoms/PostExcCover/PostExcCover';
 import More from '../../atoms/More/More';
 import { P } from '../../atoms/P/P.styles';
 import { getReadingTime } from '../../../utils/helpers/getReadingTime';
+import DefaultCover from '../../../assets/images/defaultPostCover.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +61,10 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
 		>
-			<PostExcCover imageURL={post.CoverImage.url} alt={post.Title} />
+			<PostExcCover
+				imageURL={post.CoverImage ? post.CoverImage.url : DefaultCover}
+				alt={post.Title}
+			/>
 			<p>
 				<span>{t('blog.post.postedOn')}</span> {getDateFormat(publishedDate)}
 			</p>
