@@ -80,15 +80,17 @@ const ProjectsPage = () => {
 					<>
 						<Wrapper title={t('project.subTitle')} isBig isWide>
 							{projects && projects.length === images.length ? (
-								projects.map((project, index) => (
-									<Project
-										key={project.name}
-										projectData={project}
-										index={index}
-										image={images[index].urls.regular}
-										techList={techList}
-									/>
-								))
+								projects
+									.filter((project) => !!project.homepage)
+									.map((project, index) => (
+										<Project
+											key={project.name}
+											projectData={project}
+											index={index}
+											image={images[index].urls.regular}
+											techList={techList}
+										/>
+									))
 							) : (
 								<EmptyBlog />
 							)}

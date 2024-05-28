@@ -52,6 +52,7 @@ const RecentProjects = ({ allProjects }) => {
 			<StyledRecentProjects>
 				{projects ? (
 					projects
+						.filter((project) => !!project.homepage)
 						.slice(0, 3)
 						.map((project, index) => (
 							<SingleProject
