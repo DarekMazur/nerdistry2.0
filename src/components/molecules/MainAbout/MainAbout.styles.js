@@ -5,6 +5,7 @@ export const StyledMainAbout = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 0 0 2rem;
 
 	svg,
 	img {
@@ -25,4 +26,11 @@ export const StyledMainAbout = styled.div`
 		text-align: center;
 		font-size: 1.6rem;
 	}
+`;
+
+export const AboutDefaultCover = styled.img`
+	width: 100% !important;
+	height: auto !important;
+	border: none !important;
+	border-radius: 0 !important;
 `;
