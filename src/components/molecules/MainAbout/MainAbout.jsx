@@ -6,8 +6,8 @@ import { gsap } from 'gsap';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PropTypes from 'prop-types';
-import Cover from '../../../assets/icons/about.svg';
-import { StyledMainAbout } from './MainAbout.styles';
+import { AboutDefaultCover, StyledMainAbout } from './MainAbout.styles';
+import cover from '../../../assets/images/cover.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,12 +42,11 @@ const MainAbout = ({ content }) => {
 		<StyledMainAbout $dark={isDark}>
 			{content.AboutCover?.url ? (
 				<img src={content.AboutCover.url} alt="" />
-			) : (
-				<Cover />
-			)}
+			) : null}
 			<p ref={paragraphRef}>
 				<ReactMarkdown>{content.AboutContent}</ReactMarkdown>
 			</p>
+			<AboutDefaultCover src={cover} />
 		</StyledMainAbout>
 	);
 };
