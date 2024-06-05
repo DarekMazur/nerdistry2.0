@@ -63,7 +63,7 @@ const CategoryPage = ({ pageContext }) => {
 							<Wrapper
 								title={category.Description || t('category.description')}
 							>
-								{category.posts.filter((post) => post.publishedAt !== null)
+								{category.posts?.filter((post) => post.publishedAt !== null)
 									?.length ? (
 									<StyledMainBlog
 										as={InfiniteScroll}
