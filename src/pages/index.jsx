@@ -68,7 +68,7 @@ const IndexPage = () => {
 							)}
 						</Wrapper>
 						{strapiHome?.AboutContent ? (
-							<Wrapper title={strapiHome.AoutTitle || t('main.about')} isBig>
+							<Wrapper title={strapiHome.AboutTitle || t('main.about')} isBig>
 								<MainAbout content={strapiHome} />
 							</Wrapper>
 						) : null}
