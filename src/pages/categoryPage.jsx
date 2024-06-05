@@ -63,7 +63,8 @@ const CategoryPage = ({ pageContext }) => {
 							<Wrapper
 								title={category.Description || t('category.description')}
 							>
-								{category.posts?.length ? (
+								{category.posts.filter((post) => post.publishedAt !== null)
+									?.length ? (
 									<StyledMainBlog
 										as={InfiniteScroll}
 										dataLength={postsList.length}
@@ -76,13 +77,15 @@ const CategoryPage = ({ pageContext }) => {
 											</ScrollEndMessage>
 										}
 									>
-										{category.posts.map((post) => (
-											<SinglePostExcerpt
-												key={post.id}
-												post={post}
-												postsLength={category.posts.length}
-											/>
-										))}
+										{category.posts
+											.filter((post) => post.publishedAt !== null)
+											.map((post) => (
+												<SinglePostExcerpt
+													key={post.id}
+													post={post}
+													postsLength={category.posts.length}
+												/>
+											))}
 									</StyledMainBlog>
 								) : (
 									<EmptyBlog />
