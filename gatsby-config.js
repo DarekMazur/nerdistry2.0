@@ -114,5 +114,14 @@ module.exports = {
 				cache: false,
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-google-gtag',
+			options: {
+				trackingIds: [process.env.GATSBY_ANALYTICS_ID],
+				pluginConfig: {
+					head: true,
+				},
+			},
+		},
 	],
 };
