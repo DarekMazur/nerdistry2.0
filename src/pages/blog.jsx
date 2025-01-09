@@ -6,6 +6,7 @@ import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styled from 'styled-components';
 import PropTypes, { oneOfType } from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
@@ -32,14 +33,6 @@ const CategoryFilters = styled.div`
 		opacity 0.3s ease-in-out;
 	z-index: 100;
 
-	button {
-		transform-origin: bottom right;
-		transform: rotate(-90deg);
-		position: absolute;
-		top: 0;
-		right: 100%;
-	}
-
 	ul {
 		list-style: none;
 		padding: 1rem;
@@ -50,13 +43,40 @@ const CategoryFilters = styled.div`
 	}
 `;
 
-const CategoryCheckbox = ({ category }) => (
+const FiltersLabel = styled.button`
+	transform-origin: bottom right;
+	transform: rotate(-90deg);
+	position: absolute;
+	top: 0;
+	right: 100%;
+`;
+
+const Checkbox = ({ label, isChecked }) => (
 	<li>
-		<input type="checkbox" id={category.id} />
-		<label htmlFor={category.id}>
-			{category.Name} ({category.posts ? category.posts.length : '0'})
-		</label>
+		{isChecked ? (
+			<FontAwesomeIcon icon={['fas', 'check-square']} />
+		) : (
+			<FontAwesomeIcon icon={['fas', 'square']} />
+		)}{' '}
+		<span>{label}</span>
 	</li>
+);
+
+Checkbox.defaultProps = {
+	isChecked: true,
+};
+
+Checkbox.propTypes = {
+	label: PropTypes.string.isRequired,
+	isChecked: PropTypes.bool,
+};
+
+const CategoryCheckbox = ({ category }) => (
+	<Checkbox
+		label={`${category.Name} (${category.posts ? category.posts.length : '0'})`}
+		name={category.Name}
+		onClick={() => console.log(`${category.Name}`)}
+	/>
 );
 
 CategoryCheckbox.propTypes = {
@@ -119,12 +139,12 @@ const BlogPage = () => {
 					<Wrapper title={strapiIdentity.Slogan || t('identification.slogan')}>
 						{categories.length ? (
 							<CategoryFilters $hidden={isHidden} $open={isOpen}>
-								<button
+								<FiltersLabel
 									type="button"
 									onClick={() => setIsOpen((prevState) => !prevState)}
 								>
 									Kategorie
-								</button>
+								</FiltersLabel>
 								<ul>
 									{categories.map((category) => (
 										<CategoryCheckbox
@@ -132,6 +152,8 @@ const BlogPage = () => {
 											category={category.node}
 										/>
 									))}
+									<button type="button">Clear filters</button>
+									<button type="button">Apply all filters</button>
 								</ul>
 							</CategoryFilters>
 						) : null}
