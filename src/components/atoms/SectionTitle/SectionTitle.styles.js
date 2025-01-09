@@ -8,6 +8,7 @@ export const StyledSectionTitle = styled.h3`
 	line-height: 1.2;
 	text-align: center;
 	margin: 2rem 0;
+	padding: 2rem 0 3rem;
 
 	a {
 		color: inherit;
