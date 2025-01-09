@@ -18,7 +18,11 @@ const CategoryPage = ({ pageContext }) => {
 	const { category } = pageContext;
 
 	const [postsList, setPostList] = useState(
-		category && category.posts ? category.posts.slice(0, 2) : []
+		category && category.posts
+			? category.posts
+					.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+					.slice(0, 2)
+			: []
 	);
 	const [hasMore, setHasMore] = useState(true);
 
@@ -27,10 +31,9 @@ const CategoryPage = ({ pageContext }) => {
 
 	const getMorePosts = () => {
 		if (category) {
-			const newPosts = category.posts.slice(
-				postsList.length,
-				postsList.length + 2
-			);
+			const newPosts = category.posts
+				.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+				.slice(postsList.length, postsList.length + 2);
 			// eslint-disable-next-line no-shadow
 			setPostList((postsList) => [...postsList, ...newPosts]);
 		}
@@ -79,7 +82,6 @@ const CategoryPage = ({ pageContext }) => {
 									>
 										{category.posts
 											.filter((post) => post.publishedAt !== null)
-											.sort((a, b) => b.publishedAt - a.publishedAt)
 											.map((post) => (
 												<SinglePostExcerpt
 													key={post.id}
