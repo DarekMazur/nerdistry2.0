@@ -115,7 +115,10 @@ CategoryPage.propTypes = {
 
 export const query = graphql`
 	query ($language: String!) {
-		locales: allLocale(filter: { language: { eq: $language } }) {
+		locales: allLocale(
+			sort: { publishedAt: DESC }
+			filter: { language: { eq: $language } }
+		) {
 			edges {
 				node {
 					ns
