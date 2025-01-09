@@ -77,7 +77,7 @@ const BlogPage = () => {
 									type="button"
 									onClick={() => setIsOpen((prevState) => !prevState)}
 								>
-									Kategorie
+									{t('blog.filters.label')}
 								</FiltersLabel>
 								<ul>
 									{categories.map((category) => (
@@ -91,8 +91,12 @@ const BlogPage = () => {
 										/>
 									))}
 								</ul>
-								<SimpleButton type="button">Clear filters</SimpleButton>
-								<SimpleButton type="button">Apply all filters</SimpleButton>
+								<SimpleButton type="button">
+									{t('blog.filters.clear')}
+								</SimpleButton>
+								<SimpleButton type="button">
+									{t('blog.filters.all')}
+								</SimpleButton>
 							</CategoryFilters>
 						) : null}
 						{allStrapiPost.edges.length ? (
