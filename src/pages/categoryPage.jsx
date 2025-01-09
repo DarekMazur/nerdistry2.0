@@ -79,6 +79,7 @@ const CategoryPage = ({ pageContext }) => {
 									>
 										{category.posts
 											.filter((post) => post.publishedAt !== null)
+											.sort((a, b) => b.publishedAt - a.publishedAt)
 											.map((post) => (
 												<SinglePostExcerpt
 													key={post.id}
@@ -115,10 +116,7 @@ CategoryPage.propTypes = {
 
 export const query = graphql`
 	query ($language: String!) {
-		locales: allLocale(
-			sort: { data: { publishedAt: DESC } }
-			filter: { language: { eq: $language } }
-		) {
+		locales: allLocale(filter: { language: { eq: $language } }) {
 			edges {
 				node {
 					ns
