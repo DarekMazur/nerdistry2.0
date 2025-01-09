@@ -19,6 +19,7 @@ import { useCategories } from '../hooks/useCategories';
 import Checkbox from '../components/atoms/Checkbox/Checkbox';
 import { FiltersLabel } from '../components/atoms/FiltersLabel/FiltersLabel.styles';
 import { CategoryFilters } from '../components/molecules/CategoryFilters/CategoryFilters.styles';
+import { SimpleButton } from '../components/atoms/SimpleButton/SimpleButton.styles';
 
 const BlogPage = () => {
 	const { t } = useTranslation();
@@ -89,9 +90,9 @@ const BlogPage = () => {
 											onClick={() => console.log(`${category.node.Name}`)}
 										/>
 									))}
-									<button type="button">Clear filters</button>
-									<button type="button">Apply all filters</button>
 								</ul>
+								<SimpleButton type="button">Clear filters</SimpleButton>
+								<SimpleButton type="button">Apply all filters</SimpleButton>
 							</CategoryFilters>
 						) : null}
 						{allStrapiPost.edges.length ? (

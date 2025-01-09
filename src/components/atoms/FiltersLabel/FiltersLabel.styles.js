@@ -6,4 +6,8 @@ export const FiltersLabel = styled.button`
 	position: absolute;
 	top: 0;
 	right: 100%;
+	border: none;
+	padding: 1rem;
+	background-color: ${({ theme }) => theme.colors.black};
+	color: ${({ theme }) => theme.colors.white};
 `;
