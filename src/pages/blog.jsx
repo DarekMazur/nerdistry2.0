@@ -4,9 +4,6 @@ import { graphql } from 'gatsby';
 import { useEffect, useState } from 'react';
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import styled from 'styled-components';
-import PropTypes, { oneOfType } from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
 import EmptyBlog from '../components/atoms/EmptyBlog/EmptyBlog';
@@ -19,73 +16,9 @@ import { useIndexContent } from '../hooks/useIndexContent';
 import { usePageIdentity } from '../hooks/usePageIdentity';
 import useScrollPosition from '../hooks/useScrollPosition';
 import { useCategories } from '../hooks/useCategories';
-
-const CategoryFilters = styled.div`
-	position: fixed;
-	background-color: darkgray;
-	top: 10vh;
-	left: 100%;
-	padding-right: 3rem;
-	opacity: ${({ $hidden }) => ($hidden ? '0' : '1')};
-	transform: ${({ $open }) => ($open ? 'translateX(-100%)' : 'translateX(0)')};
-	transition:
-		transform 0.1s ease-in-out,
-		opacity 0.3s ease-in-out;
-	z-index: 100;
-
-	ul {
-		list-style: none;
-		padding: 1rem;
-
-		li {
-			white-space: nowrap;
-		}
-	}
-`;
-
-const FiltersLabel = styled.button`
-	transform-origin: bottom right;
-	transform: rotate(-90deg);
-	position: absolute;
-	top: 0;
-	right: 100%;
-`;
-
-const Checkbox = ({ label, isChecked }) => (
-	<li>
-		{isChecked ? (
-			<FontAwesomeIcon icon={['fas', 'check-square']} />
-		) : (
-			<FontAwesomeIcon icon={['fas', 'square']} />
-		)}{' '}
-		<span>{label}</span>
-	</li>
-);
-
-Checkbox.defaultProps = {
-	isChecked: true,
-};
-
-Checkbox.propTypes = {
-	label: PropTypes.string.isRequired,
-	isChecked: PropTypes.bool,
-};
-
-const CategoryCheckbox = ({ category }) => (
-	<Checkbox
-		label={`${category.Name} (${category.posts ? category.posts.length : '0'})`}
-		name={category.Name}
-		onClick={() => console.log(`${category.Name}`)}
-	/>
-);
-
-CategoryCheckbox.propTypes = {
-	category: PropTypes.shape({
-		Name: PropTypes.string,
-		id: PropTypes.string,
-		posts: PropTypes.arrayOf(oneOfType([PropTypes.object])),
-	}).isRequired,
-};
+import Checkbox from '../components/atoms/Checkbox/Checkbox';
+import { FiltersLabel } from '../components/atoms/FiltersLabel/FiltersLabel.styles';
+import { CategoryFilters } from '../components/molecules/CategoryFilters/CategoryFilters.styles';
 
 const BlogPage = () => {
 	const { t } = useTranslation();
@@ -147,9 +80,13 @@ const BlogPage = () => {
 								</FiltersLabel>
 								<ul>
 									{categories.map((category) => (
-										<CategoryCheckbox
+										<Checkbox
 											key={category.node.id}
-											category={category.node}
+											label={`${category.node.Name} (${
+												category.node.posts ? category.node.posts.length : '0'
+											})`}
+											name={category.node.Name}
+											onClick={() => console.log(`${category.node.Name}`)}
 										/>
 									))}
 									<button type="button">Clear filters</button>
