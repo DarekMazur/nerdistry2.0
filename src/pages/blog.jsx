@@ -36,6 +36,18 @@ const BlogPage = () => {
 	const [hasMore, setHasMore] = useState(true);
 	const [isHidden, setIsHidden] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
+	const [filteredCategories, setFilteredCategories] = useState([]);
+
+	useEffect(() => {
+		const categoriesNames = [];
+		if (categories.length) {
+			categories.forEach((category) =>
+				categoriesNames.push(category.node.Name)
+			);
+
+			setFilteredCategories(categoriesNames);
+		}
+	}, [categories]);
 
 	const getMorePosts = () => {
 		const newPosts = posts.slice(postsList.length, postsList.length + 2);
@@ -47,15 +59,24 @@ const BlogPage = () => {
 
 	useEffect(
 		() =>
-			scrollPosition > window.innerHeight - 100
+			scrollPosition > window.innerHeight - 300
 				? setIsHidden(false)
-				: setIsHidden(true),
+				: (setIsHidden(true), setIsOpen(false)),
 		[scrollPosition]
 	);
 
 	useEffect(() => {
 		setHasMore(posts.length > postsList.length);
 	}, [postsList]);
+
+	const handleCheckbox = (name) => {
+		// eslint-disable-next-line no-unused-expressions
+		filteredCategories.includes(name)
+			? setFilteredCategories(
+					filteredCategories.filter((category) => category !== name)
+			  )
+			: setFilteredCategories([...filteredCategories, name]);
+	};
 
 	return (
 		<AppProviders>
@@ -83,11 +104,14 @@ const BlogPage = () => {
 									{categories.map((category) => (
 										<Checkbox
 											key={category.node.id}
+											isChecked={filteredCategories.includes(
+												category.node.Name
+											)}
 											label={`${category.node.Name} (${
 												category.node.posts ? category.node.posts.length : '0'
 											})`}
 											name={category.node.Name}
-											onClick={() => console.log(`${category.node.Name}`)}
+											onClick={() => handleCheckbox(category.node.Name)}
 										/>
 									))}
 								</ul>
@@ -102,7 +126,15 @@ const BlogPage = () => {
 						{allStrapiPost.edges.length ? (
 							<StyledMainBlog
 								as={InfiniteScroll}
-								dataLength={postsList.length}
+								dataLength={
+									postsList.filter(
+										(post) =>
+											filteredCategories.length === 0 ||
+											post.node.categories.some((category) =>
+												filteredCategories.includes(category.Name)
+											)
+									).length
+								}
 								next={getMorePosts}
 								hasMore={hasMore}
 								loader={<Loading />}
@@ -110,13 +142,21 @@ const BlogPage = () => {
 									<ScrollEndMessage>{t('blog.postsEnd')}</ScrollEndMessage>
 								}
 							>
-								{postsList.map((post) => (
-									<SinglePostExcerpt
-										key={post.node.id}
-										post={post.node}
-										postsLength={postsList.length}
-									/>
-								))}
+								{postsList
+									.filter(
+										(post) =>
+											filteredCategories.length === 0 ||
+											post.node.categories.some((category) =>
+												filteredCategories.includes(category.Name)
+											)
+									)
+									.map((post) => (
+										<SinglePostExcerpt
+											key={post.node.id}
+											post={post.node}
+											postsLength={postsList.length}
+										/>
+									))}
 							</StyledMainBlog>
 						) : (
 							<EmptyBlog />
