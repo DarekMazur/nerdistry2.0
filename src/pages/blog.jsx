@@ -38,7 +38,7 @@ const BlogPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [filteredCategories, setFilteredCategories] = useState([]);
 
-	useEffect(() => {
+	const setAllFilters = () => {
 		const categoriesNames = [];
 		if (categories.length) {
 			categories.forEach((category) =>
@@ -47,6 +47,10 @@ const BlogPage = () => {
 
 			setFilteredCategories(categoriesNames);
 		}
+	};
+
+	useEffect(() => {
+		setAllFilters();
 	}, [categories]);
 
 	const getMorePosts = () => {
@@ -76,6 +80,14 @@ const BlogPage = () => {
 					filteredCategories.filter((category) => category !== name)
 			  )
 			: setFilteredCategories([...filteredCategories, name]);
+	};
+
+	const handleAll = () => {
+		setAllFilters();
+	};
+
+	const handleClear = () => {
+		setFilteredCategories([]);
 	};
 
 	return (
@@ -115,10 +127,10 @@ const BlogPage = () => {
 										/>
 									))}
 								</ul>
-								<SimpleButton type="button">
+								<SimpleButton type="button" onClick={handleClear}>
 									{t('blog.filters.clear')}
 								</SimpleButton>
-								<SimpleButton type="button">
+								<SimpleButton type="button" onClick={handleAll}>
 									{t('blog.filters.all')}
 								</SimpleButton>
 							</CategoryFilters>
