@@ -28,11 +28,16 @@
       "more": "Czytaj dalej",
       "next": "Następny",
       "previous": "Poprzedni"
+    },
+    "filters": {
+      "label": "Kategorie",
+      "clear": "Wyczyść wszystkie",
+      "all": "Zaznacz wszytko"
     }
   },
   "project": {
     "title": "Projekty",
-    "metaDescription": "Подивіться мої проекти",
+    "metaDescription": "Zobacz moje projekty",
     "subTitle": "Moje projekty",
     "more": "Zobacz więcej:",
     "older": "Blast from the past",
