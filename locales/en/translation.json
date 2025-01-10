@@ -28,6 +28,11 @@
       "more": "Read more",
       "next": "Next",
       "previous": "Previous"
+    },
+    "filters": {
+      "label": "Categories",
+      "clear": "Clear filters",
+      "all": "Apply all filters"
     }
   },
   "project": {
