@@ -75,7 +75,7 @@ const ContactSection = ({ data }) => {
 		<StyledContactSectionWrapper $dark={isDark}>
 			<p>{t('contact.description')}</p>
 			<ul>
-				{data.url.map((socialMenuItem) => (
+				{data?.url.map((socialMenuItem) => (
 					<li key={socialMenuItem.id}>
 						<a
 							href={socialMenuItem.socialLink}

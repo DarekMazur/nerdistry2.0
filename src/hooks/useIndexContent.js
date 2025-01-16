@@ -12,7 +12,11 @@ export const useIndexContent = () => {
 						id
 						Title
 						Description
-						Content
+						Content {
+							data {
+								Content
+							}
+						}
 						publishedAt
 						Tags
 						Feature

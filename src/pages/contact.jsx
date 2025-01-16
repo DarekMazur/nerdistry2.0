@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes, { oneOfType } from 'prop-types';
+import { useEffect, useState } from 'react';
 import Layout from '../components/templates/Layout/Layout';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import AppProviders from '../providers/AppProviders';
@@ -16,6 +17,12 @@ const ContactPage = () => {
 
 	const { strapiSocialMenu } = useSocialData();
 
+	const [socialMenu, setSocialMenu] = useState();
+
+	useEffect(() => {
+		setSocialMenu(JSON.parse(strapiSocialMenu.internal.content));
+	}, []);
+
 	return (
 		<AppProviders>
 			<Helmet>
@@ -27,7 +34,7 @@ const ContactPage = () => {
 					<Wrapper title={t('main.feturedTitle')} isWide isBig />
 				) : (
 					<Wrapper title={t('contact.subTitle')} isWide>
-						<ContactSection data={strapiSocialMenu} />
+						<ContactSection data={socialMenu} />
 						<ContactFormWrapper />
 					</Wrapper>
 				)}

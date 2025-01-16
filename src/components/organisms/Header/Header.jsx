@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
@@ -31,7 +31,7 @@ const Header = ({ pageInfo, title, subtitle, isSubtitleHidden }) => {
 
 	const { t } = useTranslation();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (i18n.resolvedLanguage === 'ru') {
 			alert(
 				"If you're not a pro-war orc please change language. In other way... well, please follow warship Moscow 😁"

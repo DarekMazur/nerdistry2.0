@@ -14,13 +14,14 @@ const PostCoverWrapper = ({ coverUrl, postTitle, userID }) => {
 	useEffect(() => {
 		const getUserData = async () => {
 			const res = await fetch(
-				`${process.env.GATSBY_API_URL}/users?filters[id][$eq]=${userID}&populate=*`
+				`${process.env.GATSBY_API_URL}/users?filters[documentId][$eq]=${userID}&populate=*`
 			);
 			const userData = await res.json();
 			setUser(userData);
 		};
 		getUserData();
 	}, []);
+
 	return (
 		<StyledPostCoverWrapper>
 			<img src={coverUrl || defaultCover} alt={postTitle || ''} />

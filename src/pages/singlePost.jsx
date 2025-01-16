@@ -65,9 +65,9 @@ const SinglePost = ({ pageContext }) => {
 											: DefaultCover
 									}
 									postTitle={article.node.Title}
-									userID={article.node.User.data.id}
+									userID={article.node.User.documentId}
 								/>
-								<PostContent content={article.node.Content} />
+								<PostContent content={article.node.Content.data.Content} />
 								<PostNavigation next={article.previous} prev={article.next} />
 							</>
 						)}
@@ -96,9 +96,7 @@ SinglePost.propTypes = {
 					url: PropTypes.string,
 				}),
 				User: PropTypes.shape({
-					data: PropTypes.shape({
-						id: PropTypes.string,
-					}),
+					documentId: PropTypes.string,
 				}),
 			}),
 			next: PropTypes.objectOf(PropTypes.string),

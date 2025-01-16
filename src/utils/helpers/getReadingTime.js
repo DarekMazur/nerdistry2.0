@@ -1,6 +1,5 @@
 export const getReadingTime = (content) => {
 	const words = content?.trim().split(/\s+/).length;
 	const wps = 225;
-	const estimateReadingTime = Math.ceil(words / wps);
-	return estimateReadingTime;
+	return Math.ceil(words / wps);
 };

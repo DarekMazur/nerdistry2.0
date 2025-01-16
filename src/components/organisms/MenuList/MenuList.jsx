@@ -11,7 +11,7 @@ const MenuList = ({ menuList, isOpen, handleClick }) => (
 			<CloseIcon onClick={handleClick} />
 		</StyledIcon>
 		<ul>
-			{menuList.map((listItem, index) => (
+			{menuList?.map((listItem, index) => (
 				<MenuListItem key={listItem.id} listItem={listItem} index={index} />
 			))}
 		</ul>

@@ -15,7 +15,7 @@ const Layout = ({ children, title, subtitle, isSubtitleHidden }) => {
 		<>
 			<GlobalStyle $dark={isDark} />
 			<Header
-				pageInfo={strapiIdentity}
+				pageInfo={JSON.parse(strapiIdentity.internal.content)}
 				title={title}
 				subtitle={subtitle}
 				isSubtitleHidden={isSubtitleHidden}

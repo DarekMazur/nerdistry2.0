@@ -4,10 +4,8 @@ export const useSocialData = () => {
 	const socialData = useStaticQuery(graphql`
 		query {
 			strapiSocialMenu {
-				url {
-					id
-					platformName
-					socialLink
+				internal {
+					content
 				}
 			}
 		}

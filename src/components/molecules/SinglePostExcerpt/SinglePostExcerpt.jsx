@@ -28,7 +28,7 @@ const SinglePostExcerpt = ({ post, postsLength }) => {
 
 	const { t } = useTranslation();
 
-	const estimation = getReadingTime(post.Content);
+	const estimation = getReadingTime(post.Content.data.Content);
 
 	useEffect(() => {
 		SplitType.create(paragraphRef.current, { types: 'chars' });

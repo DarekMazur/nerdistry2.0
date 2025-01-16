@@ -15,7 +15,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 							id
 							Title
 							Description
-							Content
+							Content {
+								data {
+									Content
+								}
+							}
 							publishedAt
 							Tags
 							Feature
@@ -26,9 +30,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 								url
 							}
 							User {
-								data {
-									id
-								}
+								documentId
 							}
 						}
 					}
@@ -48,7 +50,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 						id
 						Title
 						Description
-						Content
+						Content {
+							data {
+								Content
+							}
+						}
 						publishedAt
 						Tags
 						Feature
@@ -59,9 +65,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 							url
 						}
 						User {
-							data {
-								id
-							}
+							documentId
 						}
 					}
 					next {

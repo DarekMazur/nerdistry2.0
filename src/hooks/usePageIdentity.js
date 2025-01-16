@@ -4,10 +4,12 @@ export const usePageIdentity = () => {
 	const pageIdentity = useStaticQuery(graphql`
 		query {
 			strapiIdentity {
-				Title
-				Slogan
+				internal {
+					content
+				}
 			}
 		}
 	`);
+
 	return pageIdentity;
 };

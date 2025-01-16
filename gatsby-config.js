@@ -5,6 +5,14 @@ require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
 
+const strapiConfig = {
+	version: 5,
+	apiURL: process.env.GATSBY_STRAPI_API_URL,
+	accessToken: process.env.GATSBY_STRAPI_TOKEN,
+	collectionTypes: ['post', 'category'],
+	singleTypes: ['home', 'identity', 'main-menu', 'footer-menu', 'social-menu'],
+};
+
 module.exports = {
 	siteMetadata: {
 		title: `Nerdisty`,
@@ -98,21 +106,8 @@ module.exports = {
 			},
 		},
 		{
-			resolve: 'gatsby-source-strapi-graphql',
-			options: {
-				apiURL: process.env.GATSBY_STRAPI_API_URL,
-				collectionTypes: ['Post', 'Category'],
-				singleTypes: [
-					'Home',
-					'Identity',
-					'MainMenu',
-					'FooterMenu',
-					'SocialMenu',
-				],
-				token: process.env.GATSBY_STRAPI_TOKEN,
-				preview: true,
-				cache: false,
-			},
+			resolve: `gatsby-source-strapi`,
+			options: strapiConfig,
 		},
 		{
 			resolve: 'gatsby-plugin-google-gtag',

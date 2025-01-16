@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next';
+import { useEffect, useState } from 'react';
 import Wrapper from '../components/molecules/Wrapper/Wrapper';
 import Layout from '../components/templates/Layout/Layout';
 import AppProviders from '../providers/AppProviders';
@@ -23,11 +24,19 @@ const IndexPage = () => {
 	const { strapiIdentity } = usePageIdentity();
 	const { strapiHome } = usePageMeta();
 
+	const [pageIdentity, setPageIdentity] = useState();
+	const [pageHome, setPageHome] = useState();
+
+	useEffect(() => {
+		setPageIdentity(JSON.parse(strapiIdentity.internal.content));
+		setPageHome(JSON.parse(strapiHome.internal.content));
+	}, []);
+
 	return (
 		<AppProviders>
 			<Helmet>
-				<title>{strapiIdentity.Title || t('main.home')} | Nerdistry</title>
-				<meta name="description" content={strapiIdentity.Slogan} />
+				<title>{pageIdentity?.Title || t('main.home')} | Nerdistry</title>
+				<meta name="description" content={pageIdentity?.Slogan} />
 			</Helmet>
 
 			<Layout title="" subtitle="">
@@ -37,7 +46,7 @@ const IndexPage = () => {
 					<>
 						{getFeaturedPosts(allStrapiPost.edges).length ? (
 							<Wrapper
-								title={strapiHome?.FeaturedPostsTitle || t('main.feturedTitle')}
+								title={pageHome?.FeaturedPostsTitle || t('main.feturedTitle')}
 								isWide
 								isBig
 							>
@@ -45,31 +54,26 @@ const IndexPage = () => {
 							</Wrapper>
 						) : null}
 						<Wrapper
-							title={
-								strapiHome?.RecentProjectsTitle || t('main.recentProjects')
-							}
+							title={pageHome?.RecentProjectsTitle || t('main.recentProjects')}
 							isBig
 						>
 							<RecentProjects
-								allProjects={strapiHome?.ProjectsLink || '/projects'}
+								allProjects={pageHome?.ProjectsLink || '/projects'}
 							/>
 						</Wrapper>
-						<Wrapper
-							title={strapiHome?.BlogTitle || t('main.blogLatest')}
-							isBig
-						>
+						<Wrapper title={pageHome?.BlogTitle || t('main.blogLatest')} isBig>
 							{allStrapiPost.edges.length === 0 ? (
 								<EmptyBlog />
 							) : (
 								<MainBlog
 									posts={allStrapiPost.edges.slice(0, 4)}
-									allPost={strapiHome?.BlogLink || '/blog'}
+									allPost={pageHome?.BlogLink || '/blog'}
 								/>
 							)}
 						</Wrapper>
-						{strapiHome?.AboutContent ? (
-							<Wrapper title={strapiHome.AboutTitle || t('main.about')} isBig>
-								<MainAbout content={strapiHome} />
+						{pageHome?.AboutContent?.data ? (
+							<Wrapper title={pageHome.AboutTitle || t('main.about')} isBig>
+								<MainAbout content={pageHome} />
 							</Wrapper>
 						) : null}
 					</>

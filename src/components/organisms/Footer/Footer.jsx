@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql, useStaticQuery } from 'gatsby';
+import { useEffect, useState } from 'react';
 import LinkedinIcon from '../../../assets/icons/linkedin-in.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
@@ -33,21 +34,27 @@ const Footer = ({ isDark }) => {
 				}
 			}
 			strapiFooterMenu {
-				FooterMenuElement {
-					id
-					Name
-					url
+				internal {
+					content
 				}
 			}
 			strapiSocialMenu {
-				url {
-					id
-					platformName
-					socialLink
+				internal {
+					content
 				}
 			}
 		}
 	`);
+
+	const [pageFooterMenu, setPageFooterMenu] = useState();
+	const [socialMenu, setSocialMenu] = useState();
+	//
+	useEffect(() => {
+		setPageFooterMenu(
+			JSON.parse(menuData.strapiFooterMenu.internal.content).FooterMenuElement
+		);
+		setSocialMenu(JSON.parse(menuData.strapiSocialMenu.internal.content).url);
+	}, []);
 
 	const getSocialIconSvg = (socialPlatform) => {
 		if (socialPlatform.toLowerCase().indexOf('linkedin') !== -1) {
@@ -95,9 +102,7 @@ const Footer = ({ isDark }) => {
 		return <LinkIcon />;
 	};
 
-	const footerMenu =
-		menuData.strapiFooterMenu.FooterMenuElement ||
-		menuData.strapiMainMenu.MenuElement;
+	const footerMenu = pageFooterMenu || menuData.strapiMainMenu?.MenuElement;
 
 	return (
 		<StyledFooter>
@@ -106,7 +111,7 @@ const Footer = ({ isDark }) => {
 			</Link>
 			<nav>
 				<ul>
-					{footerMenu.map((menuItem) => (
+					{footerMenu?.map((menuItem) => (
 						<li key={menuItem.id}>
 							<a href={menuItem.url}>{menuItem.Name}</a>
 						</li>
@@ -114,23 +119,25 @@ const Footer = ({ isDark }) => {
 				</ul>
 			</nav>
 			<p>Gacek &copy; {getCurrentYear()}</p>
-			<ul>
-				{menuData.strapiSocialMenu.url.map((socialMenuItem) => (
-					<li key={socialMenuItem.id}>
-						<a
-							href={socialMenuItem.socialLink}
-							target="_blank"
-							rel="noreferrer"
-						>
-							<StyledIcon>
-								{getSocialIconSvg(
-									socialMenuItem.platformName || socialMenuItem.socialLink
-								)}
-							</StyledIcon>
-						</a>
-					</li>
-				))}
-			</ul>
+			{socialMenu ? (
+				<ul>
+					{socialMenu.map((socialMenuItem) => (
+						<li key={socialMenuItem.id}>
+							<a
+								href={socialMenuItem?.socialLink}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<StyledIcon>
+									{getSocialIconSvg(
+										socialMenuItem?.platformName || socialMenuItem?.socialLink
+									)}
+								</StyledIcon>
+							</a>
+						</li>
+					))}
+				</ul>
+			) : null}
 			<GoToTop isDark={isDark} />
 		</StyledFooter>
 	);

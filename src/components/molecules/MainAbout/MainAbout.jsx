@@ -44,7 +44,7 @@ const MainAbout = ({ content }) => {
 				<img src={content.AboutCover.url} alt="" />
 			) : null}
 			<p ref={paragraphRef}>
-				<ReactMarkdown>{content.AboutContent}</ReactMarkdown>
+				<ReactMarkdown>{content.AboutContent.data}</ReactMarkdown>
 			</p>
 			<AboutDefaultCover src={cover} />
 		</StyledMainAbout>
